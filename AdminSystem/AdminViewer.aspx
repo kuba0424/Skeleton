@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="6List.aspx.cs" Inherits="_1_List" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="AdminViewer.aspx.cs" Inherits="_1Viewer" %>
 
 <!DOCTYPE html>
 
