@@ -17,29 +17,29 @@ namespace Testing6
         }
 
         [TestMethod]
-        public void IsAdminPropertyOK()
+        public void StaffIsAdminPropertyOK()
         {
             //create instance of the class we want to create
             clsStaff staff = new clsStaff();
             //create test data to assign to the property
             Boolean TestData = true;
             //Assign the data to the property
-            staff.IsAdmin = TestData;
+            staff.StaffIsAdmin = TestData;
             //test to see that the two values are the same
-            Assert.AreEqual(staff.IsAdmin, TestData);
+            Assert.AreEqual(staff.StaffIsAdmin, TestData);
 
         }
         [TestMethod]
-        public void DateCreatedPropertyOK()
+        public void StaffDateCreatedPropertyOK()
         {
             //create instance of the class we want to create
             clsStaff staff = new clsStaff();
             //create test data to assign to the property
             DateTime TestData = DateTime.Now.Date;
             //Assign the data to the property
-            staff.DateCreated = TestData;
+            staff.StaffDateCreated = TestData;
             //test to see that the two values are the same
-            Assert.AreEqual(staff.DateCreated, TestData);
+            Assert.AreEqual(staff.StaffDateCreated, TestData);
 
         }
         [TestMethod]
