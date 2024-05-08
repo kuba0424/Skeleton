@@ -17,7 +17,6 @@ namespace ClassLibrary
         public double itemPrice { get; set; }
 
         public string itemDescription { get; set; }
-
-
+        public bool Active { get; set; }
     }
 }
