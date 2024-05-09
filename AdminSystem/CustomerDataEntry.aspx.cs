@@ -31,9 +31,13 @@ public partial class _1_DataEntry : System.Web.UI.Page
     protected void btnOK_Click(object sender, EventArgs e)
     {
         //create a new instance of clsCustomer
-        clsCustomer AnCustomer = new clsCustomer
+        clsCustomer AnCustomer = new clsCustomer();
             // capture the username
             AnCustomer.Username = txtUsername.Text;
+                AnCustomer.Email = txtEmail.Text;
+           AnCustomer.Password = txtPassword.Text;
+        AnCustomer.HomeAddress = txtHomeAddress.Text;
+        AnCustomer.RegistrationDate = DateTime.Now;
         //store the address in the session object
         Session ["AnCustomer"] = AnCustomer;
         // navigate to the view page

@@ -16,6 +16,12 @@ public partial class _1Viewer : System.Web.UI.Page
         AnCustomer = (clsCustomer)Session["Ancustomer"];
         //display the usernnamer for the entry
         Response.Write(AnCustomer.Username);
+        Response.Write(AnCustomer.Password);
+        Response.Write(AnCustomer.Email);
+        Response.Write(AnCustomer.HomeAddress);
+        Response.Write(AnCustomer.RegistrationDate);
+
+
 
     }
 }
