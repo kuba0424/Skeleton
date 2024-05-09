@@ -27,10 +27,10 @@
         <asp:Label ID="lblHomeAddress" runat="server" style="z-index: 1; left: 4px; top: 185px; position: absolute; height: 19px" Text="HomeAddress" width="97px"></asp:Label>
         <asp:TextBox ID="txtHomeAddress" runat="server" style="z-index: 1; left: 126px; top: 185px; position: absolute" width="128px"></asp:TextBox>
         <p>
-            <asp:Label ID="lblRegistration" runat="server" style="z-index: 1; left: 4px; top: 218px; position: absolute" Text="Resitration Date"></asp:Label>
+            <asp:Label ID="lblRegistrationDate" runat="server" style="z-index: 1; left: 4px; top: 218px; position: absolute" Text="Resitration Date"></asp:Label>
         </p>
         <p>
-            <asp:TextBox ID="txtRegistration" runat="server" OnTextChanged="txtRegistration_TextChanged" style="z-index: 1; left: 126px; top: 225px; position: absolute"></asp:TextBox>
+            <asp:TextBox ID="txtRegistrationDate" runat="server" OnTextChanged="txtRegistration_TextChanged" style="z-index: 1; left: 126px; top: 225px; position: absolute"></asp:TextBox>
         </p>
         <asp:CheckBox ID="lblActive" runat="server" style="z-index: 1; left: 136px; top: 272px; position: absolute" Text="Active" />
         <asp:Button ID="btnOK" runat="server" OnClick="btnOK_Click" style="z-index: 1; left: 108px; top: 344px; position: absolute" Text="OK" />
