@@ -20,16 +20,22 @@ namespace ClassLibrary
         //private data member for the staff id property
         private Int32 mStaffId;
 
+        //private data member for the staff date property
         private DateTime mStaffDate;
 
+        //private data member for the staff user property
         private String mStaffUser;
 
+        //private data member for the staff pass property
         private String mStaffPass;
 
+        //private data member for the staff NickName property
         private String mStaffNickName;
 
+        //private data member for the staff is admin propert
         private bool mStaffIsAdmin;
 
+        //staffid public property
         public Int32 StaffId
         {
             get
@@ -44,6 +50,7 @@ namespace ClassLibrary
             }
 
         }
+        //date created public property
         public DateTime StaffDateCreated
         {
             get
@@ -56,6 +63,7 @@ namespace ClassLibrary
             }
         }
 
+        //staffuser public property
         public String StaffUser
         {
             get
@@ -67,6 +75,7 @@ namespace ClassLibrary
                 mStaffUser = value; 
             }
         }
+        //staffpass public property
         public String StaffPass
         {
             get
@@ -78,6 +87,7 @@ namespace ClassLibrary
                 mStaffPass = value;
             }
         }
+        //staffnickname public property
         public String StaffNickName
         {
             get
@@ -89,6 +99,7 @@ namespace ClassLibrary
                 mStaffNickName= value;
             }
         }
+        //staff is admin public property
         public bool StaffIsAdmin
         {
             get
