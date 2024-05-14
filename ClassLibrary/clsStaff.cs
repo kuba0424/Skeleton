@@ -126,11 +126,11 @@ namespace ClassLibrary
             //temporary variable to store the date values
             DateTime DateTemp;
 
-            if (StaffUser.Length == 0)
+            if (staffUser.Length == 0)
             {
                 Error = Error + "The username may not be blank";
             }
-            if (StaffUser.Length > 50)
+            if (staffUser.Length > 50)
             {
                 Error = Error + "The username must be less than 50 characters";
             }
