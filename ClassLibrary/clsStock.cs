@@ -32,20 +32,35 @@ namespace ClassLibrary
         }
 
 
-        private Int32 mItemID;
-        public Int32 itemID
+        private Int32 mId;
+        public Int32 Id
+        {
+            get
+            {
+                return mId;
+            }
+            set
+            {
+                mId = value;
+            }
+        }
+
+
+        private Int32 mItemId;
+        public Int32 itemId
         {
             get
             {
                 //this line of code sends data out of the property
-                return mItemID;
+                return mItemId;
             }
             set
             {
                 //this line of code allows data onto the property
-                mItemID = value;
+                mItemId = value;
             }
         }
+
 
 
         private Int32 mItemStock;
@@ -101,20 +116,42 @@ namespace ClassLibrary
         }
         public bool Active { get; set; }
 
-        public bool Find(int itemId)
-        {
-            //set the private data members to the test data value
-            mItemID = 45;
-            mItemStock = 30;
-            mItemSize = 1.5;
-            mItemPrice = 8.5;
-            mItemDescription = "This is an item description.";
-            mItemAvailable = true;
-            mItemDate = Convert.ToDateTime("10 / 05 / 2024");
 
-            //always return true
-            return true;
-        }
+
+
+        public bool Find(int Id)
+        {
+            //create an instance of the data connection
+            clsDataConnection DB = new clsDataConnection();
+            //add the parameter for the item id to search for
+            DB.AddParameter("@Id", Id);
+            //execute the stored procedure
+            DB.Execute("sproc_tblStock_FilterByItemId");
+            //if one record is found (there should be either one or zero)
+            if (DB.Count == 1)
+            {
+                //copy the data from the database to the private data members
+
+                mId = Convert.ToInt32(DB.DataTable.Rows[0]["Id"]);
+                mItemId = Convert.ToInt32(DB.DataTable.Rows[0]["itemId"]);
+                mItemStock = Convert.ToInt32(DB.DataTable.Rows[0]["itemStock"]);
+                mItemSize = Convert.ToDouble(DB.DataTable.Rows[0]["itemSize"]);
+                mItemPrice = Convert.ToDouble(DB.DataTable.Rows[0]["itemPrice"]);
+                mItemDescription = Convert.ToString(DB.DataTable.Rows[0]["itemDescription"]);
+                mItemAvailable = Convert.ToBoolean(DB.DataTable.Rows[0]["itemAvailable"]);
+                mItemDate = Convert.ToDateTime(DB.DataTable.Rows[0]["itemDate"]);
+                //return that everything worked ok
+                return true;
+            }
+
+            //if no record was found
+            else
+            {
+                //return false indicating there was a problem
+                return false;
+            }
+
+        
 
     }
 }

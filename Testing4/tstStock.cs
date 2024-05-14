@@ -47,12 +47,22 @@ namespace Testing4
 
         [TestMethod]
 
+        public void IdOK()
+        {
+            clsStock Stock = new clsStock();
+            Int32 TestData = 1;
+            Stock.Id = TestData;
+            Assert.AreEqual(Stock.Id, TestData);
+        }
+
+        [TestMethod]
+
         public void ItemIDOK()
         {
             clsStock Stock = new clsStock();
             Int32 TestData = 1;
-            Stock.itemID = TestData;
-            Assert.AreEqual(Stock.itemID, TestData);
+            Stock.itemId = TestData;
+            Assert.AreEqual(Stock.itemId, TestData);
         }
 
         [TestMethod]
@@ -107,14 +117,34 @@ namespace Testing4
             //create a boolean variale to store the results of the validation
             Boolean Found = false;
             //create some test data to use with the method
-            Int32 itemId = 45;
+
+            Int32 Id = 2;
             //invoke the method
-            Found = Stock.Find(itemId);
+            Found = Stock.Find(Id);
+
             //test to see if the result is true
             Assert.IsTrue(Found);
         }
 
         [TestMethod]
+
+
+        public void TestIdFound()
+        {
+            clsStock Stock = new clsStock();
+            Boolean Found = false;
+            Boolean OK = true;
+            Int32 Id = 2;
+            Found = Stock.Find(Id);
+            if (Stock.Id != 2)
+            {
+                OK = false;
+            }
+            Assert.IsTrue(OK);
+        }
+
+        [TestMethod]
+
 
         public void TestItemIdFound()
         {
@@ -138,20 +168,28 @@ namespace Testing4
         }
 
 
+
+
+
         [TestMethod]
 
+
         public void TestItemStockFound()
+
         {
             clsStock Stock = new clsStock();
             Boolean Found = false;
             Boolean OK = true;
-            Int32 itemId = 45;
-            Found = Stock.Find(itemId);
-            if (Stock.itemStock != 30)
+
+            Int32 Id = 2;
+            Found = Stock.Find(Id);
+            if (Stock.itemStock != 60)
+
             {
                 OK = false;
             }
             Assert.IsTrue(OK);
+
         }
 
 
@@ -162,13 +200,14 @@ namespace Testing4
             clsStock Stock = new clsStock();
             Boolean Found = false;
             Boolean OK = true;
-            Int32 itemId = 45;
-            Found = Stock.Find(itemId);
-            if (Stock.itemSize != 1.5)
+            Int32 Id = 2;
+            Found = Stock.Find(Id);
+            if (Stock.itemSize != 10)
             {
                 OK = false;
             }
             Assert.IsTrue(OK);
+
 
         }
 
@@ -180,9 +219,11 @@ namespace Testing4
             clsStock Stock = new clsStock();
             Boolean Found = false;
             Boolean OK = true;
-            Int32 itemId = 45;
-            Found = Stock.Find(itemId);
-            if (Stock.itemPrice != 8.5)
+
+            Int32 Id = 2;
+            Found = Stock.Find(Id);
+            if (Stock.itemPrice != 15)
+
             {
                 OK = false;
             }
@@ -196,9 +237,11 @@ namespace Testing4
             clsStock Stock = new clsStock();
             Boolean Found = false;
             Boolean OK = true;
-            Int32 itemId = 45;
-            Found = Stock.Find(itemId);
-            if (Stock.itemDescription != "This is an item description.")
+
+            Int32 Id = 2;
+            Found = Stock.Find(Id);
+            if (Stock.itemDescription != "shirt")
+
             {
                 OK = false;
             }
@@ -212,8 +255,11 @@ namespace Testing4
             clsStock Stock = new clsStock();
             Boolean Found = false;
             Boolean OK = true;
-            Int32 itemId = 45;
-            Found = Stock.Find(itemId);
+
+            Int32 Id = 2;
+            Found = Stock.Find(Id);
+
+
             if (Stock.itemAvailable != true)
             {
                 OK = false;
@@ -229,9 +275,11 @@ namespace Testing4
             clsStock Stock = new clsStock();
             Boolean Found = false;
             Boolean OK = true;
-            Int32 itemId = 45;
-            Found = Stock.Find(itemId);
-            if (Stock.itemDate != Convert.ToDateTime("10/05/2024"))
+
+            Int32 Id = 2;
+            Found = Stock.Find(Id);
+            if (Stock.itemDate != Convert.ToDateTime("14/05/2024"))
+
             {
                 OK = false;
             }

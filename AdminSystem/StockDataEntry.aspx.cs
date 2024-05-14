@@ -27,7 +27,7 @@ public partial class _1_DataEntry : System.Web.UI.Page
         //capture the item desc
         Stock.itemDescription = txtItemDesc.Text;
         //capture the stock id
-        Stock.itemID = Convert.ToInt32(txtStockId.Text);
+        Stock.itemId = Convert.ToInt32(txtStockId.Text);
         //capture the rest of the data types...
         Stock.itemStock = Convert.ToInt32(txtItemStock.Text);
         Stock.itemSize = Convert.ToDouble(txtItemSize.Text);
@@ -42,4 +42,8 @@ public partial class _1_DataEntry : System.Web.UI.Page
         //navigate to the view page as a click response
         Response.Redirect("StockViewer.aspx");
     }
-}
+
+ 
+  
+
+    }
