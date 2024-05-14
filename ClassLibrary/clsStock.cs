@@ -31,6 +31,7 @@ namespace ClassLibrary
             }
         }
 
+
         private Int32 mId;
         public Int32 Id
         {
@@ -59,6 +60,7 @@ namespace ClassLibrary
                 mItemId = value;
             }
         }
+
 
 
         private Int32 mItemStock;
@@ -116,6 +118,7 @@ namespace ClassLibrary
 
 
 
+
         public bool Find(int Id)
         {
             //create an instance of the data connection
@@ -147,7 +150,8 @@ namespace ClassLibrary
                 //return false indicating there was a problem
                 return false;
             }
-        }
+
+        
 
     }
 }

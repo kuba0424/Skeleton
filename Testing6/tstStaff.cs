@@ -7,6 +7,17 @@ namespace Testing6
     [TestClass]
     public class tstStaff
     {
+        //Good Test Data
+        //create test data to pass the method
+        string StaffUser = "JakubStaff";
+        string StaffPass = "password";
+        string StaffNickName = "Jakub";
+        string StaffDateCreated = DateTime.Now.ToShortDateString();
+
+
+
+
+
         [TestMethod]
         public void InstanceOK()
         {
@@ -230,6 +241,190 @@ namespace Testing6
             //test to see if result is correct
             Assert.IsTrue(OK);
         }
+        [TestMethod]
+        public void ValidMethodOK()
+        {
+            //create instance of the class we want to create
+            clsStaff staff = new clsStaff();
+            //string variable to store error msges
+            string Error = "";
+            //invoke the method
+            Error = staff.Valid(StaffUser, StaffPass,
+                                StaffNickName, StaffDateCreated);
+            //test to see if results are correct
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void StaffNickNameMinLessOne()
+        {
+            //create instance of class
+            clsStaff staff = new clsStaff();
+            // string c = variable to store error msg
+            String Error = "";
+            //create test data to pass to method
+            string StaffNickName = ""; //this should trigger 
+            //invoke method
+            Error = staff.Valid(StaffUser, StaffPass, StaffNickName, StaffDateCreated);
+            //test to see if results are correct
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void StaffNickNameMin()
+        {
+            clsStaff staff = new clsStaff();
+            String Error = "";
+            string StaffNickName = "J";
+            Error = staff.Valid(StaffUser, StaffPass, StaffNickName, StaffDateCreated);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void StaffNickNameMinPlusOne()
+        {
+            clsStaff staff = new clsStaff();
+            String Error = "";
+            string StaffNickName = "Je";
+            Error = staff.Valid(StaffUser, StaffPass, StaffNickName, StaffDateCreated);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void StaffNickNameMaxLessOne()
+        {
+            clsStaff staff = new clsStaff();
+            String Error = "";
+            string StaffNickName = "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa";
+            Error = staff.Valid(StaffUser,StaffPass,StaffNickName, StaffDateCreated);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void StaffNickNameMax()
+        {
+            clsStaff staff = new clsStaff();
+            String Error = "";
+            string StaffNickName = "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa";
+            Error = staff.Valid(StaffUser,StaffPass,StaffNickName,StaffDateCreated);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void StaffNickNameMid()
+        {
+            clsStaff staff = new clsStaff();
+            String Error = "";
+            string StaffNickName = "aaaaaaaaaaaaaaaaaaaaaaaaa";
+            Error = staff.Valid(StaffUser, StaffPass, StaffNickName, StaffDateCreated);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void StaffNickNameMaxPlusOne()
+        {
+            clsStaff staff = new clsStaff();
+            String Error = "";
+            string StaffNickName = "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa";
+            Error = staff.Valid(StaffUser, StaffPass, StaffNickName, StaffDateCreated);
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void StaffNickNameExtremeMax()
+        {
+            clsStaff staff = new clsStaff();
+            String Error = "";
+            string StaffNickName = "";
+            //padright returns string of specified length e.g 500
+            //in which end of current string is padded with spaces
+            //or a specified character
+            StaffNickName = StaffNickName.PadRight(500, 'a');
+            Error = staff.Valid(StaffUser, StaffPass, StaffNickName, StaffDateCreated);
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void DateCreatedExtremeMin()
+        {
+            clsStaff staff = new clsStaff();
+            String Error = "";
+            //create variable ot store test data date
+            DateTime TestDate;
+            //set the date to today's date
+            TestDate = DateTime.Now.Date;
+            //Change the data o whaever the date-100 is
+            TestDate = TestDate.AddYears(-100);
+            //convert date variable to string variable
+            string StaffDateCreated = TestDate.ToString();
+            Error = staff.Valid(StaffUser,StaffPass,StaffNickName, StaffDateCreated);
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void DateCreatedMinLessOne()
+        {
+            clsStaff staff = new clsStaff();
+            String Error = "";
+            //create variable ot store test data date
+            DateTime TestDate;
+            //set the date to today's date
+            TestDate = DateTime.Now.Date;
+            //Change the data o whaever the date-100 is
+            TestDate = TestDate.AddYears(-1);
+            //convert date variable to string variable
+            string StaffDateCreated = TestDate.ToString();
+            Error = staff.Valid(StaffUser, StaffPass, StaffNickName, StaffDateCreated);
+            Assert.AreNotEqual(Error, "");
+
+        }
+        [TestMethod]
+        public void DateCreatedMinPlusOne()
+        {
+            clsStaff staff = new clsStaff();
+            String Error = "";
+            //create variable ot store test data date
+            DateTime TestDate;
+            //set the date to today's date
+            TestDate = DateTime.Now.Date;
+            //Change the data o whaever the date-100 is
+            TestDate = TestDate.AddYears(1);
+            //convert date variable to string variable
+            string StaffDateCreated = TestDate.ToString();
+            Error = staff.Valid(StaffUser, StaffPass, StaffNickName, StaffDateCreated);
+            Assert.AreNotEqual(Error, "");
+
+        }
+
+        [TestMethod]
+        public void DateCreatedExtremeMax()
+        {
+            clsStaff staff = new clsStaff();
+            String Error = "";
+            //create variable ot store test data date
+            DateTime TestDate;
+            //set the date to today's date
+            TestDate = DateTime.Now.Date;
+            //Change the data o whaever the date-100 is
+            TestDate = TestDate.AddYears(100);
+            //convert date variable to string variable
+            string StaffDateCreated = TestDate.ToString();
+            Error = staff.Valid(StaffUser, StaffPass, StaffNickName, StaffDateCreated);
+            Assert.AreNotEqual(Error, "");
+
+        }
+
+        [TestMethod]
+        public void DateCreatedInvalidData()
+        {
+            clsStaff staff = new clsStaff();
+            String Error = "";
+            string StaffDateCreated = "This is not a date";
+            Error = staff.Valid(StaffUser,StaffPass,StaffNickName, StaffDateCreated);
+            Assert.AreNotEqual(Error, "");
+        }
+
+
 
 
     }
