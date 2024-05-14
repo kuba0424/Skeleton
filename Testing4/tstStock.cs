@@ -7,6 +7,8 @@ namespace Testing4
     [TestClass]
     public class tstStock
     {
+        public bool Found { get; private set; }
+
         [TestMethod]
         public void TestMethod1()
         {
@@ -16,8 +18,8 @@ namespace Testing4
             Assert.IsNotNull(Stock);
         }
 
-        
-        
+
+
         [TestMethod]
 
         public void AvailablePropertyOK()
@@ -45,12 +47,22 @@ namespace Testing4
 
         [TestMethod]
 
+        public void IdOK()
+        {
+            clsStock Stock = new clsStock();
+            Int32 TestData = 1;
+            Stock.Id = TestData;
+            Assert.AreEqual(Stock.Id, TestData);
+        }
+
+        [TestMethod]
+
         public void ItemIDOK()
         {
             clsStock Stock = new clsStock();
             Int32 TestData = 1;
-            Stock.itemID = TestData;
-            Assert.AreEqual(Stock.itemID, TestData);
+            Stock.itemId = TestData;
+            Assert.AreEqual(Stock.itemId, TestData);
         }
 
         [TestMethod]
@@ -96,7 +108,154 @@ namespace Testing4
             Assert.AreEqual(Stock.itemDescription, TestData);
         }
 
+        [TestMethod]
 
+        public void FindMethodOK()
+        {
+            //create an instance of the class we want to create
+            clsStock Stock = new clsStock();
+            //create a boolean variale to store the results of the validation
+            Boolean Found = false;
+            //create some test data to use with the method
+            Int32 Id = 2;
+            //invoke the method
+            Found = Stock.Find(Id);
+            //test to see if the result is true
+            Assert.IsTrue(Found);
+        }
+
+        [TestMethod]
+
+        public void TestIdFound()
+        {
+            clsStock Stock = new clsStock();
+            Boolean Found = false;
+            Boolean OK = true;
+            Int32 Id = 2;
+            Found = Stock.Find(Id);
+            if (Stock.Id != 2)
+            {
+                OK = false;
+            }
+            Assert.IsTrue(OK);
+        }
+
+        [TestMethod]
+
+        public void TestItemIdFound()
+        {
+            clsStock Stock = new clsStock();
+            Boolean Found = false;
+            Boolean OK = true;
+            Int32 Id = 2;
+            Found = Stock.Find(Id);
+            if (Stock.itemId != 46)
+            {
+                OK = false;
+            }
+            Assert.IsTrue(OK);
+        }
+
+
+        [TestMethod]
+
+        public void TestItemStockFound()
+        {
+            clsStock Stock = new clsStock();
+            Boolean Found = false;
+            Boolean OK = true;
+            Int32 Id = 2;
+            Found = Stock.Find(Id);
+            if (Stock.itemStock != 60)
+            {
+                OK = false;
+            }
+            Assert.IsTrue(OK);
+        }
+
+
+        [TestMethod]
+
+        public void TestItemSizeFound()
+        {
+            clsStock Stock = new clsStock();
+            Boolean Found = false;
+            Boolean OK = true;
+            Int32 Id = 2;
+            Found = Stock.Find(Id);
+            if (Stock.itemSize != 10)
+            {
+                OK = false;
+            }
+            Assert.IsTrue(OK);
+
+        }
+
+
+        [TestMethod]
+
+        public void TestItemPriceFound()
+        {
+            clsStock Stock = new clsStock();
+            Boolean Found = false;
+            Boolean OK = true;
+            Int32 Id = 2;
+            Found = Stock.Find(Id);
+            if (Stock.itemPrice != 15)
+            {
+                OK = false;
+            }
+            Assert.IsTrue(OK);
+        }
+
+        [TestMethod]
+
+        public void TestItemDescFound()
+        {
+            clsStock Stock = new clsStock();
+            Boolean Found = false;
+            Boolean OK = true;
+            Int32 Id = 2;
+            Found = Stock.Find(Id);
+            if (Stock.itemDescription != "shirt")
+            {
+                OK = false;
+            }
+            Assert.IsTrue(OK);
+        }
+
+        [TestMethod]
+
+        public void TestItemAvailableFound()
+        {
+            clsStock Stock = new clsStock();
+            Boolean Found = false;
+            Boolean OK = true;
+            Int32 Id = 2;
+            Found = Stock.Find(Id);
+            if (Stock.itemAvailable != true)
+            {
+                OK = false;
+            }
+            Assert.IsTrue(OK);
+        }
+
+
+        [TestMethod]
+
+        public void TestItemDateFound()
+        {
+            clsStock Stock = new clsStock();
+            Boolean Found = false;
+            Boolean OK = true;
+            Int32 Id = 2;
+            Found = Stock.Find(Id);
+            if (Stock.itemDate != Convert.ToDateTime("14/05/2024"))
+            {
+                OK = false;
+            }
+            Assert.IsTrue(OK);
+        }
     }
-
 }
+

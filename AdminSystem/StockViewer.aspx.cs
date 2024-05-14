@@ -19,7 +19,7 @@ public partial class _1Viewer : System.Web.UI.Page
         //display the item desc for this entry
         Response.Write(Stock.itemDescription);
         //display the item stock for this entry
-        Response.Write(Stock.itemID);
+        Response.Write(Stock.itemId);
         //repeated for the other data types...
         Response.Write(Stock.itemStock);
         Response.Write(Stock.itemSize);
