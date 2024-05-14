@@ -134,12 +134,6 @@ namespace ClassLibrary
             {
                 Error = Error + "The username must be less than 50 characters";
             }
-
-
-
-
-
-
             //if staffnickname is blank
             if (staffNickName.Length == 0)
             {

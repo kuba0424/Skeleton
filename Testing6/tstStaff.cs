@@ -424,6 +424,109 @@ namespace Testing6
             Assert.AreNotEqual(Error, "");
         }
 
+        [TestMethod]
+        public void StaffUsernameMinLessOne()
+        {
+            clsStaff staff = new clsStaff();
+            String Error = "";
+            string StaffUser = "";
+            Error = staff.Valid(StaffUser,StaffPass,StaffNickName,StaffDateCreated);
+            Assert.AreNotEqual(Error,"");
+
+        }
+         [TestMethod]
+        public void StaffUsernameMin()
+        {
+            clsStaff staff = new clsStaff();
+            String Error = "";
+            string StaffUser = "J";
+            Error = staff.Valid(StaffUser,StaffPass,StaffNickName,StaffDateCreated);
+            Assert.AreNotEqual(Error,"");
+
+        }
+         [TestMethod]
+        public void StaffUsernameMinPlusOne()
+        {
+            clsStaff staff = new clsStaff();
+            String Error = "";
+            string StaffUser = "JJ";
+            Error = staff.Valid(StaffUser,StaffPass,StaffNickName,StaffDateCreated);
+            Assert.AreEqual(Error,"");
+
+        }
+         [TestMethod]
+        public void StaffUsernameMaxLessOne()
+        {
+            clsStaff staff = new clsStaff();
+            String Error = "";
+            string StaffUser = "JJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJ";
+            Error = staff.Valid(StaffUser,StaffPass,StaffNickName,StaffDateCreated);
+            Assert.AreEqual(Error,"");
+
+        }
+         [TestMethod]
+        public void StaffUsernameMax()
+        {
+            clsStaff staff = new clsStaff();
+            String Error = "";
+            string StaffUser = "JJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJ";
+            Error = staff.Valid(StaffUser,StaffPass,StaffNickName,StaffDateCreated);
+            Assert.AreEqual(Error,"");
+
+        } 
+        [TestMethod]
+        public void StaffUsernameMaxPlusOne()
+        {
+            clsStaff staff = new clsStaff();
+            String Error = "";
+            string StaffUser = "JJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJ";
+            Error = staff.Valid(StaffUser,StaffPass,StaffNickName,StaffDateCreated);
+            Assert.AreEqual(Error,"");
+
+        }
+        [TestMethod]
+        public void StaffUsernameMid()
+        {
+            clsStaff staff = new clsStaff();
+            String Error = "";
+            string StaffUser = "JJJJJJJJJJJJJJJJJJJJJJJJJ";
+            Error = staff.Valid(StaffUser,StaffPass,StaffNickName,StaffDateCreated);
+            Assert.AreEqual(Error,"");
+
+        }
+        [TestMethod]
+        public void StaffUsernameExtremeMax()
+        {
+            clsStaff staff = new clsStaff();
+            String Error = "";
+            string StaffUser = "";
+            StaffUser = StaffUser.PadRight(500, 'a');
+            Error = staff.Valid(StaffUser,StaffPass,StaffNickName,StaffDateCreated);
+            Assert.AreEqual(Error,"");
+
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
