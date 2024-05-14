@@ -111,5 +111,75 @@ namespace ClassLibrary
                 mStaffIsAdmin = value;
             }
         }
+
+        //function for the public validation method
+        public string Valid(string staffUser,
+                            string staffPass,
+                            string staffNickName,
+                            string staffDateCreated)
+            //this function accepts 4 parameter for validation
+            //the funtion returns a string containing any error msg
+            //if no error found then blank string is returned
+        {
+            //string to store error
+            String Error = "";
+            //temporary variable to store the date values
+            DateTime DateTemp;
+
+            if (StaffUser.Length == 0)
+            {
+                Error = Error + "The username may not be blank";
+            }
+            if (StaffUser.Length > 50)
+            {
+                Error = Error + "The username must be less than 50 characters";
+            }
+
+
+
+
+
+
+            //if staffnickname is blank
+            if (staffNickName.Length == 0)
+            {
+                Error = Error + "The Nickname may not be blank : ";
+            
+            }
+            //if staffnickname is greater than 50 chracters
+            if (staffNickName.Length > 50)
+            {
+                Error = Error + "The Nickname must be less than 50 characters";
+            }
+
+            DateTime DateComp = DateTime.Now.Date;
+            try
+            {
+                //copy datecreated value to temp variable
+                DateTemp = Convert.ToDateTime(staffDateCreated);
+                //check if the date is less than today's date
+                if (DateTemp < DateComp)
+                {
+                    Error = Error + "The date cannot be in the past";
+                }
+                if (DateTemp > DateComp)
+                {
+                    Error = Error + "The date cannot be in the future";
+                }
+
+
+            }
+            catch
+            {
+                //record the error
+                Error = Error + " The date was not a valid date";
+            }
+            
+            //return any error msgs
+            return Error;
+
+        }
+
+
     }
 }
