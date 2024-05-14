@@ -137,7 +137,7 @@ namespace ClassLibrary
             return true;
         }
 
-        public string Valid(string username, string password, string email, string homeAddress, string registrionDate)
+        public string Valid(string username, string password, string email, string homeaddress, string registrionDate)
         {
             //create a strring varible to sotre the error
             string Error = "";
@@ -155,20 +155,70 @@ namespace ClassLibrary
                 //record the error 
                 Error = Error + "The Username must be less than 50 characters : ";
             }
-            //copy the RegistrationDate value to the datetemp varible
-            DateTemp = Convert.ToDateTime(registrionDate);
-            if (DateTemp < DateTime.Now.Date)
+            //if password is blank 
+            if (password.Length == 0)
             {
-                Error = Error + "The date cannot be in the past : ";
+                //record the error 
+                Error = Error + "The Password may not be blank : ";
             }
-            //check to see if the date is greater than today's date
-            if (DateTemp > DateTime.Now.Date)
+            //if the Password is greater than 50 characters
+            if (password.Length > 50)
+            {
+                //record the error 
+                Error = Error + "The Password must be less than 50 characters : ";
+            }
+            //if email is blank 
+            if (email.Length == 0)
+            {
+                //record the error 
+                Error = Error + "The Email may not be blank : ";
+            }
+            //if the Email is greater than 50 characters
+            if (email.Length > 50)
+            {
+                //record the error 
+                Error = Error + "The Email must be less than 50 characters : ";
+            }
+            //if HomeAddress is blank 
+            if (homeaddress.Length == 0)
+            {
+                //record the error 
+                Error = Error + "The HomeAddress may not be blank : ";
+            }
+            //if the HomeAddress is greater than 50 characters
+            if (homeaddress.Length > 50)
+            {
+                //record the error 
+                Error = Error + "The HomeAddress must be less than 50 characters : ";
+            }
+            //create an instance of REgistrationDAte to compare with DateTemp
+            //in the if statement
+            DateTime DateComp = DateTime.Now.Date;
+
+            try
+            {
+
+                //copy the RegistrationDate value to the datetemp varible
+                DateTemp = Convert.ToDateTime(registrionDate);
+                if (DateTemp < DateComp)
+                {
+                    // record the error
+                    Error = Error + "The date cannot be in the past : ";
+                }
+                //check to see if the date is greater than today's date
+                if (DateTemp > DateComp)
+                {
+                    //record the error
+                    Error = Error + "The date cannot be in the future : ";
+                }
+            }
+
+
+            catch
             {
                 //record the error
-                Error = Error + "The date cannot be in the future : ";
-            }
-            // return any error messages 
-            return Error;
+                Error = Error + "The Date was not valid : ";
+            };
         }
     }
 }
