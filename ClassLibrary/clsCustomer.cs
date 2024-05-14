@@ -137,5 +137,18 @@ namespace ClassLibrary
             return true;
         }
 
+        public string Valid(string username, string password, string email, string homeAddress, string registrionDate)
+        {
+            //create a strring varible to sotre the error
+            string Error = "";
+            //if the username is blank
+            if (username.Length == 0)
+            {
+                //record the error 
+                Error = Error + "The Username may not be blank : ";
+            }
+            // return any error messages 
+            return Error;
+        }
     }
 }
