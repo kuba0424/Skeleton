@@ -141,11 +141,31 @@ namespace ClassLibrary
         {
             //create a strring varible to sotre the error
             string Error = "";
+            //create a temp variable to store the date values
+            DateTime DateTemp;
             //if the username is blank
             if (username.Length == 0)
             {
                 //record the error 
                 Error = Error + "The Username may not be blank : ";
+            }
+            //if the username is greater than 50 characters
+            if (username.Length > 50)
+            {
+                //record the error 
+                Error = Error + "The Username must be less than 50 characters : ";
+            }
+            //copy the RegistrationDate value to the datetemp varible
+            DateTemp = Convert.ToDateTime(registrionDate);
+            if (DateTemp < DateTime.Now.Date)
+            {
+                Error = Error + "The date cannot be in the past : ";
+            }
+            //check to see if the date is greater than today's date
+            if (DateTemp > DateTime.Now.Date)
+            {
+                //record the error
+                Error = Error + "The date cannot be in the future : ";
             }
             // return any error messages 
             return Error;
