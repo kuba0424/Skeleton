@@ -137,7 +137,7 @@ namespace ClassLibrary
             //password validation
             if (staffPass.Length == 0)
             {
-                Error = Error + "The Password may not be blank"
+                Error = Error + "The Password may not be blank";
             }
             if (staffPass.Length > 50)
             {
@@ -145,7 +145,7 @@ namespace ClassLibrary
             }
             if (staffPass.Contains(@"^[a-zA-Z0-9*$") != true)
             {
-                Error = Error + "The password must contain a special character"
+                Error = Error + "The password must contain a special character";
             }
 
             //nickname validation

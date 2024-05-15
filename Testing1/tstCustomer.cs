@@ -13,7 +13,7 @@ namespace Testing1
         string Password = "password";
         string Email = "email";
         string HomeAddress = "address";
-        string RegistrionDate = DateTime.Now.ToShortDateString();
+        string RegistrationDate = DateTime.Now.ToShortDateString();
 
         [TestMethod]
         public void InstanceOK()
