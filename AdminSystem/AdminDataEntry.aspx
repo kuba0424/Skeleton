@@ -21,10 +21,11 @@
         <asp:Label ID="lblStaffNickName" runat="server" style="z-index: 1; left: 27px; top: 256px; position: absolute" Text="Nickname:" width="85px"></asp:Label>
         <asp:TextBox ID="txtStaffNickName" runat="server" style="z-index: 1; left: 123px; top: 254px; position: absolute"></asp:TextBox>
         <asp:CheckBox ID="chkStaffIsAdmin" runat="server" style="z-index: 1; left: 146px; top: 340px; position: absolute" Text="Is Admin?" />
-        <asp:Label ID="lblStaffError" runat="server" style="z-index: 1; left: 27px; top: 381px; position: absolute" width="85px"></asp:Label>
+        <asp:Label ID="lblStaffError" runat="server" style="z-index: 1; left: 27px; top: 381px; position: absolute; width: 212px;"></asp:Label>
         <asp:Button ID="btnStaffOk" runat="server" style="z-index: 1; left: 39px; top: 423px; position: absolute" Text="Ok" OnClick="btnStaffOk_Click" height="26px" width="60px" />
-        <asp:Button ID="btnStaffCancel" runat="server" style="z-index: 1; left: 157px; top: 422px; position: absolute" Text="Cancel" />
+        <asp:Button ID="btnStaffCancel" runat="server" style="z-index: 1; left: 157px; top: 422px; position: absolute" Text="Cancel" height="26px" width="60px" />
         <asp:TextBox ID="txtStaffUser" runat="server" style="z-index: 1; left: 123px; top: 167px; position: absolute"></asp:TextBox>
+        <asp:Button ID="btnFind" runat="server" height="26px" OnClick="btnFind_Click" style="z-index: 1; left: 296px; top: 121px; position: absolute" Text="Find" width="60px" />
     </form>
 </body>
 </html>
