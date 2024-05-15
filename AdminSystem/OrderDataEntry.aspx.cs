@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.ServiceModel.Configuration;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -32,5 +33,31 @@ public partial class _1_DataEntry : System.Web.UI.Page
         Session["AnOrder"] = AnOrder;
         //navigate to the view page
         Response.Redirect("OrderViewer.aspx");
+    }
+
+    protected void Button1_Click(object sender, EventArgs e)
+    {
+        //create an instance of the order class
+        clsOrder AnOrder = new clsOrder();
+        //create a variable to store the primary key
+        Int32 OrderId;
+        //create a variable to store the result of the find operation
+        Boolean Found = false;
+        //get the primary key entered by the user
+        OrderId = Convert.ToInt32(txtOrderID.Text);
+        //find the record
+        Found = AnOrder.Find(OrderId);
+        //if found
+        if (Found == true)
+        {
+            //display the values of the properties in the form
+            txtCustomerAddress.Text = AnOrder.CustomerAddress;
+            txtTotalPrice.Text = AnOrder.TotalPrice;
+            txtPaymentInformation = AnOrder.PaymentInformation;
+            txtDispatchDate
+            chkDispatched.Checked = AnOrder.OrderDispatched;
+        }
+
+
     }
 }

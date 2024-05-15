@@ -96,7 +96,7 @@ namespace Testing3
             //create a boolean variable to store the results of the validation
             Boolean Found = false;
             //create some test data to use with the method
-            Int32 OrderID = 21;
+            Int32 OrderID = 10;
             //invoke the method
             Found = anOrder.Find(OrderID);
             //test to see if the result is true
@@ -113,11 +113,11 @@ namespace Testing3
             //create a boolean variable to record if the data is OK (assume it is)
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 OrderID = 21;
+            Int32 OrderID = 10;
             //Invoke the method
             Found = anOrder.Find(OrderID);
             //check the address id
-            if (anOrder.OrderID != 21)
+            if (anOrder.OrderID != 10)
             {
                 OK = false;
             }
@@ -133,9 +133,9 @@ namespace Testing3
             //create a Boolean variable to store the result of the search
             Boolean Found = false;
             Boolean OK = true;
-            Int32 OrderID = 21;
+            Int32 OrderID = 10;
             Found = anOrder.Find(OrderID);
-            if (anOrder.DispatchDate != Convert.ToDateTime("23/12/2022"))
+            if (anOrder.DispatchDate != Convert.ToDateTime("01/05/2024"))
             {
                 OK = false;
             }
@@ -148,9 +148,9 @@ namespace Testing3
             clsOrder anOrder = new clsOrder();
             Boolean Found = false;
             Boolean OK = true;
-            Int32 OrderID = 21;
+            Int32 OrderID = 10;
             Found = anOrder.Find(OrderID);
-            if (anOrder.OrderDispatched != true)
+            if (anOrder.OrderDispatched != false)
             {
                 OK = false;
             }
@@ -163,9 +163,9 @@ namespace Testing3
             clsOrder AnOrder = new clsOrder();
             Boolean Found = false;
             Boolean OK = true;
-            Int32 OrderID = 21;
+            Int32 OrderID = 10;
             Found = AnOrder.Find(OrderID);
-            if (AnOrder.PaymentInformation != 21)
+            if (AnOrder.PaymentInformation != 23545)
             {
                 OK = false;
             }
@@ -178,9 +178,9 @@ namespace Testing3
             clsOrder AnOrder = new clsOrder();
             Boolean Found = false;
             Boolean OK = true;
-            Int32 OrderID = 21;
+            Int32 OrderID = 10;
             Found = AnOrder.Find(OrderID);
-            if (AnOrder.CustomerAddress != "Test Address")
+            if (AnOrder.CustomerAddress != "7 Megson Way")
             {
                 OK = false;
             }
@@ -193,9 +193,9 @@ namespace Testing3
             clsOrder AnOrder = new clsOrder();
             Boolean Found = false;
             Boolean OK = true;
-            Int32 OrderID = 21;
+            Int32 OrderID = 10;
             Found = AnOrder.Find(OrderID);
-            if (AnOrder.TotalPrice != Convert.ToDouble(9.99))
+            if (AnOrder.TotalPrice != Convert.ToDouble(9.0000))
             {
                 OK = false;
             }
