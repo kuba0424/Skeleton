@@ -505,6 +505,87 @@ namespace Testing6
             Assert.AreEqual(Error,"");
 
         }
+        [TestMethod]
+        public void StaffPasswordMinLessOne()
+        {
+            clsStaff staff = new clsStaff();
+            String Error = "";
+            string StaffPass = "";
+            Error = staff.Valid(StaffUser, StaffPass, StaffNickName, StaffDateCreated);
+            Assert.AreNotEqual(Error, "");
+
+        }
+        [TestMethod]
+        public void StaffPasswordMin()
+        {
+            clsStaff staff = new clsStaff();
+            String Error = "";
+            string StaffPass = "J";
+            Error = staff.Valid(StaffUser, StaffPass, StaffNickName, StaffDateCreated);
+            Assert.AreNotEqual(Error, "");
+
+        }
+        [TestMethod]
+        public void StaffPasswordMinPlusOne()
+        {
+            clsStaff staff = new clsStaff();
+            String Error = "";
+            string StaffPass = "JJ";
+            Error = staff.Valid(StaffUser, StaffPass, StaffNickName, StaffDateCreated);
+            Assert.AreEqual(Error, "");
+
+        }
+        [TestMethod]
+        public void StaffPasswordMaxLessOne()
+        {
+            clsStaff staff = new clsStaff();
+            String Error = "";
+            string StaffPass = "JJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJ";
+            Error = staff.Valid(StaffUser, StaffPass, StaffNickName, StaffDateCreated);
+            Assert.AreEqual(Error, "");
+
+        }
+        [TestMethod]
+        public void StaffPasswordMax()
+        {
+            clsStaff staff = new clsStaff();
+            String Error = "";
+            string StaffPass = "JJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJ";
+            Error = staff.Valid(StaffUser, StaffPass, StaffNickName, StaffDateCreated);
+            Assert.AreEqual(Error, "");
+
+        }
+        [TestMethod]
+        public void StaffPasswordMaxPlusOne()
+        {
+            clsStaff staff = new clsStaff();
+            String Error = "";
+            string StaffPass = "JJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJ";
+            Error = staff.Valid(StaffUser, StaffPass, StaffNickName, StaffDateCreated);
+            Assert.AreEqual(Error, "");
+
+        }
+        [TestMethod]
+        public void StaffPasswordMid()
+        {
+            clsStaff staff = new clsStaff();
+            String Error = "";
+            string StaffPass = "JJJJJJJJJJJJJJJJJJJJJJJJJ";
+            Error = staff.Valid(StaffUser, StaffPass, StaffNickName, StaffDateCreated);
+            Assert.AreEqual(Error, "");
+
+        }
+        [TestMethod]
+        public void StaffPasswordExtremeMax()
+        {
+            clsStaff staff = new clsStaff();
+            String Error = "";
+            string StaffPass = "";
+            StaffUser = StaffPass.PadRight(500, 'a');
+            Error = staff.Valid(StaffUser, StaffPass, StaffNickName, StaffDateCreated);
+            Assert.AreEqual(Error, "");
+
+        }
 
 
 

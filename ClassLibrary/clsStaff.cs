@@ -125,7 +125,7 @@ namespace ClassLibrary
             String Error = "";
             //temporary variable to store the date values
             DateTime DateTemp;
-
+            //user validation
             if (staffUser.Length == 0)
             {
                 Error = Error + "The username may not be blank";
@@ -134,6 +134,21 @@ namespace ClassLibrary
             {
                 Error = Error + "The username must be less than 50 characters";
             }
+            //password validation
+            if (staffPass.Length == 0)
+            {
+                Error = Error + "The Password may not be blank"
+            }
+            if (staffPass.Length > 50)
+            {
+                Error = Error + "The password must be less than 50 characters";
+            }
+            if (staffPass.Contains(@"^[a-zA-Z0-9*$") != true)
+            {
+                Error = Error + "The password must contain a special character"
+            }
+
+            //nickname validation
             //if staffnickname is blank
             if (staffNickName.Length == 0)
             {
@@ -145,7 +160,7 @@ namespace ClassLibrary
             {
                 Error = Error + "The Nickname must be less than 50 characters";
             }
-
+            //date created validation
             DateTime DateComp = DateTime.Now.Date;
             try
             {
@@ -160,8 +175,6 @@ namespace ClassLibrary
                 {
                     Error = Error + "The date cannot be in the future";
                 }
-
-
             }
             catch
             {
