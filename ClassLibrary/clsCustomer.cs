@@ -218,7 +218,7 @@ namespace ClassLibrary
             {
                 //record the error
                 Error = Error + "The Date was not valid : ";
-            };
+
             return Error;
         }
     }
