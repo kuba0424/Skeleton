@@ -123,18 +123,38 @@ namespace ClassLibrary
         }
 
 
-        public bool Find(int customerId)
+        /****** FIND METHOD *******/
+        public bool Find(int CustomerId)
         {
-            //set the private data members to the test data value
-            mCustomerId = 21;
-            mUsername = "test username";
-            mPassword = "test password";
-            mEmail = "test email";
-            mHomeAddress = "test homeaddress";
-            mRegistrationDate = Convert.ToDateTime(DateTime.Now);
-            mActive = true;
-            //always return true
-            return true;
+
+            //create an instance of the data connection
+            clsDataConnection DB = new clsDataConnection();
+            //add the parameters for the address id to search for
+            DB.AddParameter("@CustomerId", CustomerId);
+            //execute the stored procedure
+            DB.Execute("sproc_tblCustomers_FilterByCustomerId");
+            //if one record is fouc=nd (there should be either one or zero)
+            if (DB.Count == 1)
+            {
+
+                //copy the data from the database to the private data members 
+                mCustomerId = Convert.ToInt32(DB.DataTable.Rows[0]["CustomerId"]);
+                mUsername = Convert.ToString(DB.DataTable.Rows[0]["Username"]);
+                mPassword = Convert.ToString(DB.DataTable.Rows[0]["Password"]);
+                mEmail = Convert.ToString(DB.DataTable.Rows[0]["Email"]);
+                mHomeAddress = Convert.ToString(DB.DataTable.Rows[0]["HomeAddress"]);
+                mRegistrationDate = Convert.ToDateTime(DB.DataTable.Rows[0]["RegistrationDate"]);
+                mActive = Convert.ToBoolean(DB.DataTable.Rows[0]["Active"]);
+                //return that everything worked OK
+                return true;
+            }
+            //if no record was found
+            else
+            {
+
+                //return false indicating there is a problem
+                return false;
+            }
         }
 
         public string Valid(string username, string password, string email, string homeaddress, string registrionDate)
@@ -218,8 +238,9 @@ namespace ClassLibrary
             {
                 //record the error
                 Error = Error + "The Date was not valid : ";
-
-            return Error;
+            }
+                return Error;
+            
         }
     }
 }
