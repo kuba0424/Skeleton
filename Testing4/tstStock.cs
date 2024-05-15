@@ -159,7 +159,7 @@ namespace Testing4
             //invoke the method
             Found = Stock.Find(itemId);
             //check the item id
-            if (Stock.itemID != 45)
+            if (Stock.itemId != 45)
             {
                 OK = false;
             }

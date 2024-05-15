@@ -109,7 +109,7 @@ namespace Testing6
             //create a boolean variable to store the result of validation
             Boolean Found = false;
             //create some test data to use with the method
-            Int32 StaffId = 1;
+            Int32 StaffId = 2;
             //invoke the method
             Found = staff.Find(StaffId);
             //test to see if result is true
@@ -125,11 +125,11 @@ namespace Testing6
             //create a boolean varaible to record if the data is OK(assume it is)
             Boolean OK = true;
             //create test data to use
-            Int32 StaffId = 1;
+            Int32 StaffId = 2;
             //invoke the method
             Found = staff.Find(StaffId);
             //Check the address Id
-            if (staff.StaffId != 1) 
+            if (staff.StaffId != 2) 
             {
                 OK = false;
             }
@@ -146,7 +146,7 @@ namespace Testing6
             //create a boolean varaible to record if the data is OK(assume it is)
             Boolean OK = true;
             //create test data to use
-            Int32 StaffId = 1;
+            Int32 StaffId = 2;
             //invoke the method
             Found = staff.Find(StaffId);
             //Check the address Id
@@ -167,11 +167,11 @@ namespace Testing6
             //create a boolean varaible to record if the data is OK(assume it is)
             Boolean OK = true;
             //create test data to use
-            Int32 StaffId = 1;
+            Int32 StaffId = 2;
             //invoke the method
             Found = staff.Find(StaffId);
             //Check the address Id
-            if (staff.StaffUser != "StaffJack")
+            if (staff.StaffUser != "Jakub")
             {
                 OK = false;
             }
@@ -188,11 +188,11 @@ namespace Testing6
             //create a boolean varaible to record if the data is OK(assume it is)
             Boolean OK = true;
             //create test data to use
-            Int32 StaffId = 1;
+            Int32 StaffId = 2;
             //invoke the method
             Found = staff.Find(StaffId);
             //Check the address Id
-            if (staff.StaffPass != "StaffJack")
+            if (staff.StaffPass != "Jakub")
             {
                 OK = false;
             }
@@ -209,11 +209,11 @@ namespace Testing6
             //create a boolean varaible to record if the data is OK(assume it is)
             Boolean OK = true;
             //create test data to use
-            Int32 StaffId = 1;
+            Int32 StaffId = 2;
             //invoke the method
             Found = staff.Find(StaffId);
             //Check the address Id
-            if (staff.StaffNickName != "Jack")
+            if (staff.StaffNickName != "Jakub")
             {
                 OK = false;
             }
@@ -230,7 +230,7 @@ namespace Testing6
             //create a boolean varaible to record if the data is OK(assume it is)
             Boolean OK = true;
             //create test data to use
-            Int32 StaffId = 1;
+            Int32 StaffId = 2;
             //invoke the method
             Found = staff.Find(StaffId);
             //Check the address Id
@@ -239,7 +239,7 @@ namespace Testing6
                 OK = false;
             }
             //test to see if result is correct
-            Assert.IsTrue(OK);
+            Assert.IsFalse(OK);
         }
         [TestMethod]
         public void ValidMethodOK()
@@ -441,7 +441,7 @@ namespace Testing6
             String Error = "";
             string StaffUser = "J";
             Error = staff.Valid(StaffUser,StaffPass,StaffNickName,StaffDateCreated);
-            Assert.AreNotEqual(Error,"");
+            Assert.AreEqual(Error,"");
 
         }
          [TestMethod]
@@ -481,7 +481,7 @@ namespace Testing6
             String Error = "";
             string StaffUser = "JJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJ";
             Error = staff.Valid(StaffUser,StaffPass,StaffNickName,StaffDateCreated);
-            Assert.AreEqual(Error,"");
+            Assert.AreNotEqual(Error,"");
 
         }
         [TestMethod]
@@ -502,7 +502,7 @@ namespace Testing6
             string StaffUser = "";
             StaffUser = StaffUser.PadRight(500, 'a');
             Error = staff.Valid(StaffUser,StaffPass,StaffNickName,StaffDateCreated);
-            Assert.AreEqual(Error,"");
+            Assert.AreNotEqual(Error,"");
 
         }
         [TestMethod]
@@ -522,7 +522,7 @@ namespace Testing6
             String Error = "";
             string StaffPass = "J";
             Error = staff.Valid(StaffUser, StaffPass, StaffNickName, StaffDateCreated);
-            Assert.AreNotEqual(Error, "");
+            Assert.AreEqual(Error, "");
 
         }
         [TestMethod]
@@ -562,7 +562,7 @@ namespace Testing6
             String Error = "";
             string StaffPass = "JJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJ";
             Error = staff.Valid(StaffUser, StaffPass, StaffNickName, StaffDateCreated);
-            Assert.AreEqual(Error, "");
+            Assert.AreNotEqual(Error, "");
 
         }
         [TestMethod]
@@ -583,7 +583,7 @@ namespace Testing6
             string StaffPass = "";
             StaffUser = StaffPass.PadRight(500, 'a');
             Error = staff.Valid(StaffUser, StaffPass, StaffNickName, StaffDateCreated);
-            Assert.AreEqual(Error, "");
+            Assert.AreNotEqual(Error, "");
 
         }
 

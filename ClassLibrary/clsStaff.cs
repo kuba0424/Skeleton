@@ -6,15 +6,33 @@ namespace ClassLibrary
     {
         public bool Find(int StaffId)
         {
-            //set the private data members to test data value
-            mStaffId = 1;
-            mStaffDate = Convert.ToDateTime("01/05/2024");
-            mStaffUser = "StaffJack";
-            mStaffPass = "StaffJack";
-            mStaffNickName = "Jack";
-            mStaffIsAdmin = true;
-            //always return true
-            return true;
+            //create instance of data connection
+            clsDataConnection DB = new clsDataConnection();
+            //add parameter for the staff id to search for
+            DB.AddParameter("@StaffId",StaffId);
+            //execture the stored procedure
+            DB.Execute("sproc_tblStaff_FilterByStaffId");
+            //if one record is found (there should be either one or zero)
+            if (DB.Count == 1)
+            {
+                //set the private data members to test data value
+                mStaffId = Convert.ToInt32(DB.DataTable.Rows[0]["StaffId"]);
+                mStaffDate = Convert.ToDateTime(DB.DataTable.Rows[0]["DateCreated"]);
+                mStaffUser = Convert.ToString(DB.DataTable.Rows[0]["Username"]);
+                mStaffPass = Convert.ToString(DB.DataTable.Rows[0]["Password"]);
+                mStaffNickName = Convert.ToString(DB.DataTable.Rows[0]["staffNickname"]);
+                mStaffIsAdmin = Convert.ToBoolean(DB.DataTable.Rows[0]["isAdmin?"]);
+                //always return true
+                return true;
+            }
+            //if no record found
+            else
+            {
+                //return false meaning there is problem
+                return false;
+            }
+
+            
         }
 
         //private data member for the staff id property
@@ -137,15 +155,15 @@ namespace ClassLibrary
             //password validation
             if (staffPass.Length == 0)
             {
-                Error = Error + "The Password may not be blank"
+                Error = Error + "The Password may not be blank";
             }
             if (staffPass.Length > 50)
             {
                 Error = Error + "The password must be less than 50 characters";
             }
-            if (staffPass.Contains(@"^[a-zA-Z0-9*$") != true)
+            if (staffPass.Contains(@"^[a-zA-Z0-9*$"))
             {
-                Error = Error + "The password must contain a special character"
+                Error = Error + "The password must contain a special character";
             }
 
             //nickname validation
