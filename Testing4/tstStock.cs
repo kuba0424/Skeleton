@@ -1,4 +1,4 @@
-﻿using ClassLibrary;
+using ClassLibrary;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 
@@ -159,6 +159,8 @@ namespace Testing4
             //invoke the method
             Found = Stock.Find(Id);
             //check the item id
+
+
             if (Stock.itemId != 46)
             {
                 OK = false;

@@ -20,22 +20,64 @@ public partial class _1_DataEntry : System.Web.UI.Page
         //create new instance of clsStaff
         clsStaff staff = new clsStaff();
         //capture staff id
-        staff.StaffId = Convert.ToInt32(txtStaffId.Text);
+        //staff.StaffId = Convert.ToInt32(txtStaffId.Text);
         //capture the username
-        staff.StaffUser = txtStaffUser.Text;
+        string StaffUser = txtStaffUser.Text;
         //caputre password
-        staff.StaffPass = txtStaffPass.Text;
+        string StaffPass = txtStaffPass.Text;
         //capture the nickname
-        staff.StaffNickName = txtStaffNickName.Text;
+        string StaffNickName = txtStaffNickName.Text;
         //capture date added
-        staff.StaffDateCreated = Convert.ToDateTime(DateTime.Now);
+        string StaffDateCreated = txtStaffDateCreated.Text;
         //capture is Admin checkbox
-        staff.StaffIsAdmin = chkStaffIsAdmin.Checked;
-        //store the staff in the session object
-        Session["staff"] = staff;
+        string StaffIsAdmin = chkStaffIsAdmin.Text;
+        //variable to store error msg
+        string Error = "";
+        //validate data
+        Error = staff.Valid(StaffUser, StaffPass, StaffNickName, StaffDateCreated);
+        if (Error == "")
+        {
+            //capture data
+            staff.StaffUser = StaffUser;
+            staff.StaffPass = StaffPass;
+            staff.StaffDateCreated = Convert.ToDateTime(StaffDateCreated);
+            staff.StaffNickName = StaffNickName;
+            //store in session object
+            Session["Staff"] = staff;
+            //Navigate to the view page
+            Response.Redirect("AdminViewer.aspx");
 
-        //Navigate to the view page
-        Response.Redirect("AdminViewer.aspx");
+        }
+        else
+        {
+            //display error msg
+            lblStaffError.Text = Error;
+        }
+    }
 
+    protected void btnFind_Click(object sender, EventArgs e)
+    {
+        //create an instance of the staff class
+        clsStaff staff = new clsStaff();
+        //create variable to store primary key
+        Int32 StaffId;
+        //create variable to store result of find operation
+        Boolean Found = false;
+        //get the primary key entered by the user
+        StaffId = Convert.ToInt32(txtStaffId.Text);
+        //find the record
+        Found = staff.Find(StaffId);
+        //if found
+        if (Found == true)
+        {
+            //display the values of the properties in the form
+            txtStaffUser.Text = staff.StaffUser;
+            txtStaffPass.Text = staff.StaffPass;
+            txtStaffNickName.Text = staff.StaffNickName;
+            txtStaffDateCreated.Text = staff.StaffDateCreated.ToString();
+            chkStaffIsAdmin.Checked = staff.StaffIsAdmin;
+
+
+        }
     }
 }
