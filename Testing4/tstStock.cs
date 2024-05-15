@@ -155,11 +155,11 @@ namespace Testing4
             //create a boolean variable to record if the data is OK (assume it is)
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 itemId = 45;
+            Int32 Id = 2;
             //invoke the method
-            Found = Stock.Find(itemId);
+            Found = Stock.Find(Id);
             //check the item id
-            if (Stock.itemID != 45)
+            if (Stock.itemId != 46)
             {
                 OK = false;
             }
