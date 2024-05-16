@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Security.Cryptography.X509Certificates;
 
 namespace ClassLibrary
 {
@@ -152,7 +153,24 @@ namespace ClassLibrary
             }
 
 
+            
 
+
+        }
+
+        public string Valid(string itemId, string itemStock, string itemSize, string itemPrice, string itemDescription, string itemAvailable, string itemDate)
+        {
+            //create a string variable to store the error
+            String Error = "";
+            //if the itemId is blank
+            if(itemId.Length == 0)
+            {
+                //record the error
+                Error = Error + "The itemId may not be blank : ";
+            }
+            //return any error messages
+            return Error;
+            
         }
     }
 }
