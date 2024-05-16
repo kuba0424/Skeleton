@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.ServiceModel.Configuration;
@@ -54,10 +54,14 @@ public partial class _1_DataEntry : System.Web.UI.Page
             txtCustomerAddress.Text = AnOrder.CustomerAddress;
             txtTotalPrice.Text = AnOrder.TotalPrice.ToString();
             txtPaymentInformation.Text = AnOrder.PaymentInformation.ToString();
-           // txtDispatchDate
-           chkDispatched.Checked = AnOrder.OrderDispatched;
+            chkDispatched.Checked = AnOrder.OrderDispatched;
+            txtDispatchDate.Text = AnOrder.DispatchDate.ToString();
+            chkDispatched.Checked = AnOrder.OrderDispatched;
         }
+    }
 
+    protected void TextBox1_TextChanged(object sender, EventArgs e)
+    {
 
     }
 }
