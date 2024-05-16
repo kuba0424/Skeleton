@@ -9,19 +9,19 @@ namespace ClassLibrary
     public class clsCustomer
     {
         //private data member for the Customer id property
-        private Int32 mCustomerId;
+        private Int32 mCustomer_Id;
         //CustomerId public property
         public int CustomerId
         {
             get
             {
                 //this line of code sends data out of the property
-                return mCustomerId;
+                return mCustomer_Id;
             }
             set
             {
                 //this line of code allows data into the property
-                mCustomerId = value;
+                mCustomer_Id = value;
             }
         }
         //private data member for the username property
@@ -138,13 +138,13 @@ namespace ClassLibrary
             {
 
                 //copy the data from the database to the private data members 
-                mCustomerId = Convert.ToInt32(DB.DataTable.Rows[0]["CustomerId"]);
+                mCustomer_Id = Convert.ToInt32(DB.DataTable.Rows[0]["Customer_Id"]);
                 mUsername = Convert.ToString(DB.DataTable.Rows[0]["Username"]);
                 mPassword = Convert.ToString(DB.DataTable.Rows[0]["Password"]);
                 mEmail = Convert.ToString(DB.DataTable.Rows[0]["Email"]);
-                mHomeAddress = Convert.ToString(DB.DataTable.Rows[0]["HomeAddress"]);
-                mRegistrationDate = Convert.ToDateTime(DB.DataTable.Rows[0]["RegistrationDate"]);
-                mActive = Convert.ToBoolean(DB.DataTable.Rows[0]["Active"]);
+                mHomeAddress = Convert.ToString(DB.DataTable.Rows[0]["Home Address"]);
+                mRegistrationDate = Convert.ToDateTime(DB.DataTable.Rows[0]["Registration Date"]);
+                mActive = Convert.ToBoolean(DB.DataTable.Rows[0]["is Active"]);
                 //return that everything worked OK
                 return true;
             }
