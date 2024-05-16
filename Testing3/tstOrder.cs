@@ -9,6 +9,14 @@ namespace Testing3
     [TestClass]
     public class tstOrder
     {
+        //good test data
+        //create some test data to pass the method
+        string DispatchDate = DateTime.Now.ToShortDateString();
+        string OrderDispatched = "True";
+        string PaymentInformation = "card";
+        string CustomerAddress = "LE1 9BH";
+        string TotalPrice = "Pounds";
+
         [TestMethod]
         public void InstanceOK()
         {
@@ -200,6 +208,40 @@ namespace Testing3
                 OK = false;
             }
             Assert.IsTrue(OK);
+        }
+
+        [TestMethod]
+        public void ValidMethodOK()
+        {
+            //create an instnace of the class we want to create
+            clsOrder AnOrder = new clsOrder();
+            //string variable to store any error message
+            string Error = "";
+            //invoke the method
+            Error = AnOrder.Valid(DispatchDate,OrderDispatched,PaymentInformation,CustomerAddress,TotalPrice);
+            //test to see that the result is correct
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void DispatchDateExtremeMin()
+        {
+            //create an instance of the class we want to create
+            clsOrder AnOrder = new clsOrder();
+            //string variable to store any error message
+            String Error = "";
+            //Create a variable to store the test date data
+            DateTime TestDate;
+            //set the data to todays date
+            TestDate = DateTime.Now.Date;
+            //change the data to whatever the date is yesterday
+            TestDate = TestDate.AddDays(-1);
+            //convert the date variable to a string variable
+            string DispatchDate = TestDate.ToString();
+            //invoke the method
+            Error = AnOrder.Valid(DispatchDate, OrderDispatched, PaymentInformation, CustomerAddress, TotalPrice);
+            //test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
         }
     }
 }
