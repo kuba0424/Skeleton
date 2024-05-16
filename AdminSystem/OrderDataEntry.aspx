@@ -18,7 +18,7 @@
         <asp:Label ID="lblPaymentInformation" runat="server" style="z-index: 1; left: 10px; top: 144px; position: absolute; right: 1404px" Text="Payment Information"></asp:Label>
         <asp:TextBox ID="txtPaymentInformation" runat="server" style="z-index: 1; left: 219px; top: 141px; position: absolute; width: 257px"></asp:TextBox>
         <asp:Label ID="lblDispatchDate" runat="server" style="z-index: 1; left: 10px; top: 185px; position: absolute" Text="Dispatch Date" width="150px"></asp:Label>
-        <asp:TextBox ID="TextBox1" runat="server" style="z-index: 1; left: 219px; top: 183px; position: absolute" width="257px"></asp:TextBox>
+        <asp:TextBox ID="txtDispatchDate" runat="server" Style="z-index: 1; left: 219px; top: 183px; position: absolute" Width="257px" OnTextChanged="TextBox1_TextChanged"></asp:TextBox>
         <asp:Label ID="lblError" runat="server" style="z-index: 1; left: 323px; top: 255px; position: absolute" width="257px"></asp:Label>
         <p>
             <asp:Button ID="btnCancel" runat="server" style="z-index: 1; left: 408px; top: 287px; position: absolute; width: 65px" Text="Cancel" />
