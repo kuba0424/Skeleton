@@ -52,10 +52,10 @@ public partial class _1_DataEntry : System.Web.UI.Page
         {
             //display the values of the properties in the form
             txtCustomerAddress.Text = AnOrder.CustomerAddress;
-            txtTotalPrice.Text = AnOrder.TotalPrice;
-            txtPaymentInformation = AnOrder.PaymentInformation;
-            txtDispatchDate
-            chkDispatched.Checked = AnOrder.OrderDispatched;
+            txtTotalPrice.Text = AnOrder.TotalPrice.ToString();
+            txtPaymentInformation.Text = AnOrder.PaymentInformation.ToString();
+           // txtDispatchDate
+           chkDispatched.Checked = AnOrder.OrderDispatched;
         }
 
 
