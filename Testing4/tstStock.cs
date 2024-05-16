@@ -7,6 +7,18 @@ namespace Testing4
     [TestClass]
     public class tstStock
     {
+
+        //good test data
+        //create some test data to pass the method
+
+        string itemId = "80";
+        string itemStock = "81";
+        string itemSize = "5";
+        string itemPrice = "200";
+        string itemDescription = "shirrt";
+        string itemAvailable = "true";
+        string itemDate = DateTime.Now.ToShortDateString();
+
         public bool Found { get; private set; }
 
         [TestMethod]
@@ -287,6 +299,37 @@ namespace Testing4
             }
             Assert.IsTrue(OK);
         }
+
+        [TestMethod]
+
+        public void ValidMethodOK()
+        {
+            //create an instance of the class we want to create
+            clsStock Stock = new clsStock();
+            //string variable to store any error message
+            String Error = "";
+            //invoke the method
+            Error = Stock.Valid(itemId, itemStock, itemSize, itemPrice, itemDescription, itemAvailable, itemDate);
+            //test to see that the result is correct
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+
+        public void ItemIdMinLessOne()
+        {
+            //create an instance of the class we want to create
+            clsStock Stock = new clsStock();
+            //string c=variable to store any message
+            String Error = "";
+            //create some test data to pass the method
+            string itemId = ""; // this should trigger an error
+            //invoke the method
+            Error = Stock.Valid(itemId, itemStock, itemSize, itemPrice, itemDescription, itemAvailable, itemDate);
+            //test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
+        }
     }
+
 }
 
