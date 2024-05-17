@@ -314,22 +314,110 @@ namespace Testing4
             Assert.AreEqual(Error, "");
         }
 
+
+        //Test cases for item description -----
+
         [TestMethod]
 
-        public void ItemIdMinLessOne()
+        public void ItemDescriptionMinLessOne()
         {
             //create an instance of the class we want to create
             clsStock Stock = new clsStock();
-            //string c=variable to store any message
+            //string c=variable to store any error messages
             String Error = "";
             //create some test data to pass the method
-            string itemId = ""; // this should trigger an error
+            string itemDescription = ""; //this should trigger an event
             //invoke the method
             Error = Stock.Valid(itemId, itemStock, itemSize, itemPrice, itemDescription, itemAvailable, itemDate);
             //test to see that the result is correct
             Assert.AreNotEqual(Error, "");
         }
-    }
 
+        [TestMethod]
+
+        public void ItemDescriptionNoMin()
+        {
+            clsStock Stock = new clsStock();
+            String Error = "";
+            string itemDescription = "a"; //this should be okay since it meet minimum requirement
+            Error = Stock.Valid(itemId, itemStock, itemSize, itemPrice, itemDescription, itemAvailable, itemDate);
+            Assert.AreEqual(Error, "");
+
+        }
+
+        [TestMethod]
+
+        public void ItemDescriptionNoMinPlusOne()
+        {
+            clsStock Stock = new clsStock();
+            String Error = "";
+            string itemDescription = "aa"; //this should be okay since it meet minimum requirement +1
+            Error = Stock.Valid(itemId, itemStock, itemSize, itemPrice, itemDescription, itemAvailable, itemDate);
+            Assert.AreEqual(Error, "");
+
+        }
+
+        [TestMethod]
+
+        public void ItemDescriptionMaxLessOne()
+        {
+            clsStock Stock = new clsStock();
+            String Error = "";
+            string itemDescription = "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"; //this should be okay since it is maximum (50) -1
+            Error = Stock.Valid(itemId, itemStock, itemSize, itemPrice, itemDescription, itemAvailable, itemDate);
+            Assert.AreEqual(Error, "");
+
+
+        }
+
+        [TestMethod]
+
+        public void ItemDescriptionMax()
+        {
+            clsStock Stock = new clsStock();
+            String Error = "";
+            string itemDescription = "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"; //this should be okay since it is the maximum
+            Error = Stock.Valid(itemId, itemStock, itemSize, itemPrice, itemDescription, itemAvailable, itemDate);
+            Assert.AreEqual(Error, "");
+
+        }
+
+        [TestMethod]
+
+        public void ItemDescriptionMaxPlusOne()
+        {
+            clsStock Stock = new clsStock();
+            String Error = "";
+            string itemDescription = "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"; //this should give an error since it is max +1
+            Error = Stock.Valid(itemId, itemStock, itemSize, itemPrice, itemDescription, itemAvailable, itemDate);
+            Assert.AreNotEqual(Error, "");
+
+        }
+
+        [TestMethod]
+
+        public void ItemDescriptionMid()
+        {
+            clsStock Stock = new clsStock();
+            String Error = "";
+            string itemDescription = "aaaaaaaaaaaaaaaaaaaaaaaaa"; //this should be okay since it is half the maximum (25)
+            Error = Stock.Valid(itemId, itemStock, itemSize, itemPrice, itemDescription, itemAvailable, itemDate);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+
+        public void ItemDescriptionExtremeMax()
+        {
+            clsStock Stock = new clsStock();
+            String Error = "";
+            string itemDescription = "";
+            itemDescription = itemDescription.PadRight(500, 'a'); //this should fail
+            Error = Stock.Valid(itemId, itemStock, itemSize, itemPrice, itemDescription, itemAvailable, itemDate);
+            Assert.AreNotEqual(Error, "");
+        }
+
+
+    }  
 }
 
