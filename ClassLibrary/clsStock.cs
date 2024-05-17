@@ -162,11 +162,16 @@ namespace ClassLibrary
         {
             //create a string variable to store the error
             String Error = "";
-            //if the itemId is blank
-            if(itemId.Length == 0)
+            //if the itemDescription is blank
+            if(itemDescription.Length == 0)
             {
                 //record the error
-                Error = Error + "The itemId may not be blank : ";
+                Error = Error + "The itemDescription may not be blank : ";
+            }
+            //if the itemDescription is greater than 50 characters
+            if(itemDescription.Length > 50)
+            {
+                Error = Error + "The itemDescription must be less than 51 characters : ";
             }
             //return any error messages
             return Error;
