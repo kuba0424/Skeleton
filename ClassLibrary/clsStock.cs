@@ -162,6 +162,9 @@ namespace ClassLibrary
         {
             //create a string variable to store the error
             String Error = "";
+            //create a temporary variable to store the date values
+            DateTime DateTemp;
+
             //if the itemDescription is blank
             if(itemDescription.Length == 0)
             {
@@ -173,9 +176,35 @@ namespace ClassLibrary
             {
                 Error = Error + "The itemDescription must be less than 51 characters : ";
             }
-            //return any error messages
-            return Error;
+            //create an instance of DateTime to compare with DateTemp
+            //in the if statements
             
+            DateTime DateComp = DateTime.Now.Date;
+
+            try
+            {
+                //copy the itemDate value to the DateTemp variable
+                DateTemp = Convert.ToDateTime(itemDate);
+
+                //check to see if the date is less than today's date
+                if (DateTemp < DateTime.Now.Date)
+                {
+                    Error = Error + "The date cannot be in the past : ";
+                }
+                //check to see if the date is greater than today's date
+                if (DateTemp > DateTime.Now.Date)
+                {
+                    Error = Error + "The date cannot be in the future : ";
+                }
+            }
+            catch
+            {
+                //record the error
+                Error = Error + "The date was not a valid date : ";
+            }
+                //return any error messages
+                return Error;
+            }
         }
     }
-}
+

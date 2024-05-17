@@ -1,6 +1,7 @@
 using ClassLibrary;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
+using System.Security.Cryptography;
 
 namespace Testing4
 {
@@ -418,6 +419,112 @@ namespace Testing4
         }
 
 
+        //Test case for Date added.
+
+
+        [TestMethod]
+
+        public void ItemDateExtremeMin()
+        {
+            //create an instance of the class we want to create
+            clsStock Stock = new clsStock();
+            //string variable to store any error message
+            String Error = "";
+            //create a variable to store the test date data
+            DateTime TestDate;
+            //set the date to todays date
+            TestDate = DateTime.Now.Date;
+            //change the date to whatever the date is less 100 years
+            TestDate = TestDate.AddYears(-100);
+            //convert the date variable to a string variable
+            string itemDate = TestDate.ToString();
+            //invoke the method
+            Error = Stock.Valid(itemId, itemStock, itemSize, itemPrice, itemDescription, itemAvailable, itemDate);
+            //test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
+
+
+        }
+
+        [TestMethod]
+
+        public void ItemDateExtremeMax()
+        {
+            clsStock Stock = new clsStock();
+            String Error = "";
+            DateTime TestDate;
+            TestDate = DateTime.Now.Date;
+            TestDate = TestDate.AddYears(100);
+            string itemDate = TestDate.ToString();
+            Error = Stock.Valid(itemId, itemStock, itemSize, itemPrice, itemDescription, itemAvailable, itemDate);
+            Assert.AreNotEqual(Error, "");
+
+        }
+
+        [TestMethod]
+
+        public void ItemDateMinLessOne()
+        {
+            clsStock Stock = new clsStock();
+            String Error = "";
+            DateTime TestDate;
+            TestDate = DateTime.Now.Date;
+            TestDate = TestDate.AddDays(-1);
+            string itemDate = TestDate.ToString();
+            Error = Stock.Valid(itemId, itemStock, itemSize, itemPrice, itemDescription, itemAvailable, itemDate);
+            Assert.AreNotEqual(Error, "");
+
+        }
+
+        [TestMethod]
+
+        public void ItemDateMin()
+        {
+            clsStock Stock = new clsStock();
+            String Error = "";
+            DateTime TestDate;
+            TestDate = DateTime.Now.Date;
+            string itemDate = TestDate.ToString();
+            Error = Stock.Valid(itemId, itemStock, itemSize, itemPrice, itemDescription, itemAvailable, itemDate);
+            Assert.AreEqual(Error, "");
+
+        }
+
+        [TestMethod]
+
+        public void ItemDateMinPlusOne()
+        {
+            clsStock Stock = new clsStock();
+            String Error = "";
+            DateTime TestDate;
+            TestDate = DateTime.Now.Date;
+            TestDate = DateTime.Now.Date.AddDays(1);
+            string itemDate = TestDate.ToString();
+            Error = Stock.Valid(itemId, itemStock, itemSize, itemPrice, itemDescription, itemAvailable, itemDate);
+            Assert.AreNotEqual(Error, "");
+
+        }
+
+
+        [TestMethod]
+
+        public void ItemDateInvalid()
+        {
+            clsStock Stock = new clsStock();
+            String Error = "";
+            string itemDate = "This is not a data teehee!";
+            Error = Stock.Valid(itemId, itemStock, itemSize, itemPrice, itemDescription, itemAvailable, itemDate);
+            Assert.AreNotEqual(Error, "");
+
+        }
+
+
+
+
+
+
+    }
+
     }  
-}
+
 
