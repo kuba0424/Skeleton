@@ -100,8 +100,7 @@
             top: 569px;
             position: absolute;
             width: 53px;
-            height: 26px;
-        }
+            }
         .auto-style17 {
             z-index: 1;
             left: 172px;
