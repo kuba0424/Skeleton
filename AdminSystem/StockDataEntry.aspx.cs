@@ -20,28 +20,34 @@ public partial class _1_DataEntry : System.Web.UI.Page
 
     protected void btnOK_Click(object sender, EventArgs e)
     {
-        //create an instance of clsStock
+        //create a new instance of clsStock
         clsStock Stock = new clsStock();
 
-
-        //capture the item desc
-        Stock.itemDescription = txtItemDesc.Text;
         //capture the stock id
-        Stock.itemId = Convert.ToInt32(txtStockId.Text);
-        //capture the rest of the data types...
-        Stock.Id = Convert.ToInt32(txtId.Text);
-        Stock.itemStock = Convert.ToInt32(txtItemStock.Text);
-        Stock.itemSize = Convert.ToDouble(txtItemSize.Text);
-        Stock.itemPrice = Convert.ToDouble(txtItemPrice.Text);
-        Stock.itemAvailable = Convert.ToBoolean(txtItemAvailable.Text);
-        Stock.itemDate = Convert.ToDateTime(txtItemDate.Text);
-        Stock.Active = chkActive.Checked;
-        
-        
-        //store the desc in the session object
-        Session["Stock"]= Stock;
-        //navigate to the view page as a click response
-        Response.Redirect("StockViewer.aspx");
+
+        string itemDescription = txtItemDesc.Text;
+        string itemDate = txtItemDate.Text;
+        string Error = "";
+        string itemId = txtStockId.Text;
+        string itemStock = txtItemStock.Text;
+        string itemSize = txtItemSize.Text;
+        string itemPrice = txtItemPrice.Text;
+        string itemAvailable = txtItemAvailable.Text;
+
+        Error = Stock.Valid(itemId, itemStock, itemSize, itemPrice, itemDescription, itemAvailable, itemDate);
+        if (Error == "")
+        {
+            //capture the item description
+            Stock.itemDescription = itemDescription;
+            Stock.itemDate = Convert.ToDateTime(itemDate);
+            Session["Stock"] = Stock;
+            Response.Redirect("StockViewer.aspx");
+        }
+        else
+        {
+            //display error messasge
+            lblError.Text = Error;
+        }
     }
 
 
