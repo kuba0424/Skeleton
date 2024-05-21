@@ -42,6 +42,21 @@ public partial class _1_DataEntry : System.Web.UI.Page
             Stock.itemDate = Convert.ToDateTime(itemDate);
             Session["Stock"] = Stock;
             Response.Redirect("StockViewer.aspx");
+            //capture the itemId
+            Stock.itemId = Convert.ToInt32(itemId);
+            Stock.itemStock = Convert.ToInt32(itemStock);
+            Stock.itemPrice = Convert.ToDouble(itemPrice);
+            Stock.itemSize = Convert.ToDouble(itemSize);
+            Stock.itemAvailable = Convert.ToBoolean(itemAvailable);
+            Stock.Active = chkActive.Checked;
+            //create a new instance of the Stock Collection
+            clsStockCollection StockList = new clsStockCollection();
+            //set the ThisStock property
+            StockList.ThisStock =  Stock;
+            //add the new record
+            StockList.Add();
+            //redirect back to the lsit page
+            Response.Redirect("StockList.aspx");
         }
         else
         {

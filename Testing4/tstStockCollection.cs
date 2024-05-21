@@ -127,7 +127,41 @@ namespace Testing4
             //create an instance of the class we want to create
             clsStockCollection AllStock = new clsStockCollection();
             //test to see that the two values are the same
-            Assert.AreEqual(AllStock.Count, 2);
+            Assert.AreEqual(AllStock.Count, 5);
+        }
+
+        [TestMethod]
+
+        public void AddMethodOK()
+        {
+            //create an instance of the class we want to create
+            clsStockCollection AllStock = new clsStockCollection();
+            //create the item of the test data
+            clsStock TestItem = new clsStock();
+            //variable to store the primary key
+            Int32 PrimaryKey = 0;
+            //set its properties
+            TestItem.Active = true;
+            TestItem.Id = 1;
+            TestItem.itemId = 2;
+            TestItem.itemStock = 45;
+            TestItem.itemPrice = 7;
+            TestItem.itemSize = 44;
+            TestItem.itemDescription = "this is an item";
+            TestItem.itemAvailable = true;
+            TestItem.itemDate = DateTime.Now;
+            //set ThisStock to the test data]
+            AllStock.ThisStock = TestItem;
+            //add the record
+            PrimaryKey = AllStock.Add();
+            //set the primary key of the test data
+            TestItem.Id = PrimaryKey;
+            //find the record
+            AllStock.ThisStock.Find(PrimaryKey);
+            //test to see that the two values are the same
+            Assert.AreEqual(AllStock.ThisStock, TestItem);
+
+
         }
 
 
