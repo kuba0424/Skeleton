@@ -41,25 +41,6 @@ namespace ClassLibrary
 
             }
 
-            /*clsStaff TestItem = new clsStaff();
-            //Set its properties
-            TestItem.StaffId = 1;
-            TestItem.StaffUser = "JakubStaff";
-            TestItem.StaffPass = "JakubStaff";
-            TestItem.StaffNickName = "Jakub";
-            TestItem.StaffDateCreated = DateTime.Now;
-            TestItem.StaffIsAdmin = true;
-            //add item to the test list
-            mStaffList.Add(TestItem);
-            //re initialise the object for some new data
-            TestItem = new clsStaff();
-            TestItem.StaffId = 2;
-            TestItem.StaffUser = "JeffStaff";
-            TestItem.StaffPass = "JeffStaff";
-            TestItem.StaffNickName = "Jeff";
-            TestItem.StaffDateCreated = DateTime.Now;
-            TestItem.StaffIsAdmin = true;
-            mStaffList.Add(TestItem);*/
         }
 
         public List<clsStaff> StaffList
@@ -113,6 +94,17 @@ namespace ClassLibrary
             return DB.Execute("sproc_tblStaff_Insert");
 
 
+        }
+
+        public void Delete()
+        {
+            //deletes the record pointed to by thisstaff
+            //connect to db
+            clsDataConnection DB = new clsDataConnection();
+            //set params for stored procedure
+            DB.AddParameter("@StaffId", mThisStaff.StaffId);
+            //execute procedure
+            DB.Execute("sproc_tblStaff_Delete");
         }
 
         public void Update()
