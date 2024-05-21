@@ -14,7 +14,7 @@ public partial class _1_List : System.Web.UI.Page
         if (IsPostBack == false)
         {
             //update the list box
-            DisplayStaff(); 
+            DisplayStaff();
         }
 
     }
@@ -61,6 +61,27 @@ public partial class _1_List : System.Web.UI.Page
         {
             //if no record selected
             lblError.Text = "please select a record from list to edit";
+        }
+    }
+
+    protected void btnDelete_Click(object sender, EventArgs e)
+    {
+        //variable to store the primary key value of the record to be deleted
+        Int32 StaffId;
+        //if record has been selected from list
+        if (lstStaffList.SelectedIndex != -1)
+        {
+            //get primary key value of record to delete
+            StaffId = Convert.ToInt32(lstStaffList.SelectedValue);
+            //store the data in session object
+            Session["StaffId"] = StaffId;
+            //redirect to delete page
+            Response.Redirect("AdminConfirmDelete.aspx");
+        }
+        else
+        {
+            //if no record selected
+            lblError.Text = "Please select a record from list to delete";
         }
     }
 }
