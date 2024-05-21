@@ -4,6 +4,9 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
+//use in sql server object explorer v00egd00002l.lec-admin.dmu.ac.uk
+
+
 namespace Testing6
 {
 
@@ -94,8 +97,35 @@ namespace Testing6
             Assert.AreEqual(AllStaff.Count, TestList.Count);
 
         }
+        [TestMethod]
+        public void AddMethodOK()
+        {
+            //create intance of class we want to create
+            clsStaffCollection Staffcollection = new clsStaffCollection();
+            //create item of test data
+            clsStaff TestItem = new clsStaff();
+            //variable to store primary key
+            Int32 PrimaryKey = 0;
+            //set the properties
+            TestItem.StaffUser = "Oki";
+            TestItem.StaffPass = "Oki";
+            TestItem.StaffIsAdmin = true;
+            TestItem.StaffId = 4;
+            TestItem.StaffNickName = "Oki";
+            TestItem.StaffDateCreated = DateTime.Now;
+            //set this staff to the test data
+            Staffcollection.ThisStaff = TestItem;
+            //add the record
+            PrimaryKey = Staffcollection.Add();
+            //set the primary key of the test data
+            TestItem.StaffId = PrimaryKey;
+            //find the record
+            Staffcollection.ThisStaff.Find(PrimaryKey);
+            //test to see that two values are the same
+            Assert.AreEqual(Staffcollection.ThisStaff, TestItem);
+        }
 
-        
+
 
 
     }

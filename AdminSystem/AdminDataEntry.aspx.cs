@@ -42,10 +42,14 @@ public partial class _1_DataEntry : System.Web.UI.Page
             staff.StaffPass = StaffPass;
             staff.StaffDateCreated = Convert.ToDateTime(StaffDateCreated);
             staff.StaffNickName = StaffNickName;
-            //store in session object
-            Session["Staff"] = staff;
-            //Navigate to the view page
-            Response.Redirect("AdminViewer.aspx");
+            staff.StaffIsAdmin = chkStaffIsAdmin.Checked;
+            //create new instance of staff collection
+            clsStaffCollection StaffList = new clsStaffCollection();
+            //set the thisstaff property
+            StaffList.ThisStaff =staff;
+            StaffList.Add();
+            //redirect to the list page
+            Response.Redirect("AdminList.aspx");
 
         }
         else
