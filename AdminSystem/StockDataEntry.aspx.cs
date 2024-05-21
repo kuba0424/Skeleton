@@ -27,21 +27,19 @@ public partial class _1_DataEntry : System.Web.UI.Page
 
         string itemDescription = txtItemDesc.Text;
         string itemDate = txtItemDate.Text;
-        string Error = "";
         string itemId = txtStockId.Text;
         string itemStock = txtItemStock.Text;
         string itemSize = txtItemSize.Text;
         string itemPrice = txtItemPrice.Text;
         string itemAvailable = txtItemAvailable.Text;
+        string Error = "";
 
-        Error = Stock.Valid(itemId, itemStock, itemSize, itemPrice, itemDescription, itemAvailable, itemDate);
+        Error = Stock.Valid(itemDescription,itemDate);
         if (Error == "")
         {
             //capture the item description
             Stock.itemDescription = itemDescription;
             Stock.itemDate = Convert.ToDateTime(itemDate);
-            Session["Stock"] = Stock;
-            Response.Redirect("StockViewer.aspx");
             //capture the itemId
             Stock.itemId = Convert.ToInt32(itemId);
             Stock.itemStock = Convert.ToInt32(itemStock);
@@ -52,7 +50,7 @@ public partial class _1_DataEntry : System.Web.UI.Page
             //create a new instance of the Stock Collection
             clsStockCollection StockList = new clsStockCollection();
             //set the ThisStock property
-            StockList.ThisStock =  Stock;
+            StockList.ThisStock = Stock;
             //add the new record
             StockList.Add();
             //redirect back to the lsit page
