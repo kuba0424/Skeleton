@@ -183,16 +183,16 @@ namespace ClassLibrary
         }
     
                     //create a string variable to store the error
-        String Error = "";
+        //String Error = "";
         //Create a temporary variable to store the data values
-        DateTime DateTemp;
+        //DateTime DateTemp;
         //copy the DispatchDate value to the DateTemp variable
-        DateTemp = Convert.ToDateTime(DispatchDate);
+        //DateTemp = Convert.ToDateTime(DispatchDate);
         //check to see if the data is less thank todays date
-        if (DateTemp < DateTime.Now.Date) ;
-        {
-            Error = Error + "The date cannot be in the past : ";
-        }
+        //if (DateTemp < DateTime.Now.Date) ;
+        //{
+          //  Error = Error + "The date cannot be in the past : ";
+        //}
     
       
 
@@ -201,6 +201,6 @@ namespace ClassLibrary
     //the function returns a string containing any error message
     //if no erros found then a blank string is returned
     
-        return "";
-    }
-    }
+      //  return "";
+    
+    //}}
