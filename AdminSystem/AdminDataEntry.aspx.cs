@@ -8,9 +8,37 @@ using ClassLibrary;
 
 public partial class _1_DataEntry : System.Web.UI.Page
 {
+    //variable to store primary key with page level scope
+    Int32 StaffId;
+
     protected void Page_Load(object sender, EventArgs e)
     {
+        //get the number of the staff to be processed
+        StaffId = Convert.ToInt32(Session["StaffId"]);
+        if (IsPostBack == false)
+        {
+            //if this is not a new record
+            if (StaffId != -1)
+            {
+                //display current data for record
+                DisplayStaff();
+            }
+        }
 
+    }
+
+    void DisplayStaff()
+    {
+        //create instance of staffcollection
+        clsStaffCollection staffCollection = new clsStaffCollection();
+        staffCollection.ThisStaff.Find(StaffId);
+        //display the data for the record
+        txtStaffId.Text = staffCollection.ThisStaff.StaffId.ToString();
+        txtStaffUser.Text = staffCollection.ThisStaff.StaffUser.ToString();
+        txtStaffPass.Text = staffCollection.ThisStaff.StaffPass.ToString();
+        txtStaffNickName.Text = staffCollection.ThisStaff.StaffNickName.ToString();
+        txtStaffDateCreated.Text = staffCollection.ThisStaff.StaffDateCreated.ToString();
+        chkStaffIsAdmin.Checked = staffCollection.ThisStaff.StaffIsAdmin;
     }
 
    
@@ -19,8 +47,6 @@ public partial class _1_DataEntry : System.Web.UI.Page
     {
         //create new instance of clsStaff
         clsStaff staff = new clsStaff();
-        //capture staff id
-        //staff.StaffId = Convert.ToInt32(txtStaffId.Text);
         //capture the username
         string StaffUser = txtStaffUser.Text;
         //caputre password
@@ -37,15 +63,34 @@ public partial class _1_DataEntry : System.Web.UI.Page
         Error = staff.Valid(StaffUser, StaffPass, StaffNickName, StaffDateCreated);
         if (Error == "")
         {
+            //capture staff id
+            staff.StaffId = StaffId;
             //capture data
             staff.StaffUser = StaffUser;
             staff.StaffPass = StaffPass;
             staff.StaffDateCreated = Convert.ToDateTime(StaffDateCreated);
             staff.StaffNickName = StaffNickName;
-            //store in session object
-            Session["Staff"] = staff;
-            //Navigate to the view page
-            Response.Redirect("AdminViewer.aspx");
+            staff.StaffIsAdmin = chkStaffIsAdmin.Checked;
+            //create new instance of staff collection
+            clsStaffCollection StaffList = new clsStaffCollection();
+            if (StaffId == -1)
+            {
+                //set the thisstaff property
+                StaffList.ThisStaff = staff;
+                StaffList.Add();
+            }
+            else
+            {
+                //find the record to update
+                StaffList.ThisStaff.Find(StaffId);
+                //set the thisstaff property
+                StaffList.ThisStaff = staff;
+                //update record
+                StaffList.Update();
+            }
+            Response.Redirect("AdminList.aspx");
+            
+            
 
         }
         else
