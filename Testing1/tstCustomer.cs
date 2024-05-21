@@ -52,7 +52,7 @@ namespace Testing1
             //Create an instance of the class we want to create
             clsCustomer AnCustomer = new clsCustomer();
             //create some test data to assign to the property
-            string TestData = "Jame_Bond23";
+            string TestData = "DMU";
             //assign the data to the property
             AnCustomer.Username = TestData;
             //test to see that the two values are the same
@@ -64,7 +64,7 @@ namespace Testing1
             //Create an instance of the class we want to create
             clsCustomer AnCustomer = new clsCustomer();
             //create some test data to assign to the property
-            string TestData = "CurryGoat12!";
+            string TestData = "DDMMUU";
             //assign the data to the property
             AnCustomer.Password = TestData;
             //test to see that the two values are the same
@@ -76,7 +76,7 @@ namespace Testing1
             //Create an instance of the class we want to create
             clsCustomer AnCustomer = new clsCustomer();
             //create some test data to assign to the property
-            string TestData = "James12@gmail.com";
+            string TestData = "DMU@gmail.com";
             //assign the data to the property
             AnCustomer.Email = TestData;
             //test to see that the two values are the same
@@ -88,7 +88,7 @@ namespace Testing1
             //Create an instance of the class we want to create
             clsCustomer AnCustomer = new clsCustomer();
             //create some test data to assign to the property
-            string TestData = "Grange Lane";
+            string TestData = "18 leicester road";
             //assign the data to the property
             AnCustomer.HomeAddress = TestData;
             //test to see that the two values are the same
@@ -102,9 +102,9 @@ namespace Testing1
             //create a boolean variable to store the results of the validation
             Boolean Found = false;
             //create some test data to use with the method
-            Int32 CustomerId = 1;
+            Int32 Customer_Id = 1;
             //invoke the method
-            Found = AnCustomer.Find(CustomerId);
+            Found = AnCustomer.Find(Customer_Id);
             //test to see if the result is true
             Assert.IsTrue(Found);
         }
@@ -116,9 +116,9 @@ namespace Testing1
             //create some test data to assign to the property
             Int32 TestData = 1;
             //assign the data to the property
-            AnAddress.CustomerId = TestData;
+            AnAddress.Customer_Id = TestData;
             //test to see that the two values are the same
-            Assert.AreEqual(AnAddress.CustomerId, TestData);
+            Assert.AreEqual(AnAddress.Customer_Id, TestData);
         }
         [TestMethod]
         public void TestCustomerIdFoundOK()
@@ -134,7 +134,7 @@ namespace Testing1
             //invoke the method
             Found = AnCustomer.Find(Customer_Id);
             //check the customer id
-            if (AnCustomer.CustomerId != 1)
+            if (AnCustomer.Customer_Id != 1)
             {
                 OK = false;
             }
@@ -799,7 +799,7 @@ namespace Testing1
                 OK = false;
             }
             //test to see that the result is correct
-            Assert.IsFalse(OK);
+            Assert.IsTrue(OK);
         }
     }
 }
