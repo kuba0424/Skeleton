@@ -145,6 +145,17 @@ namespace ClassLibrary
             return mThisStock.Id;*/
         }
 
+        public void Delete()
+        {
+            //deletes the record pointed by thisStock
+            //connect to the database
+            clsDataConnection DB = new clsDataConnection();
+            //set the parameters for the stored procedure
+            DB.AddParameter("@Id", mThisStock.Id);
+            //executre the stored procedure
+            DB.Execute("sproc_tblStock_Delete");
+        }
+
         public void Update()
         {
             //update an existing record based on the values of ThisStock
