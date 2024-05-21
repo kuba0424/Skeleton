@@ -126,14 +126,14 @@ namespace ClassLibrary
             {
                 Error = Error + "The date cannot be in the past : ";
             }
-        }
+        
           
 
            
         //this function accepts 5 parameters for validation
         //the function returns a string containing any error message
         //if no erros found then a blank string is returned
-        {
+        
             return "";
         }
 
