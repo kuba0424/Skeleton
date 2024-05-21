@@ -158,7 +158,7 @@ namespace ClassLibrary
 
         }
 
-        public string Valid(string itemId, string itemStock, string itemSize, string itemPrice, string itemDescription, string itemAvailable, string itemDate)
+        public string Valid(string itemDescription , string itemDate)
         {
             //create a string variable to store the error
             String Error = "";

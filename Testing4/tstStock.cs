@@ -310,7 +310,7 @@ namespace Testing4
             //string variable to store any error message
             String Error = "";
             //invoke the method
-            Error = Stock.Valid(itemId, itemStock, itemSize, itemPrice, itemDescription, itemAvailable, itemDate);
+            Error = Stock.Valid(itemDescription, itemDate);
             //test to see that the result is correct
             Assert.AreEqual(Error, "");
         }
@@ -329,7 +329,7 @@ namespace Testing4
             //create some test data to pass the method
             string itemDescription = ""; //this should trigger an event
             //invoke the method
-            Error = Stock.Valid(itemId, itemStock, itemSize, itemPrice, itemDescription, itemAvailable, itemDate);
+            Error = Stock.Valid(itemDescription, itemDate);
             //test to see that the result is correct
             Assert.AreNotEqual(Error, "");
         }
@@ -341,7 +341,7 @@ namespace Testing4
             clsStock Stock = new clsStock();
             String Error = "";
             string itemDescription = "a"; //this should be okay since it meet minimum requirement
-            Error = Stock.Valid(itemId, itemStock, itemSize, itemPrice, itemDescription, itemAvailable, itemDate);
+            Error = Stock.Valid(itemDescription, itemDate);
             Assert.AreEqual(Error, "");
 
         }
@@ -353,7 +353,7 @@ namespace Testing4
             clsStock Stock = new clsStock();
             String Error = "";
             string itemDescription = "aa"; //this should be okay since it meet minimum requirement +1
-            Error = Stock.Valid(itemId, itemStock, itemSize, itemPrice, itemDescription, itemAvailable, itemDate);
+            Error = Stock.Valid(itemDescription, itemDate);
             Assert.AreEqual(Error, "");
 
         }
@@ -365,7 +365,7 @@ namespace Testing4
             clsStock Stock = new clsStock();
             String Error = "";
             string itemDescription = "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"; //this should be okay since it is maximum (50) -1
-            Error = Stock.Valid(itemId, itemStock, itemSize, itemPrice, itemDescription, itemAvailable, itemDate);
+            Error = Stock.Valid(itemDescription, itemDate);
             Assert.AreEqual(Error, "");
 
 
@@ -378,7 +378,7 @@ namespace Testing4
             clsStock Stock = new clsStock();
             String Error = "";
             string itemDescription = "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"; //this should be okay since it is the maximum
-            Error = Stock.Valid(itemId, itemStock, itemSize, itemPrice, itemDescription, itemAvailable, itemDate);
+            Error = Stock.Valid(itemDescription, itemDate);
             Assert.AreEqual(Error, "");
 
         }
@@ -390,7 +390,7 @@ namespace Testing4
             clsStock Stock = new clsStock();
             String Error = "";
             string itemDescription = "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"; //this should give an error since it is max +1
-            Error = Stock.Valid(itemId, itemStock, itemSize, itemPrice, itemDescription, itemAvailable, itemDate);
+            Error = Stock.Valid(itemDescription, itemDate);
             Assert.AreNotEqual(Error, "");
 
         }
@@ -402,7 +402,7 @@ namespace Testing4
             clsStock Stock = new clsStock();
             String Error = "";
             string itemDescription = "aaaaaaaaaaaaaaaaaaaaaaaaa"; //this should be okay since it is half the maximum (25)
-            Error = Stock.Valid(itemId, itemStock, itemSize, itemPrice, itemDescription, itemAvailable, itemDate);
+            Error = Stock.Valid(itemDescription, itemDate);
             Assert.AreEqual(Error, "");
         }
 
@@ -414,7 +414,7 @@ namespace Testing4
             String Error = "";
             string itemDescription = "";
             itemDescription = itemDescription.PadRight(500, 'a'); //this should fail
-            Error = Stock.Valid(itemId, itemStock, itemSize, itemPrice, itemDescription, itemAvailable, itemDate);
+            Error = Stock.Valid(itemDescription, itemDate);
             Assert.AreNotEqual(Error, "");
         }
 
@@ -439,7 +439,7 @@ namespace Testing4
             //convert the date variable to a string variable
             string itemDate = TestDate.ToString();
             //invoke the method
-            Error = Stock.Valid(itemId, itemStock, itemSize, itemPrice, itemDescription, itemAvailable, itemDate);
+            Error = Stock.Valid(itemDescription, itemDate);
             //test to see that the result is correct
             Assert.AreNotEqual(Error, "");
 
@@ -456,7 +456,7 @@ namespace Testing4
             TestDate = DateTime.Now.Date;
             TestDate = TestDate.AddYears(100);
             string itemDate = TestDate.ToString();
-            Error = Stock.Valid(itemId, itemStock, itemSize, itemPrice, itemDescription, itemAvailable, itemDate);
+            Error = Stock.Valid(itemDescription, itemDate);
             Assert.AreNotEqual(Error, "");
 
         }
@@ -471,7 +471,7 @@ namespace Testing4
             TestDate = DateTime.Now.Date;
             TestDate = TestDate.AddDays(-1);
             string itemDate = TestDate.ToString();
-            Error = Stock.Valid(itemId, itemStock, itemSize, itemPrice, itemDescription, itemAvailable, itemDate);
+            Error = Stock.Valid(itemDescription, itemDate);
             Assert.AreNotEqual(Error, "");
 
         }
@@ -485,7 +485,7 @@ namespace Testing4
             DateTime TestDate;
             TestDate = DateTime.Now.Date;
             string itemDate = TestDate.ToString();
-            Error = Stock.Valid(itemId, itemStock, itemSize, itemPrice, itemDescription, itemAvailable, itemDate);
+            Error = Stock.Valid(itemDescription, itemDate);
             Assert.AreEqual(Error, "");
 
         }
@@ -500,7 +500,7 @@ namespace Testing4
             TestDate = DateTime.Now.Date;
             TestDate = DateTime.Now.Date.AddDays(1);
             string itemDate = TestDate.ToString();
-            Error = Stock.Valid(itemId, itemStock, itemSize, itemPrice, itemDescription, itemAvailable, itemDate);
+            Error = Stock.Valid(itemDescription, itemDate);
             Assert.AreNotEqual(Error, "");
 
         }
@@ -513,7 +513,7 @@ namespace Testing4
             clsStock Stock = new clsStock();
             String Error = "";
             string itemDate = "This is not a data teehee!";
-            Error = Stock.Valid(itemId, itemStock, itemSize, itemPrice, itemDescription, itemAvailable, itemDate);
+            Error = Stock.Valid(itemDescription, itemDate);
             Assert.AreNotEqual(Error, "");
 
         }
