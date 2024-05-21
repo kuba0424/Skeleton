@@ -121,6 +121,64 @@ namespace ClassLibrary
             DateTime DateTemp;
             try
             {
+                //copy the dispatchdate value to the DateTemp variable
+                DateTemp = Convert.ToDateTime(DispatchDate);
 
-    }
-    }
+                if (DateTemp < DateComp)
+                {
+                    //record the error
+                    Error = Error + "The date cannot be in the past : ";
+                }
+                //check to see if the date is greater than today's date
+                if (DateTemp > DateComp)
+                {
+                    //record the error
+                    Error = Error + "The date cannot be in the future : ";
+                }
+            }
+            catch
+            {
+                //record the error
+                Error = Error + "The date was not a valid date : ";
+            }
+            //if the paymentinfo is blank
+            if (PaymentInformation.Length == 0)
+            {
+                Error = Error + "The payment information may not be blank : ";
+            }
+            //if the payment info is greater than 20
+            if (PaymentInformation.Length > 20)
+            {
+                //record the error
+                Error = Error + "The payment Information must be less than 20 characters : ";
+            }
+            //is the address blank
+            if (CustomerAddress.Length == 0)
+            {
+                //record the error
+                Error = Error + "The address may not be blank : ";
+            }
+            //if the address is too long
+            if (CustomerAddress.Length > 50)
+            {
+                //record the error
+                Error = Error + "The address must be less than 50 characters : ";
+            }
+            //is the town blank
+            if (TotalPrice.Length == 0)
+            {
+                //record the error
+                Error = Error + "The Total Price may not be blank : ";
+            }
+            //if the town is too long
+            if (TotalPrice.Length > 6)
+            {
+                //record the error
+                Error = Error + "The Total Price must be less than 50 characters : ";
+            }
+            return Error;
+        }
+            }
+            
+        }
+    
