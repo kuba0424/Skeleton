@@ -144,5 +144,24 @@ namespace ClassLibrary
             //return the primary key of the new record
             return mThisStock.Id;*/
         }
+
+        public void Update()
+        {
+            //update an existing record based on the values of ThisStock
+            //connect to the database
+            clsDataConnection DB = new clsDataConnection();
+            //set the parameters for the new stored procedure
+            DB.AddParameter("@Id", mThisStock.Id);
+            DB.AddParameter("@itemId", mThisStock.itemId);
+            DB.AddParameter("@itemStock", mThisStock.itemStock);
+            DB.AddParameter("@itemPrice", mThisStock.itemPrice);
+            DB.AddParameter("@itemSize", mThisStock.itemSize);
+            DB.AddParameter("@itemDescription", mThisStock.itemDescription);
+            DB.AddParameter("@itemAvailable", mThisStock.itemAvailable);
+            DB.AddParameter("@itemDate", mThisStock.itemDate);
+            DB.AddParameter("@Active", mThisStock.Active);
+            //execute the stored procedure
+            DB.Execute("sproc_tblStock_Update");
+        }
     }
 }

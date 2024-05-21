@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -7,10 +8,29 @@ using System.Web.UI.WebControls;
 using ClassLibrary;
 
 public partial class _1_DataEntry : System.Web.UI.Page
-{
+
+  
+{   
+    //variavle to store the primary key with page level scope
+    Int32 Id;
+
+
     protected void Page_Load(object sender, EventArgs e)
     {
-    
+        //get the number of the address to be processed
+        Id = Convert.ToInt32(Session["Id"]);
+        if (IsPostBack == false)
+        {
+            //if this is not thge new record
+            if (Id != -1)
+            {
+                //display the current data for the record
+                DisplayId();
+                {
+
+                }
+            }
+        }
     }
 
     protected void txtStockId_TextChanged(object sender, EventArgs e)
@@ -38,6 +58,7 @@ public partial class _1_DataEntry : System.Web.UI.Page
         if (Error == "")
         {
             //capture the item description
+            Stock.Id = Id;
             Stock.itemDescription = itemDescription;
             Stock.itemDate = Convert.ToDateTime(itemDate);
             //capture the itemId
@@ -93,5 +114,22 @@ public partial class _1_DataEntry : System.Web.UI.Page
             chkActive.Checked = Stock.Active;
 
         }
+    }
+
+    void DisplayId()
+    {
+        //create an instance of the id book
+        clsStockCollection StockBook = new clsStockCollection();
+        //find the record to update
+        StockBook.ThisStock.Find(Id);
+        //display the data for the record
+        txtStockId.Text = StockBook.ThisStock.itemId.ToString();
+        txtItemSize.Text = StockBook.ThisStock.itemSize.ToString();
+        txtItemStock.Text = StockBook.ThisStock.itemStock.ToString();
+        txtItemPrice.Text = StockBook.ThisStock.itemPrice.ToString();
+        txtItemAvailable.Text = StockBook.ThisStock.itemAvailable.ToString();
+        txtItemDate.Text = StockBook.ThisStock.itemDate.ToString();
+        txtItemDesc.Text = StockBook.ThisStock.itemDescription;
+        chkActive.Checked = StockBook.ThisStock.Active;
     }
 }
