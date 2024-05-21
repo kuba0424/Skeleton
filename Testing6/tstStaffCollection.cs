@@ -125,6 +125,45 @@ namespace Testing6
             Assert.AreEqual(Staffcollection.ThisStaff, TestItem);
         }
 
+        public void UpdateMethodOK()
+        {
+            //create instance of class we want to create
+            clsStaffCollection staffcollection = new clsStaffCollection();
+            //create the item of test data
+            clsStaff TestItem = new clsStaff();
+            //variable to store primary key
+            Int32 PrimaryKey = 0;
+            //set the test properties
+            TestItem.StaffUser = "Ben";
+            TestItem.StaffPass = "Ben";
+            TestItem.StaffNickName = "Ben";
+            TestItem.StaffIsAdmin = false;
+            TestItem.StaffDateCreated = DateTime.Now;
+            //set the thisstaff to the test data
+            staffcollection.ThisStaff = TestItem;
+            //add the record
+            PrimaryKey = staffcollection.Add();
+            //set the primary ky of the test data
+            TestItem.StaffId = PrimaryKey;
+            //modiy test record
+            TestItem.StaffUser = "Men";
+            TestItem.StaffPass = "Men";
+            TestItem.StaffNickName = "Men";
+            TestItem.StaffIsAdmin = true;
+            TestItem.StaffDateCreated = DateTime.Now;
+            //sett the record based on new test data
+            staffcollection.ThisStaff = TestItem;
+            //update the record
+            staffcollection.Update();
+            //find the record
+            staffcollection.ThisStaff.Find(PrimaryKey);
+            //test to see if thisstaff matches test data
+            Assert.AreEqual(staffcollection.ThisStaff, TestItem);
+
+
+
+        }
+
 
 
 
