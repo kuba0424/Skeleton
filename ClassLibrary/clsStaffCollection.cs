@@ -12,34 +12,13 @@ namespace ClassLibrary
 
         public clsStaffCollection()
         {
-            //variable for index
-            Int32 Index = 0;
-            //variable to store record count
-            Int32 RecordCount = 0;
-            //onject for the data connect
+           
+            //object for the data connect
             clsDataConnection DB = new clsDataConnection();
             //execute stored proceduer
             DB.Execute("sproc_tblStaff_SelectAll");
-            //get count of records
-            RecordCount = DB.Count;
-            //while there are records to process
-            while (Index < RecordCount)
-            {
-                //create blank staff
-                clsStaff Staff = new clsStaff();
-                Staff.StaffId = Convert.ToInt32(DB.DataTable.Rows[Index]["StaffId"]);
-                Staff.StaffUser = Convert.ToString(DB.DataTable.Rows[Index]["Username"]);
-                Staff.StaffPass = Convert.ToString(DB.DataTable.Rows[Index]["Password"]);
-                Staff.StaffDateCreated = Convert.ToDateTime(DB.DataTable.Rows[Index]["DateCreated"]);
-                Staff.StaffNickName = Convert.ToString(DB.DataTable.Rows[Index]["staffNickname"]);
-                Staff.StaffIsAdmin = Convert.ToBoolean(DB.DataTable.Rows[Index]["isAdmin?"]);
-                //add the record to private data member
-                mStaffList.Add(Staff);
-                //point to next record
-                Index++;
-
-
-            }
+            //populate the array list with datatable
+            PopulateArray(DB);
 
         }
 
@@ -67,7 +46,6 @@ namespace ClassLibrary
             }
         }
 
-
         public clsStaff ThisStaff
         {
             get
@@ -93,7 +71,6 @@ namespace ClassLibrary
             //execute the query for returning primary ke value
             return DB.Execute("sproc_tblStaff_Insert");
 
-
         }
 
         public void Delete()
@@ -105,6 +82,49 @@ namespace ClassLibrary
             DB.AddParameter("@StaffId", mThisStaff.StaffId);
             //execute procedure
             DB.Execute("sproc_tblStaff_Delete");
+        }
+
+        public void ReportbyNickName(string Nickname)
+        {
+            //filteres records based on full or partial nickname
+            clsDataConnection DB = new clsDataConnection();
+            //send the nickname param
+            DB.AddParameter("@Nickname", Nickname);
+            //execute procedure
+            DB.Execute("sproc_tblStaff_FilterByNickname");
+            PopulateArray(DB);
+        }
+
+        void PopulateArray(clsDataConnection DB)
+        {
+            //populates the array list based on the data table in the param DB
+            //variable for the index
+            Int32 Index = 0;
+            //variable to store the record count
+            Int32 RecordCount;
+            //get the count of records
+            RecordCount = DB.Count;
+            //clear private arraylist
+            mStaffList = new List<clsStaff>();
+            //while there are records to process
+            while (Index < RecordCount)
+            {
+                //create blank object
+                clsStaff staff = new clsStaff();
+                //read in the field from current record
+                staff.StaffId = Convert.ToInt32(DB.DataTable.Rows[Index]["StaffId"]);
+                staff.StaffUser = Convert.ToString(DB.DataTable.Rows[Index]["Username"]);                staff.StaffUser = Convert.ToString(DB.DataTable.Rows[Index]["Username"]);
+                staff.StaffPass = Convert.ToString(DB.DataTable.Rows[Index]["Password"]);
+                staff.StaffDateCreated = Convert.ToDateTime(DB.DataTable.Rows[Index]["DateCreated"]);
+                staff.StaffIsAdmin = Convert.ToBoolean(DB.DataTable.Rows[Index]["isAdmin?"]);
+                staff.StaffNickName = Convert.ToString(DB.DataTable.Rows[Index]["staffNickname"]);
+                //add record to private data member
+                mStaffList.Add(staff);
+                //point to next record
+                Index ++;
+
+
+            }
         }
 
         public void Update()

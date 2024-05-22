@@ -171,11 +171,11 @@ namespace Testing6
             //variable to store primary key
             Int32 PrimaryKey = 0;
             //set the properties
-            TestItem.StaffUser = "Oki";
-            TestItem.StaffPass = "Oki";
+            TestItem.StaffUser = "ToDElete";
+            TestItem.StaffPass = "ToDElete";
             TestItem.StaffIsAdmin = true;
-            TestItem.StaffId = 4;
-            TestItem.StaffNickName = "Oki";
+            TestItem.StaffId = 26;
+            TestItem.StaffNickName = "ToDElete";
             TestItem.StaffDateCreated = DateTime.Now;
             //set this staff to the test data
             Staffcollection.ThisStaff = TestItem;
@@ -192,6 +192,64 @@ namespace Testing6
             //test to see that two values are the same
             Assert.IsFalse(Found);
         }
+
+        [TestMethod]
+        public void ReportbyNickNameOK()
+        {
+            clsStaffCollection staffCollection = new clsStaffCollection();
+            //create instance of filtered data
+            clsStaffCollection FillteredStaff = new clsStaffCollection();
+            //apply a blank string (should return all record)
+            FillteredStaff.ReportbyNickName("");
+            //test to see if values are the same
+            Assert.AreEqual(staffCollection.Count, FillteredStaff.Count);
+
+        }
+        [TestMethod]
+        public void ReportbyNickNameNoneFound()
+        {
+            clsStaffCollection staffCollection = new clsStaffCollection();
+            //create instance of filtered data
+            clsStaffCollection FillteredStaff = new clsStaffCollection();
+            //apply a nickname that doesnt exist
+            FillteredStaff.ReportbyNickName("xxxxxx");
+            //test to see if values are the same
+            Assert.AreEqual(0, FillteredStaff.Count);
+
+        }
+          [TestMethod]
+        public void ReportbyNickNameTestDataFound()
+        {
+            //create instance of filtered data
+            clsStaffCollection FilteredStaff = new clsStaffCollection();
+            Boolean OK = true;
+            //apply a nickname that exists
+            FilteredStaff.ReportbyNickName("yyyyyyy");
+            //check that the correct number of records are found
+            if(FilteredStaff.Count == 2)
+            {
+                //check to see that the first record is 35
+                if (FilteredStaff.StaffList[0].StaffId != 37)
+                {
+                    OK = false;
+                }
+                //check to see that the first record is 36
+                if (FilteredStaff.StaffList[0].StaffId != 38)
+                {
+                    OK = false;
+                }
+
+            }
+            else
+            {
+                OK = false;
+            }
+            //test to see if values are the same
+            Assert.IsTrue(OK);
+
+        }
+
+
 
 
 

@@ -47,7 +47,7 @@ public partial class _1_List : System.Web.UI.Page
         //variable to store the primary key value of the record to be edited
         Int32 StaffId;
         //if record has been selected from list
-        if (lstStaffList.SelectedIndex != 0)
+        if (lstStaffList.SelectedIndex != -1)
         {
             //get primary key value of record to edit
             StaffId = Convert.ToInt32(lstStaffList.SelectedValue);
@@ -77,11 +77,46 @@ public partial class _1_List : System.Web.UI.Page
             Session["StaffId"] = StaffId;
             //redirect to delete page
             Response.Redirect("AdminConfirmDelete.aspx");
+            Console.WriteLine(StaffId);
         }
         else
         {
             //if no record selected
             lblError.Text = "Please select a record from list to delete";
         }
+        
     }
+
+    protected void btnApplyFilter_Click(object sender, EventArgs e)
+    {
+        clsStaffCollection staffcollection = new clsStaffCollection();
+        //retrieve value of nickname from presentation layer
+        staffcollection.ReportbyNickName(txtFilterNickname.Text);
+        //set the data source to the list of staff in the collection
+        lstStaffList.DataSource = staffcollection.StaffList;
+        //set the name of the primary key
+        lstStaffList.DataValueField = "StaffId";
+        //set the name of the field to display
+        lstStaffList.DataTextField = "staffNickName";
+        ///bind data to list
+        lstStaffList.DataBind();
+    }
+
+    protected void btnClearFilter_Click(object sender, EventArgs e)
+    {
+        clsStaffCollection staffCollection = new clsStaffCollection();
+        //set empty string
+        staffCollection.ReportbyNickName("");
+        //clear any existing filter to tidy up ui
+        txtFilterNickname.Text = "";
+        //set the data source to the list of staff in the collection
+        lstStaffList.DataSource = staffCollection.StaffList;
+        //set the name of the primary key
+        lstStaffList.DataValueField = "StaffId";
+        //set the name of the field to display
+        lstStaffList.DataTextField = "staffNickName";
+        ///bind data to list
+        lstStaffList.DataBind();
+    }
+
 }
