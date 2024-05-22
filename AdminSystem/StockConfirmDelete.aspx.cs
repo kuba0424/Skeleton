@@ -23,6 +23,7 @@ public partial class _1_ConfirmDelete : System.Web.UI.Page
         //create a new instance of the Stock collection class
         clsStockCollection Stock = new clsStockCollection();
         //find the record to delete
+        Stock.ThisStock.Find(Id);
         Stock.Delete();
         //redirect back to the main page
         Response.Redirect("StockList.aspx");
