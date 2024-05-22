@@ -12,7 +12,7 @@
             <asp:TextBox ID="txtCustomerId" runat="server" OnTextChanged="txtCustomerId_TextChanged" style="z-index: 1; left: 126px; top: 14px; position: absolute" width="128px"></asp:TextBox>
             <asp:Label ID="lblCustomerId" runat="server" style="z-index: 1; left: 4px; top: 31px; position: absolute; height: 24px" Text="CustomerId" width="97px"></asp:Label>
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <asp:Button ID="btnFind" runat="server" Text="Find" Width="52px" />
+            <asp:Button ID="btnFind" runat="server" Text="Find" Width="52px" OnClick="btnFind_Click1" />
         </div>
         <p>
             <asp:Label ID="lblUsername" runat="server" style="z-index: 1; left: 4px; top: 68px; position: absolute; width: 97px" Text="Username"></asp:Label>
