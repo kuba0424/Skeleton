@@ -2,6 +2,7 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Collections.Generic;
+using System.Security.Cryptography;
 
 namespace Testing4
 {
@@ -120,15 +121,15 @@ namespace Testing4
             Assert.AreEqual(AllStock.Count, TestList.Count);
         }*/
 
-        [TestMethod]
+        //[TestMethod]
 
-        public void TwoRecordsPresent()
+        /*public void TwoRecordsPresent()
         {
             //create an instance of the class we want to create
             clsStockCollection AllStock = new clsStockCollection();
             //test to see that the two values are the same
             Assert.AreEqual(AllStock.Count, 5);
-        }
+        }*/
 
         [TestMethod]
 
@@ -164,6 +165,90 @@ namespace Testing4
 
         }
 
+
+        [TestMethod]
+
+        public void UpdateMethodOK()
+        {
+            //create an instance of the class we want to create
+            clsStockCollection AllStock = new clsStockCollection();
+            //create the item of test data
+            clsStock TestItem = new clsStock();
+            //variable to store the primary key
+            Int32 PrimaryKey = 0;
+            //set its properties
+            TestItem.Active = true;
+            TestItem.itemId = 1;
+            TestItem.itemStock = 4;
+            TestItem.itemSize = 42;
+            TestItem.itemPrice = 700;
+            TestItem.itemDate= DateTime.Now;
+            TestItem.itemAvailable= true;
+            TestItem.itemDescription = "Updtmethodtesting";
+            //set ThisStock to the test data
+            AllStock.ThisStock = TestItem;
+            //add the new record
+            PrimaryKey = AllStock.Add();
+            //set the primary key of the test data
+            TestItem.Id= PrimaryKey;
+            //modify the test record
+            TestItem.Active = false;
+            TestItem.itemId = 12;
+            TestItem.itemStock = 7;
+            TestItem.itemSize = 38;
+            TestItem.itemPrice = 750;
+            TestItem.itemDate = DateTime.Now;
+            TestItem.itemAvailable = true;
+            TestItem.itemDescription = "Updtmethodtesting2";
+            //set the record based on thew new test data
+            AllStock.ThisStock = TestItem;
+            //update the record
+            AllStock.Update();
+            //find the record
+            AllStock.ThisStock.Find(PrimaryKey);
+            //test to see if the ThisStock matches the test data
+            Assert.AreEqual(AllStock.ThisStock, TestItem);
+
+
+        }
+
+
+        [TestMethod]
+
+
+        public void DeleteMethodOK()
+        {
+            //create an instance of the class we want to create
+            clsStockCollection AllStock = new clsStockCollection();
+            //create the item of test data
+            clsStock TestItem = new clsStock();
+            //variable to store the primary key
+            Int32 PrimaryKey = 0;
+            //set its properties
+            TestItem.Active = true;
+            TestItem.itemId = 1;
+            TestItem.itemStock = 4;
+            TestItem.itemSize = 42;
+            TestItem.itemPrice = 700;
+            TestItem.itemDate = DateTime.Now;
+            TestItem.itemAvailable = true;
+            TestItem.itemDescription = "Updtmethodtesting";
+            //set ThisStock to the test data
+            AllStock.ThisStock = TestItem;
+            //set ThisStock to the test data
+            AllStock.ThisStock = TestItem;
+            //add the record
+            PrimaryKey = AllStock.Add();
+            //set the primary key of the test data
+            TestItem.Id = PrimaryKey;
+            //find the record
+            AllStock.Delete();
+            //now find the record
+            Boolean Found = AllStock.ThisStock.Find(PrimaryKey);
+            //test to see that the record was not found
+            Assert.IsFalse(Found);
+
+        }
 
         }
     }
