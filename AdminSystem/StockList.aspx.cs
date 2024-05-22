@@ -8,6 +8,8 @@ using ClassLibrary;
 
 public partial class _1_List : System.Web.UI.Page
 {
+
+
     protected void Page_Load(object sender, EventArgs e)
     {
         //if this is the first time the page has been displayed
@@ -87,5 +89,10 @@ public partial class _1_List : System.Web.UI.Page
             //display an error message
             lblError.Text = "please select a record from the list to delete!";
         }
+    }
+
+    protected void lstStockList_SelectedIndexChanged(object sender, EventArgs e)
+    {
+
     }
 }
