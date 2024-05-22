@@ -16,8 +16,8 @@
         }
         .auto-style2 {
             z-index: 1;
-            left: 84px;
-            top: 467px;
+            left: 85px;
+            top: 466px;
             position: absolute;
         }
     </style>
@@ -28,6 +28,9 @@
         </div>
         <asp:Button ID="btnAdd" runat="server" CssClass="auto-style2" OnClick="btnAdd_Click" Text="Add" />
         <asp:ListBox ID="lstStockList" runat="server" CssClass="auto-style1"></asp:ListBox>
+        <asp:Button ID="btnEdit" runat="server" OnClick="lblError_Click" style="z-index: 1; left: 146px; top: 467px; position: absolute" Text="Edit" />
+        <asp:Button ID="lblError" runat="server" style="z-index: 1; left: 104px; top: 498px; position: absolute" />
+        <asp:Button ID="btnDelete" runat="server" OnClick="btnDelete_Click" style="z-index: 1; left: 215px; top: 466px; position: absolute" Text="Delete" />
     </form>
 </body>
 </html>

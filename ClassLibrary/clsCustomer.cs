@@ -11,7 +11,7 @@ namespace ClassLibrary
         //private data member for the Customer id property
         private Int32 mCustomer_Id;
         //CustomerId public property
-        public int CustomerId
+        public int Customer_Id
         {
             get
             {
@@ -124,15 +124,15 @@ namespace ClassLibrary
 
 
         /****** FIND METHOD *******/
-        public bool Find(int CustomerId)
+        public bool Find(int Customer_Id)
         {
 
             //create an instance of the data connection
             clsDataConnection DB = new clsDataConnection();
             //add the parameters for the address id to search for
-            DB.AddParameter("@CustomerId", CustomerId);
+            DB.AddParameter("@Customer_Id", Customer_Id);
             //execute the stored procedure
-            DB.Execute("sproc_tblCustomers_FilterByCustomerId");
+            DB.Execute("sproc_tblCustomers_FilterByCustomer_Id");
             //if one record is fouc=nd (there should be either one or zero)
             if (DB.Count == 1)
             {
