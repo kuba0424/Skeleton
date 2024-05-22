@@ -23,16 +23,26 @@ public partial class _1_DataEntry : System.Web.UI.Page
     {
         //create a new instance of clsOrder
         clsOrder AnOrder = new clsOrder();
-        //capture the customer address
-        AnOrder.CustomerAddress = txtCustomerAddress.Text;
-        AnOrder.TotalPrice = Convert.ToDouble(txtTotalPrice.Text);
-        AnOrder.OrderDispatched = chkDispatched.Checked;
-        AnOrder.PaymentInformation = Convert.ToInt32(txtPaymentInformation.Text);
-        AnOrder.DispatchDate = Convert.ToDateTime(DateTime.Now);
-        //Store the address in the session object
-        Session["AnOrder"] = AnOrder;
-        //navigate to the view page
-        Response.Redirect("OrderViewer.aspx");
+        string DispatchDate = txtDispatchDate.Text;
+        string PaymentInformation = txtPaymentInformation.Text;
+        string CustomerAddress = txtCustomerAddress.Text;
+        string TotalPrice = txtTotalPrice.Text;
+        string OrderDispatched = chkDispatched.Text;
+        string Error = "";
+        Error = AnOrder.Valid(DispatchDate, PaymentInformation, CustomerAddress, TotalPrice);
+        if (Error == "")
+        {
+            AnOrder.DispatchDate = Convert.ToDateTime(DispatchDate);
+            AnOrder.PaymentInformation = Convert.ToInt32(PaymentInformation);
+            AnOrder.CustomerAddress = CustomerAddress;
+            AnOrder.TotalPrice = Convert.ToInt32(TotalPrice);
+            Session["AnOrder"] = AnOrder;
+            Response.Redirect("OrderViewer.aspx");
+        }
+        else
+        {
+            lblError.Text = Error;
+        }
     }
 
     protected void Button1_Click(object sender, EventArgs e)
