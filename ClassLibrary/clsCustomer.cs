@@ -133,7 +133,7 @@ namespace ClassLibrary
             DB.AddParameter("@Customer_Id", Customer_Id);
             //execute the stored procedure
             DB.Execute("sproc_tblCustomers_FilterByCustomer_Id");
-            //if one record is fouc=nd (there should be either one or zero)
+            //if one record is found (there should be either one or zero)
             if (DB.Count == 1)
             {
 
@@ -142,9 +142,9 @@ namespace ClassLibrary
                 mUsername = Convert.ToString(DB.DataTable.Rows[0]["Username"]);
                 mPassword = Convert.ToString(DB.DataTable.Rows[0]["Password"]);
                 mEmail = Convert.ToString(DB.DataTable.Rows[0]["Email"]);
-                mHomeAddress = Convert.ToString(DB.DataTable.Rows[0]["Home Address"]);
-                mRegistrationDate = Convert.ToDateTime(DB.DataTable.Rows[0]["Registration Date"]);
-                mActive = Convert.ToBoolean(DB.DataTable.Rows[0]["is Active"]);
+                mHomeAddress = Convert.ToString(DB.DataTable.Rows[0]["HomeAddress"]);
+                mRegistrationDate = Convert.ToDateTime(DB.DataTable.Rows[0]["RegistrationDate"]);
+                mActive = Convert.ToBoolean(DB.DataTable.Rows[0]["Active"]);
                 //return that everything worked OK
                 return true;
             }
