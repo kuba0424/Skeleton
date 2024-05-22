@@ -9,11 +9,11 @@ using ClassLibrary;
 public partial class _1_ConfirmDelete : System.Web.UI.Page
 {
     Int32 StaffId;
+
     protected void Page_Load(object sender, EventArgs e)
     {
         //get the number of the staff to be deleted from the sssion object
         StaffId = Convert.ToInt32(Session["StaffId"]);
-
     }
 
     protected void btnYes_Click(object sender, EventArgs e)
@@ -21,6 +21,8 @@ public partial class _1_ConfirmDelete : System.Web.UI.Page
         //create new instance of the staffcollection class
         clsStaffCollection staffcllect = new clsStaffCollection();
         //find record to delete
+        staffcllect.ThisStaff.Find(StaffId);
+        //Delete record
         staffcllect.Delete();
         //redirect to main page
         Response.Redirect("AdminList.aspx");
