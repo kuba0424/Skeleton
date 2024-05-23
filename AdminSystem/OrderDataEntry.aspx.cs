@@ -36,8 +36,15 @@ public partial class _1_DataEntry : System.Web.UI.Page
             AnOrder.PaymentInformation = Convert.ToInt32(PaymentInformation);
             AnOrder.CustomerAddress = CustomerAddress;
             AnOrder.TotalPrice = Convert.ToInt32(TotalPrice);
-            Session["AnOrder"] = AnOrder;
-            Response.Redirect("OrderViewer.aspx");
+            AnOrder.OrderDispatched = chkDispatched.Checked;
+            //create a new instance of the order collection
+            clsOrderCollection OrderList = new clsOrderCollection();
+            //set the ThisOrder property
+            OrderList.ThisOrder = AnOrder;
+            //add the new record
+            OrderList.Add();
+            //redirect back to the list page
+            Response.Redirect("OrderList.aspx");
         }
         else
         {
