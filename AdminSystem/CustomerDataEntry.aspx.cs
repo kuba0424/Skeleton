@@ -38,7 +38,7 @@ public partial class _1_DataEntry : System.Web.UI.Page
         txtEmail.Text = Customer.ThisCustomer.Email.ToString();
         txtHomeAddress.Text = Customer.ThisCustomer.HomeAddress.ToString();
         txtRegistrationDate.Text = Customer.ThisCustomer.RegistrationDate.ToString();
-        //lblActive.Text = Customer.ThisCustomer.Active;
+        lblActive.Checked = Customer.ThisCustomer.Active;
     }
 
     protected void txtCustomerId_TextChanged(object sender, EventArgs e)
@@ -73,6 +73,8 @@ public partial class _1_DataEntry : System.Web.UI.Page
         Error = AnCustomer.Valid(Username, Password, Email, HomeAddress, RegistrationDate);
         if (Error == "")
         {
+            //capture the CustomerId
+            AnCustomer.Customer_Id = Customer_Id;
             // capture the username
             AnCustomer.Username = Username;
             AnCustomer.Email = Email;
@@ -83,11 +85,24 @@ public partial class _1_DataEntry : System.Web.UI.Page
             AnCustomer.Active = lblActive.Checked;
             //create a new instance of the customer collection
             clsCustomerCollection CustomerList = new clsCustomerCollection();
-            //set the ThisCustomer property
-            CustomerList.ThisCustomer = AnCustomer;
-            //add the new record
-            CustomerList.Add();
-            // navigate to the view page
+           if (Customer_Id == -1)
+            {
+                //set the ThisCustomer property
+                CustomerList.ThisCustomer = AnCustomer;
+                //add the new record
+                CustomerList.Add();
+            }
+            //otherwise it must be an update
+            else
+            {
+                //find the record to update
+                CustomerList.ThisCustomer.Find(Customer_Id);
+                //set the ThisCustomer property
+                CustomerList.ThisCustomer = AnCustomer;
+                //update the record
+                CustomerList.Update();
+            }
+            // navigate to the list page
             Response.Redirect("CustomerList.aspx");
         }
         else
