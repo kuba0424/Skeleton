@@ -12,8 +12,8 @@
             <asp:ListBox ID="lstCustomerList" runat="server" Height="307px" OnSelectedIndexChanged="lstCustomerList_SelectedIndexChanged" Width="348px"></asp:ListBox>
         </div>
         <asp:Button ID="btnAdd" runat="server" OnClick="btnAdd_Click" Text="Add" />
-        <asp:Button ID="btnEdit" runat="server" OnClick="Button1_Click" Text="Edit" />
-        <asp:Button ID="btnDelete" runat="server" OnClick="Button1_Click1" Text="Delete" />
+        <asp:Button ID="btnEdit" runat="server" OnClick="btnEdit_Click" Text="Edit" />
+        <asp:Button ID="btnDelete" runat="server" OnClick="btnDelete_Click" Text="Delete" />
         <p>
             <asp:Label ID="lblError" runat="server"></asp:Label>
         </p>
