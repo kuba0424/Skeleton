@@ -152,5 +152,45 @@ namespace ClassLibrary
             //execute the stored procedure
             DB.Execute("sproc_tblCustomers_Delete");
         }
+        public void ReportByHomeAddress(string HomeAddress)
+        {
+            //filters the records based on a full or partial homeaddress
+            //connects to database
+            clsDataConnection DB = new clsDataConnection();
+            //send the homeaddress parameters to the database
+            DB.AddParameter("@HomeAddress", HomeAddress);
+            //execute the stored procedure
+            DB.Execute("sproc_tblCustomers_FilterByHomeAddress");
+        }
+        void PopulateArraay(clsDataConnection DB)
+        {
+            //populates the array list based on the data table in the parameter DB
+            //variable for the index
+            Int32 Index = 0;
+            //variable to stored the record count
+            Int32 RecordCount;
+            //get the count of records
+            RecordCount = DB.Count;
+            //clear the private array list
+            mCustomerList = new List<clsCustomer>();
+            //while there are records to process
+            while (Index < RecordCount)
+            {
+                //create a blank custmer object
+                clsCustomer AnCustomer = new clsCustomer();
+                //read in the fields from the current record
+                AnCustomer.Active = Convert.ToBoolean(DB.DataTable.Rows[Index]["Active"]);
+                AnCustomer.Customer_Id = Convert.ToInt32(DB.DataTable.Rows[Index]["Customer_Id"]);
+                AnCustomer.RegistrationDate = Convert.ToDateTime(DB.DataTable.Rows[Index]["RegistrationDate"]);
+                AnCustomer.Username = Convert.ToString(DB.DataTable.Rows[Index]["Username"]);
+                AnCustomer.Password = Convert.ToString(DB.DataTable.Rows[Index]["Password"]);
+                AnCustomer.Email = Convert.ToString(DB.DataTable.Rows[Index]["Email"]);
+                AnCustomer.HomeAddress = Convert.ToString(DB.DataTable.Rows[Index]["HomeAddress"]);
+                //add the record to te private data member
+                mCustomerList.Add(AnCustomer);
+                //point at the next record
+                Index++;
+            }
+        }
     }
 }
