@@ -15,6 +15,8 @@ namespace ClassLibrary
             clsDataConnection DB = new clsDataConnection();
             //execute the stored procedure
             DB.Execute("sproc_tblCustomers_SelectAll");
+            //populate the array list with the data table
+            PopulateArraay(DB);
             //get the count of records
             RecordCount = DB.Count;
             //while there are records to process
@@ -160,7 +162,9 @@ namespace ClassLibrary
             //send the homeaddress parameters to the database
             DB.AddParameter("@HomeAddress", HomeAddress);
             //execute the stored procedure
-            DB.Execute("sproc_tblCustomers_FilterByHomeAddress");
+            DB.Execute("sproc_tblCustomers_FilteredByHomeAddress");
+            //populate the array list with the data table
+            PopulateArraay(DB);
         }
         void PopulateArraay(clsDataConnection DB)
         {

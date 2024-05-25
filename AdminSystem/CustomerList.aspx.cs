@@ -90,4 +90,38 @@ public partial class _1_List : System.Web.UI.Page
             lblError.Text = "Please select a record from the list to delete";
         }
     }
+
+    protected void btnApplyFilter_Click(object sender, EventArgs e)
+    {
+        //create an instance of the Customer object
+        clsCustomerCollection AnCustomer = new clsCustomerCollection();
+        //retrieve the value of Home address from the presentation layer
+        AnCustomer.ReportByHomeAddress(txtboxEtrHomeAddress.Text);
+        //set the data source to the list of customers in the collection
+        lstCustomerList.DataSource = AnCustomer.CustomerList;
+        //seet the name if the primary key
+        lstCustomerList.DataValueField = "Customer_Id";
+        //set the name of the field to display
+        lstCustomerList.DataTextField = "HomeAddress";
+        //bind the data to the list
+        lstCustomerList.DataBind();
+    }
+
+    protected void btnClearFilter_Click(object sender, EventArgs e)
+    {
+        //create an instance of the Customer object
+        clsCustomerCollection AnCustomer = new clsCustomerCollection();
+        //set an empty string
+        AnCustomer.ReportByHomeAddress("");
+        //clear any exsiting filter to tidy up the interface
+        txtboxEtrHomeAddress.Text = "";
+        //set the data source to the list of customers in the collection
+        lstCustomerList.DataSource = AnCustomer.CustomerList;
+        //seet the name if the primary key
+        lstCustomerList.DataValueField = "Customer_Id";
+        //set the name of the field to display
+        lstCustomerList.DataTextField = "HomeAddress";
+        //bind the data to the list
+        lstCustomerList.DataBind();
+    }
 }
