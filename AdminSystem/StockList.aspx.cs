@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using ASP;
 using ClassLibrary;
 
 public partial class _1_List : System.Web.UI.Page
@@ -94,5 +95,59 @@ public partial class _1_List : System.Web.UI.Page
     protected void lstStockList_SelectedIndexChanged(object sender, EventArgs e)
     {
 
+    }
+
+
+
+    protected void btnApplyFilter_Click(object sender, EventArgs e)
+    {
+        //create an instance of the stock object
+        clsStockCollection Stock = new clsStockCollection();
+        //retrieve the value of the item description from the presentation layer
+        Stock.ReportByItemDescription(txtItemDesc.Text);
+        //set the data source to the list of the stock in the collection
+        lstStockList.DataSource = Stock.StockList;
+        //set the name of the primary key
+        lstStockList.DataValueField = "Id";
+        //set the name of the field to display
+        lstStockList.DataTextField = "itemDescription";
+        //bind the data to the list
+        lstStockList.DataBind();
+    }
+
+    protected void btnClearFilter_Click(object sender, EventArgs e) //Void
+    {
+        /*//create an instance of the stock object
+        clsStockCollection Stock = new clsStockCollection();
+        //set an empty string
+        Stock.ReportByItemDescription("");
+        //clear up any existing filter to tidy up the interface
+        txtItemDesc.Text = "";
+        //set the source of the list of stock in the collection
+        lstStockList.DataSource= Stock.StockList;
+        //set the name of the primary key
+        lstStockList.DataValueField= "Id";
+        //set the name of the field to display
+        lstStockList.DataTextField = "Item Description";
+        //bind the data to the list
+        lstStockList.DataBind();*/
+    }
+
+    protected void Button1_Click(object sender, EventArgs e) //This is the btnClearFilter...
+    {
+        //create an instance of the stock object
+        clsStockCollection Stock = new clsStockCollection();
+        //set an empty string
+        Stock.ReportByItemDescription("");
+        //clear up any existing filter to tidy up the interface
+        txtItemDesc.Text = "";
+        //set the source of the list of stock in the collection
+        lstStockList.DataSource = Stock.StockList;
+        //set the name of the primary key
+        lstStockList.DataValueField = "Id";
+        //set the name of the field to display
+        lstStockList.DataTextField = "itemDescription";
+        //bind the data to the list
+        lstStockList.DataBind();
     }
 }
