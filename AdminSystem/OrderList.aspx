@@ -13,10 +13,12 @@
 </head>
 <body>
     <form id="form1" runat="server">
-        <asp:ListBox ID="lstOrderList" runat="server" Height="290px" style="z-index: 1; left: 9px; top: 31px; position: absolute; margin-right: 6px;" Width="357px"></asp:ListBox>
         <p>
             &nbsp;</p>
-        <asp:Button ID="btnAdd" runat="server" style="z-index: 1; top:346px; position:absolute; left: 11px;" Text="Add" OnClick="Button1_Click1" />
+        <asp:Button ID="btnAdd" runat="server" style="z-index: 1; top:347px; position:absolute; left: 26px;" Text="Add" OnClick="Button1_Click1" />
+        <asp:Button ID="btnEdit" runat="server" style="z-index: 1; top:347px; position:absolute; left: 115px;" Text="Edit" />
+        <asp:ListBox ID="lstOrderList" runat="server" Height="290px" style="z-index: 1; left: 22px; top: 35px; position: absolute; margin-right: 6px;" Width="357px"></asp:ListBox>
+        <asp:Label ID="lblError" runat="server" style="z-index: 1; top:394px; position:absolute; left: 69px;" Text="Label"></asp:Label>
     </form>
 </body>
 </html>
