@@ -28,6 +28,8 @@ public partial class StockLogin : System.Web.UI.Page
         Password = Convert.ToString(txtPassword.Text);
         //find the record
         Found = User.FindUser(Username, Password);
+        //add a session to capture the user name
+        Session["User"] = User;
         //if username and or password empty
         if (txtUsername.Text == "")
         {
@@ -49,5 +51,11 @@ public partial class StockLogin : System.Web.UI.Page
             //record the error
             lblError.Text = "Login details are incorrect. Please try again ";
         }
+    }
+
+    protected void btnCancel_Click(object sender, EventArgs e)
+    {
+        //rediret bacck to the main menu
+        Response.Redirect("TeamMainMenu.aspx");
     }
 }

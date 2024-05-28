@@ -132,4 +132,12 @@ public partial class _1_DataEntry : System.Web.UI.Page
         txtItemDesc.Text = StockBook.ThisStock.itemDescription;
         chkActive.Checked = StockBook.ThisStock.Active;
     }
+
+
+
+    protected void Button1_Click(object sender, EventArgs e) //main menu button
+    {
+        //redirect back to the main menu
+        Response.Redirect("TeamMainMenu.aspx");
+    }
 }

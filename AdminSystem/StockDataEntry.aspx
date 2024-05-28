@@ -163,6 +163,7 @@
         <p>
             &nbsp;</p>
         <asp:TextBox ID="txtItemPrice" runat="server" CssClass="auto-style10" height="22px" width="128px"></asp:TextBox>
+        <asp:Button ID="btnMain" runat="server" OnClick="Button1_Click" style="z-index: 1; left: 341px; top: 570px; position: absolute" Text="Return to Main Menu" />
     </form>
 </body>
 </html>
