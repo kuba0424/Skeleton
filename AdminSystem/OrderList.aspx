@@ -19,6 +19,7 @@
         <asp:Button ID="btnEdit" runat="server" style="z-index: 1; top:347px; position:absolute; left: 115px;" Text="Edit" />
         <asp:ListBox ID="lstOrderList" runat="server" Height="290px" style="z-index: 1; left: 22px; top: 35px; position: absolute; margin-right: 6px;" Width="357px"></asp:ListBox>
         <asp:Label ID="lblError" runat="server" style="z-index: 1; top:394px; position:absolute; left: 69px;" Text="Label"></asp:Label>
+        <asp:Button ID="btnDelete" runat="server" style="z-index: 1; top:347px; position:absolute; left: 199px;" Text="Delete" OnClick="btnDelete_Click" />
     </form>
 </body>
 </html>
