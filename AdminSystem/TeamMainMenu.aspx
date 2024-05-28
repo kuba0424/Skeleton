@@ -8,8 +8,11 @@
 </head>
 <body>
     <form id="form1" runat="server">
-        <div>
-        </div>
+        <asp:Label ID="lblTitle" runat="server" style="z-index: 1; left: 238px; top: 109px; position: absolute;" Text="Sprint Squad Main Menu"></asp:Label>
+        <asp:Button ID="Button1" runat="server" style="z-index: 1; left: 365px; top: 188px; position: absolute;" Text="Button" />
+        <asp:Button ID="Button4" runat="server" style="z-index: 1; left: 462px; top: 188px; position: absolute;" Text="Button" />
+        <asp:Button ID="btnAdminManage" runat="server" style="z-index: 1; left: 19px; top: 188px; position: absolute;" Text="Admin Management" OnClick="btnAdminManage_Click" />
+        <asp:Button ID="Button3" runat="server" style="z-index: 1; left: 255px; top: 188px; position: absolute;" Text="Button" />
     </form>
 </body>
 </html>
