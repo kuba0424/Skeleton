@@ -19,6 +19,13 @@ public partial class _1_List : System.Web.UI.Page
             //update the list box
             DisplayStock();
         }
+
+        //create a new instance of the clsStockUser
+        clsStockUser User = new clsStockUser();
+        //get data from the session object
+        User = (clsStockUser)Session["User"];
+        //display the username
+        Response.Write("Logged in as: " + User.Username);
     }
 
     public void DisplayStock()
@@ -149,5 +156,13 @@ public partial class _1_List : System.Web.UI.Page
         lstStockList.DataTextField = "itemDescription";
         //bind the data to the list
         lstStockList.DataBind();
+    }
+
+
+
+    protected void Button1_Click1(object sender, EventArgs e) //main menu button
+    {
+        //rediret back to the main menu
+        Response.Redirect("TeamMainMenu.aspx");
     }
 }

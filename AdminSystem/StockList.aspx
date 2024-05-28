@@ -35,6 +35,7 @@
         <asp:Button ID="btnClearFilter" runat="server" OnClick="Button1_Click" style="z-index: 1; left: 231px; top: 596px; position: absolute" Text="Clear Filter" />
         <asp:TextBox ID="txtItemDesc" runat="server" style="z-index: 1; left: 235px; top: 544px; position: absolute"></asp:TextBox>
         <asp:Label ID="Label2" runat="server" style="z-index: 1; left: 60px; top: 544px; position: absolute" Text="Enter Item Description"></asp:Label>
+        <asp:Button ID="btnMain" runat="server" OnClick="Button1_Click1" style="z-index: 1; left: 567px; top: 594px; position: absolute" Text="Return to Main Menu" />
     </form>
 </body>
 </html>
