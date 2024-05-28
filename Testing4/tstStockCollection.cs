@@ -2,6 +2,7 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Collections.Generic;
+using System.Runtime.InteropServices;
 using System.Security.Cryptography;
 
 namespace Testing4
@@ -249,6 +250,65 @@ namespace Testing4
             Assert.IsFalse(Found);
 
         }
+
+        [TestMethod]
+
+        public void ReportByItemDescriptionMethodOK()
+        {
+            //create an instance of the class containing unfiltered results 
+            clsStockCollection AllStock = new clsStockCollection();
+            //create an instance of the filtered data
+            clsStockCollection FilteredStock = new clsStockCollection();
+            //apply a blank string (should return all records)
+            FilteredStock.ReportByItemDescription("");
+            //test to see that the two reults are the same
+            Assert.AreEqual(AllStock.Count, FilteredStock.Count);
+        }
+
+        [TestMethod]
+
+        public void ReportByItemDescriptionNoneFound()
+        {
+            //create an instance of the class we want to create
+            clsStockCollection FilteredStock = new clsStockCollection();
+            //apply a post code that doesnt exist
+            FilteredStock.ReportByItemDescription("zzzzzz");
+            //test to see that there are no records
+            Assert.AreEqual(0, FilteredStock.Count);
+        }
+
+        [TestMethod]
+
+        public void ReportByItemDescriptionTestDataFound()
+        {
+            //create an instance of the filtered data
+            clsStockCollection FilteredStock = new clsStockCollection();
+            //variabvle to store the outcome
+            Boolean OK = true;
+            //apply a description that doesnt exist ("zzzzz");
+            FilteredStock.ReportByItemDescription("testDesc");
+            //check that the correct number of records are found
+            if (FilteredStock.Count == 2)
+            {
+                //check to see that the first record is 168
+                if (FilteredStock.StockList[0].Id != 168)
+                {
+                    OK = false;
+                }
+                //check to see that the first record is 169
+                if (FilteredStock.StockList[1].Id != 169)
+                {
+                    OK = false;
+                }
+            }
+            else
+            {
+                OK = false;
+            }
+            //test to see that there are no records
+            Assert.IsTrue(OK);
+        }
+            
 
         }
     }

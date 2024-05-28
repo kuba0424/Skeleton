@@ -11,10 +11,20 @@ namespace ClassLibrary
         //private member data for thisStock
         clsStock mThisStock = new clsStock();
 
-       //constructor for the class
+        //constructor for the class
         public clsStockCollection()
         {
-            //variable for the index
+            //object for data connection
+            clsDataConnection DB = new clsDataConnection();
+            //execute the stored procedure
+            DB.Execute("sproc_tblStock_SelectAll");
+            //populate the array list with the data table
+            PopulateArray(DB);
+        }
+
+
+
+            /*//variable for the index
             Int32 Index = 0;
             //variable to store the record count
             Int32 RecordCount = 0;
@@ -45,7 +55,7 @@ namespace ClassLibrary
                 Index++;
                     
 
-            }
+            }*/
             
             
             /*//create the items of the test data
@@ -78,7 +88,7 @@ namespace ClassLibrary
             //add the item to the test list
             mStockList.Add(TestItem);*/
 
-        }
+        
 
         public List<clsStock> StockList
         {
@@ -156,6 +166,19 @@ namespace ClassLibrary
             DB.Execute("sproc_tblStock_Delete");
         }
 
+        public void ReportByItemDescription(string itemDescription)
+        {
+            //filteres the records based on a full of partial item description
+            //connect to the database
+            clsDataConnection DB = new clsDataConnection();
+            //send the postcode parameter to the database
+            DB.AddParameter("@itemDescription", itemDescription);
+            //execute the stored procedure
+            DB.Execute("sproc_tblStock_FilterByItemDescription");
+            //populate the array list with the data table
+            PopulateArray(DB);
+        }
+
         public void Update()
         {
             //update an existing record based on the values of ThisStock
@@ -173,6 +196,39 @@ namespace ClassLibrary
             DB.AddParameter("@Active", mThisStock.Active);
             //execute the stored procedure
             DB.Execute("sproc_tblStock_Update");
+        }
+
+        void PopulateArray(clsDataConnection DB)
+        {
+            //populates the array list based onm the data table in the parameter DB
+            //variable for the index
+            Int32 Index = 0;
+            //variable to store the record count
+            Int32 RecordCount;
+            //get the count of the record
+            RecordCount = DB.Count;
+            //clear the private array list
+            mStockList = new List<clsStock>();
+            //while there are records to process
+            while (Index < RecordCount)
+            {
+                //create a blank address object
+                clsStock Stock = new clsStock();
+                //read in the fileds from the current record
+                //Stock.Active = Convert.ToBoolean(DB.DataTable.Rows[Index]["Active"]);
+                Stock.Id = Convert.ToInt32(DB.DataTable.Rows[Index]["Id"]);
+                Stock.itemId = Convert.ToInt32(DB.DataTable.Rows[Index]["ItemId"]);
+                Stock.itemStock = Convert.ToInt32(DB.DataTable.Rows[Index]["ItemStock"]);
+                Stock.itemPrice = Convert.ToDouble(DB.DataTable.Rows[Index]["ItemPrice"]);
+                Stock.itemSize = Convert.ToDouble(DB.DataTable.Rows[Index]["ItemSize"]);
+                Stock.itemDescription = Convert.ToString(DB.DataTable.Rows[Index]["ItemDescription"]);
+                Stock.itemAvailable = Convert.ToBoolean(DB.DataTable.Rows[Index]["ItemAvailable"]);
+                Stock.itemDate = Convert.ToDateTime(DB.DataTable.Rows[Index]["ItemDate"]);
+                //add the records to the private data member
+                mStockList.Add(Stock);
+                //point at the next record
+                Index++;
+            }
         }
     }
 }
