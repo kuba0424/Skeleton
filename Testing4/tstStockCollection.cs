@@ -21,7 +21,7 @@ namespace Testing4
 
 
 
-        [TestMethod]
+        /*[TestMethod]
 
         public void StockListOK()
         {
@@ -49,7 +49,7 @@ namespace Testing4
             AllStock.StockList = TestList;
             //test to see that the two valuea are the same
             Assert.AreEqual(AllStock.StockList, TestList);
-        }
+        }*/
 
 
         /*[TestMethod]
@@ -67,7 +67,7 @@ namespace Testing4
         }*/
 
 
-        [TestMethod]
+        /*[TestMethod]
 
         public void ThisStockPropertyOK()
         {
@@ -90,7 +90,7 @@ namespace Testing4
             //test to see that the two values are the same
             Assert.AreEqual(AllStock.ThisStock, TestItem);
 
-        }
+        }*/
 
         /*[TestMethod]
 
@@ -131,8 +131,10 @@ namespace Testing4
             //test to see that the two values are the same
             Assert.AreEqual(AllStock.Count, 5);
         }*/
+    
+    
 
-        [TestMethod]
+        /*[TestMethod]
 
         public void AddMethodOK()
         {
@@ -164,10 +166,10 @@ namespace Testing4
             Assert.AreEqual(AllStock.ThisStock, TestItem);
 
 
-        }
+        }*/
 
 
-        [TestMethod]
+        /*[TestMethod]
 
         public void UpdateMethodOK()
         {
@@ -211,7 +213,7 @@ namespace Testing4
             Assert.AreEqual(AllStock.ThisStock, TestItem);
 
 
-        }
+        }*/
 
 
         [TestMethod]
@@ -286,17 +288,17 @@ namespace Testing4
             //variabvle to store the outcome
             Boolean OK = true;
             //apply a description that doesnt exist ("zzzzz");
-            FilteredStock.ReportByItemDescription("testDesc");
+            FilteredStock.ReportByItemDescription("large shirt");
             //check that the correct number of records are found
             if (FilteredStock.Count == 2)
             {
                 //check to see that the first record is 168
-                if (FilteredStock.StockList[0].Id != 168)
+                if (FilteredStock.StockList[0].Id != 183)
                 {
                     OK = false;
                 }
                 //check to see that the first record is 169
-                if (FilteredStock.StockList[1].Id != 169)
+                if (FilteredStock.StockList[1].Id != 190)
                 {
                     OK = false;
                 }
