@@ -22,6 +22,7 @@ namespace ClassLibrary
                 mStaffPass = Convert.ToString(DB.DataTable.Rows[0]["Password"]);
                 mStaffNickName = Convert.ToString(DB.DataTable.Rows[0]["staffNickname"]);
                 mStaffIsAdmin = Convert.ToBoolean(DB.DataTable.Rows[0]["isAdmin?"]);
+                mStaffDep = Convert.ToString(DB.DataTable.Rows[0]["Department"]);
                 //always return true
                 return true;
             }
@@ -49,6 +50,9 @@ namespace ClassLibrary
 
         //private data member for the staff NickName property
         private String mStaffNickName;
+
+        //private data member for the staff department property
+        private String mStaffDep;
 
         //private data member for the staff is admin propert
         private bool mStaffIsAdmin;
@@ -130,11 +134,24 @@ namespace ClassLibrary
             }
         }
 
+        public String StaffDep
+        {
+            get
+            {
+                return mStaffDep;
+            }
+            set
+            {
+                mStaffDep = value;
+            }
+        }
+
         //function for the public validation method
         public string Valid(string staffUser,
                             string staffPass,
                             string staffNickName,
-                            string staffDateCreated)
+                            string staffDateCreated,
+                            string staffDepartment)
             //this function accepts 4 parameter for validation
             //the funtion returns a string containing any error msg
             //if no error found then blank string is returned
@@ -165,6 +182,18 @@ namespace ClassLibrary
             {
                 Error = Error + "The password must contain a special character";
             }
+
+            //dep validation
+            if (staffDepartment.Length == 0)
+            {
+                Error = Error + "The Department may not be blank";
+
+            }
+            if (staffDepartment.Length > 50)
+            {
+                Error = Error + "The username must be less than 50 characters";
+            }
+           
 
             //nickname validation
             //if staffnickname is blank

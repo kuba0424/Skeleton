@@ -13,6 +13,7 @@ namespace Testing6
         string StaffPass = "password";
         string StaffNickName = "Jakub";
         string StaffDateCreated = DateTime.Now.ToShortDateString();
+        string StaffDep = "Admin";
 
 
 
@@ -25,6 +26,18 @@ namespace Testing6
             clsStaff staff = new clsStaff();
             //test to see that it exists
             Assert.IsNotNull(staff);
+        }
+
+        [TestMethod]
+        public void StaffDepPropertyOK()
+        {
+            clsStaff staff = new clsStaff();
+            String TestData = "Admin";
+            staff.StaffDep = TestData;
+            Assert.AreEqual(TestData, staff.StaffDep);
+
+
+
         }
 
         [TestMethod]
@@ -109,12 +122,27 @@ namespace Testing6
             //create a boolean variable to store the result of validation
             Boolean Found = false;
             //create some test data to use with the method
-            Int32 StaffId = 2;
+            Int32 StaffId = 1;
             //invoke the method
             Found = staff.Find(StaffId);
             //test to see if result is true
             Assert.IsTrue(Found);
         }
+        [TestMethod]
+        public void TestStaffDepFound()
+        {
+            clsStaff staff = new clsStaff();
+            Boolean Found = false;
+            Boolean OK = true;
+            Int32 StaffId = 1;
+            Found = staff.Find(StaffId);
+            if (staff.StaffDep != "AdminManage")
+            {
+                OK = false;
+            }
+            Assert.IsTrue(OK);
+        }
+
         [TestMethod]
         public void TestStaffIdFound()
         {
@@ -125,11 +153,11 @@ namespace Testing6
             //create a boolean varaible to record if the data is OK(assume it is)
             Boolean OK = true;
             //create test data to use
-            Int32 StaffId = 2;
+            Int32 StaffId = 1;
             //invoke the method
             Found = staff.Find(StaffId);
             //Check the address Id
-            if (staff.StaffId != 2) 
+            if (staff.StaffId != 1) 
             {
                 OK = false;
             }
@@ -146,7 +174,7 @@ namespace Testing6
             //create a boolean varaible to record if the data is OK(assume it is)
             Boolean OK = true;
             //create test data to use
-            Int32 StaffId = 2;
+            Int32 StaffId = 1;
             //invoke the method
             Found = staff.Find(StaffId);
             //Check the address Id
@@ -167,11 +195,11 @@ namespace Testing6
             //create a boolean varaible to record if the data is OK(assume it is)
             Boolean OK = true;
             //create test data to use
-            Int32 StaffId = 2;
+            Int32 StaffId = 1;
             //invoke the method
             Found = staff.Find(StaffId);
             //Check the address Id
-            if (staff.StaffUser != "Jakub")
+            if (staff.StaffUser != "StaffJakub")
             {
                 OK = false;
             }
@@ -188,11 +216,11 @@ namespace Testing6
             //create a boolean varaible to record if the data is OK(assume it is)
             Boolean OK = true;
             //create test data to use
-            Int32 StaffId = 2;
+            Int32 StaffId = 1;
             //invoke the method
             Found = staff.Find(StaffId);
             //Check the address Id
-            if (staff.StaffPass != "Jakub")
+            if (staff.StaffPass != "Password")
             {
                 OK = false;
             }
@@ -209,7 +237,7 @@ namespace Testing6
             //create a boolean varaible to record if the data is OK(assume it is)
             Boolean OK = true;
             //create test data to use
-            Int32 StaffId = 2;
+            Int32 StaffId = 1;
             //invoke the method
             Found = staff.Find(StaffId);
             //Check the address Id
@@ -230,11 +258,11 @@ namespace Testing6
             //create a boolean varaible to record if the data is OK(assume it is)
             Boolean OK = true;
             //create test data to use
-            Int32 StaffId = 2;
+            Int32 StaffId = 1;
             //invoke the method
             Found = staff.Find(StaffId);
             //Check the address Id
-            if (staff.StaffIsAdmin != true)
+            if (staff.StaffIsAdmin = true)
             {
                 OK = false;
             }
@@ -250,7 +278,7 @@ namespace Testing6
             string Error = "";
             //invoke the method
             Error = staff.Valid(StaffUser, StaffPass,
-                                StaffNickName, StaffDateCreated);
+                                StaffNickName, StaffDateCreated, StaffDep);
             //test to see if results are correct
             Assert.AreEqual(Error, "");
         }
@@ -265,7 +293,7 @@ namespace Testing6
             //create test data to pass to method
             string StaffNickName = ""; //this should trigger 
             //invoke method
-            Error = staff.Valid(StaffUser, StaffPass, StaffNickName, StaffDateCreated);
+            Error = staff.Valid(StaffUser, StaffPass, StaffNickName, StaffDateCreated, StaffDep);
             //test to see if results are correct
             Assert.AreNotEqual(Error, "");
         }
@@ -276,7 +304,7 @@ namespace Testing6
             clsStaff staff = new clsStaff();
             String Error = "";
             string StaffNickName = "J";
-            Error = staff.Valid(StaffUser, StaffPass, StaffNickName, StaffDateCreated);
+            Error = staff.Valid(StaffUser, StaffPass, StaffNickName, StaffDateCreated, StaffDep);
             Assert.AreEqual(Error, "");
         }
 
@@ -286,7 +314,7 @@ namespace Testing6
             clsStaff staff = new clsStaff();
             String Error = "";
             string StaffNickName = "Je";
-            Error = staff.Valid(StaffUser, StaffPass, StaffNickName, StaffDateCreated);
+            Error = staff.Valid(StaffUser, StaffPass, StaffNickName, StaffDateCreated, StaffDep);
             Assert.AreEqual(Error, "");
         }
 
@@ -296,7 +324,7 @@ namespace Testing6
             clsStaff staff = new clsStaff();
             String Error = "";
             string StaffNickName = "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa";
-            Error = staff.Valid(StaffUser,StaffPass,StaffNickName, StaffDateCreated);
+            Error = staff.Valid(StaffUser,StaffPass,StaffNickName, StaffDateCreated, StaffDep);
             Assert.AreEqual(Error, "");
         }
 
@@ -306,7 +334,7 @@ namespace Testing6
             clsStaff staff = new clsStaff();
             String Error = "";
             string StaffNickName = "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa";
-            Error = staff.Valid(StaffUser,StaffPass,StaffNickName,StaffDateCreated);
+            Error = staff.Valid(StaffUser,StaffPass,StaffNickName,StaffDateCreated, StaffDep);
             Assert.AreEqual(Error, "");
         }
 
@@ -316,7 +344,7 @@ namespace Testing6
             clsStaff staff = new clsStaff();
             String Error = "";
             string StaffNickName = "aaaaaaaaaaaaaaaaaaaaaaaaa";
-            Error = staff.Valid(StaffUser, StaffPass, StaffNickName, StaffDateCreated);
+            Error = staff.Valid(StaffUser, StaffPass, StaffNickName, StaffDateCreated, StaffDep);
             Assert.AreEqual(Error, "");
         }
 
@@ -326,7 +354,7 @@ namespace Testing6
             clsStaff staff = new clsStaff();
             String Error = "";
             string StaffNickName = "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa";
-            Error = staff.Valid(StaffUser, StaffPass, StaffNickName, StaffDateCreated);
+            Error = staff.Valid(StaffUser, StaffPass, StaffNickName, StaffDateCreated, StaffDep);
             Assert.AreNotEqual(Error, "");
         }
 
@@ -340,7 +368,7 @@ namespace Testing6
             //in which end of current string is padded with spaces
             //or a specified character
             StaffNickName = StaffNickName.PadRight(500, 'a');
-            Error = staff.Valid(StaffUser, StaffPass, StaffNickName, StaffDateCreated);
+            Error = staff.Valid(StaffUser, StaffPass, StaffNickName, StaffDateCreated, StaffDep);
             Assert.AreNotEqual(Error, "");
         }
 
@@ -357,7 +385,7 @@ namespace Testing6
             TestDate = TestDate.AddYears(-100);
             //convert date variable to string variable
             string StaffDateCreated = TestDate.ToString();
-            Error = staff.Valid(StaffUser,StaffPass,StaffNickName, StaffDateCreated);
+            Error = staff.Valid(StaffUser,StaffPass,StaffNickName, StaffDateCreated, StaffDep);
             Assert.AreNotEqual(Error, "");
         }
 
@@ -374,7 +402,7 @@ namespace Testing6
             TestDate = TestDate.AddYears(-1);
             //convert date variable to string variable
             string StaffDateCreated = TestDate.ToString();
-            Error = staff.Valid(StaffUser, StaffPass, StaffNickName, StaffDateCreated);
+            Error = staff.Valid(StaffUser, StaffPass, StaffNickName, StaffDateCreated, StaffDep);
             Assert.AreNotEqual(Error, "");
 
         }
@@ -391,7 +419,7 @@ namespace Testing6
             TestDate = TestDate.AddYears(1);
             //convert date variable to string variable
             string StaffDateCreated = TestDate.ToString();
-            Error = staff.Valid(StaffUser, StaffPass, StaffNickName, StaffDateCreated);
+            Error = staff.Valid(StaffUser, StaffPass, StaffNickName, StaffDateCreated, StaffDep);
             Assert.AreNotEqual(Error, "");
 
         }
@@ -409,7 +437,7 @@ namespace Testing6
             TestDate = TestDate.AddYears(100);
             //convert date variable to string variable
             string StaffDateCreated = TestDate.ToString();
-            Error = staff.Valid(StaffUser, StaffPass, StaffNickName, StaffDateCreated);
+            Error = staff.Valid(StaffUser, StaffPass, StaffNickName, StaffDateCreated, StaffDep);
             Assert.AreNotEqual(Error, "");
 
         }
@@ -420,7 +448,7 @@ namespace Testing6
             clsStaff staff = new clsStaff();
             String Error = "";
             string StaffDateCreated = "This is not a date";
-            Error = staff.Valid(StaffUser,StaffPass,StaffNickName, StaffDateCreated);
+            Error = staff.Valid(StaffUser,StaffPass,StaffNickName, StaffDateCreated, StaffDep);
             Assert.AreNotEqual(Error, "");
         }
 
@@ -430,7 +458,7 @@ namespace Testing6
             clsStaff staff = new clsStaff();
             String Error = "";
             string StaffUser = "";
-            Error = staff.Valid(StaffUser,StaffPass,StaffNickName,StaffDateCreated);
+            Error = staff.Valid(StaffUser,StaffPass,StaffNickName,StaffDateCreated, StaffDep);
             Assert.AreNotEqual(Error,"");
 
         }
@@ -440,7 +468,7 @@ namespace Testing6
             clsStaff staff = new clsStaff();
             String Error = "";
             string StaffUser = "J";
-            Error = staff.Valid(StaffUser,StaffPass,StaffNickName,StaffDateCreated);
+            Error = staff.Valid(StaffUser,StaffPass,StaffNickName,StaffDateCreated, StaffDep);
             Assert.AreEqual(Error,"");
 
         }
@@ -450,7 +478,7 @@ namespace Testing6
             clsStaff staff = new clsStaff();
             String Error = "";
             string StaffUser = "JJ";
-            Error = staff.Valid(StaffUser,StaffPass,StaffNickName,StaffDateCreated);
+            Error = staff.Valid(StaffUser,StaffPass,StaffNickName,StaffDateCreated, StaffDep);
             Assert.AreEqual(Error,"");
 
         }
@@ -460,7 +488,7 @@ namespace Testing6
             clsStaff staff = new clsStaff();
             String Error = "";
             string StaffUser = "JJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJ";
-            Error = staff.Valid(StaffUser,StaffPass,StaffNickName,StaffDateCreated);
+            Error = staff.Valid(StaffUser,StaffPass,StaffNickName,StaffDateCreated, StaffDep);
             Assert.AreEqual(Error,"");
 
         }
@@ -470,7 +498,7 @@ namespace Testing6
             clsStaff staff = new clsStaff();
             String Error = "";
             string StaffUser = "JJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJ";
-            Error = staff.Valid(StaffUser,StaffPass,StaffNickName,StaffDateCreated);
+            Error = staff.Valid(StaffUser,StaffPass,StaffNickName,StaffDateCreated, StaffDep);
             Assert.AreEqual(Error,"");
 
         } 
@@ -480,7 +508,7 @@ namespace Testing6
             clsStaff staff = new clsStaff();
             String Error = "";
             string StaffUser = "JJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJ";
-            Error = staff.Valid(StaffUser,StaffPass,StaffNickName,StaffDateCreated);
+            Error = staff.Valid(StaffUser,StaffPass,StaffNickName,StaffDateCreated, StaffDep);
             Assert.AreNotEqual(Error,"");
 
         }
@@ -490,7 +518,7 @@ namespace Testing6
             clsStaff staff = new clsStaff();
             String Error = "";
             string StaffUser = "JJJJJJJJJJJJJJJJJJJJJJJJJ";
-            Error = staff.Valid(StaffUser,StaffPass,StaffNickName,StaffDateCreated);
+            Error = staff.Valid(StaffUser,StaffPass,StaffNickName,StaffDateCreated, StaffDep);
             Assert.AreEqual(Error,"");
 
         }
@@ -501,7 +529,7 @@ namespace Testing6
             String Error = "";
             string StaffUser = "";
             StaffUser = StaffUser.PadRight(500, 'a');
-            Error = staff.Valid(StaffUser,StaffPass,StaffNickName,StaffDateCreated);
+            Error = staff.Valid(StaffUser,StaffPass,StaffNickName,StaffDateCreated, StaffDep);
             Assert.AreNotEqual(Error,"");
 
         }
@@ -511,7 +539,7 @@ namespace Testing6
             clsStaff staff = new clsStaff();
             String Error = "";
             string StaffPass = "";
-            Error = staff.Valid(StaffUser, StaffPass, StaffNickName, StaffDateCreated);
+            Error = staff.Valid(StaffUser, StaffPass, StaffNickName, StaffDateCreated, StaffDep);
             Assert.AreNotEqual(Error, "");
 
         }
@@ -521,7 +549,7 @@ namespace Testing6
             clsStaff staff = new clsStaff();
             String Error = "";
             string StaffPass = "J";
-            Error = staff.Valid(StaffUser, StaffPass, StaffNickName, StaffDateCreated);
+            Error = staff.Valid(StaffUser, StaffPass, StaffNickName, StaffDateCreated, StaffDep);
             Assert.AreEqual(Error, "");
 
         }
@@ -531,7 +559,7 @@ namespace Testing6
             clsStaff staff = new clsStaff();
             String Error = "";
             string StaffPass = "JJ";
-            Error = staff.Valid(StaffUser, StaffPass, StaffNickName, StaffDateCreated);
+            Error = staff.Valid(StaffUser, StaffPass, StaffNickName, StaffDateCreated, StaffDep);
             Assert.AreEqual(Error, "");
 
         }
@@ -541,7 +569,7 @@ namespace Testing6
             clsStaff staff = new clsStaff();
             String Error = "";
             string StaffPass = "JJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJ";
-            Error = staff.Valid(StaffUser, StaffPass, StaffNickName, StaffDateCreated);
+            Error = staff.Valid(StaffUser, StaffPass, StaffNickName, StaffDateCreated, StaffDep);
             Assert.AreEqual(Error, "");
 
         }
@@ -551,7 +579,7 @@ namespace Testing6
             clsStaff staff = new clsStaff();
             String Error = "";
             string StaffPass = "JJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJ";
-            Error = staff.Valid(StaffUser, StaffPass, StaffNickName, StaffDateCreated);
+            Error = staff.Valid(StaffUser, StaffPass, StaffNickName, StaffDateCreated, StaffDep);
             Assert.AreEqual(Error, "");
 
         }
@@ -561,7 +589,7 @@ namespace Testing6
             clsStaff staff = new clsStaff();
             String Error = "";
             string StaffPass = "JJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJ";
-            Error = staff.Valid(StaffUser, StaffPass, StaffNickName, StaffDateCreated);
+            Error = staff.Valid(StaffUser, StaffPass, StaffNickName, StaffDateCreated, StaffDep);
             Assert.AreNotEqual(Error, "");
 
         }
@@ -571,7 +599,7 @@ namespace Testing6
             clsStaff staff = new clsStaff();
             String Error = "";
             string StaffPass = "JJJJJJJJJJJJJJJJJJJJJJJJJ";
-            Error = staff.Valid(StaffUser, StaffPass, StaffNickName, StaffDateCreated);
+            Error = staff.Valid(StaffUser, StaffPass, StaffNickName, StaffDateCreated, StaffDep);
             Assert.AreEqual(Error, "");
 
         }
@@ -582,10 +610,99 @@ namespace Testing6
             String Error = "";
             string StaffPass = "";
             StaffUser = StaffPass.PadRight(500, 'a');
-            Error = staff.Valid(StaffUser, StaffPass, StaffNickName, StaffDateCreated);
+            Error = staff.Valid(StaffUser, StaffPass, StaffNickName, StaffDateCreated, StaffDep);
             Assert.AreNotEqual(Error, "");
 
         }
+        [TestMethod]
+        public void StaffDepMinLessOne()
+        {
+            //create instance of class
+            clsStaff staff = new clsStaff();
+            // string c = variable to store error msg
+            String Error = "";
+            //create test data to pass to method
+            string StaffDep = ""; //this should trigger 
+            //invoke method
+            Error = staff.Valid(StaffUser, StaffPass, StaffNickName, StaffDateCreated, StaffDep);
+            //test to see if results are correct
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void StaffDepMin()
+        {
+            clsStaff staff = new clsStaff();
+            String Error = "";
+            string StaffDep = "J";
+            Error = staff.Valid(StaffUser, StaffPass, StaffNickName, StaffDateCreated, StaffDep);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void StaffDepMinPlusOne()
+        {
+            clsStaff staff = new clsStaff();
+            String Error = "";
+            string StaffDep = "Je";
+            Error = staff.Valid(StaffUser, StaffPass, StaffNickName, StaffDateCreated, StaffDep);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void StaffDepMaxLessOne()
+        {
+            clsStaff staff = new clsStaff();
+            String Error = "";
+            string StaffDep = "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa";
+            Error = staff.Valid(StaffUser, StaffPass, StaffNickName, StaffDateCreated, StaffDep);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void StaffDepNameMax()
+        {
+            clsStaff staff = new clsStaff();
+            String Error = "";
+            string StaffDep = "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa";
+            Error = staff.Valid(StaffUser, StaffPass, StaffNickName, StaffDateCreated, StaffDep);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void StaffDepNameMid()
+        {
+            clsStaff staff = new clsStaff();
+            String Error = "";
+            string StaffDep = "aaaaaaaaaaaaaaaaaaaaaaaaa";
+            Error = staff.Valid(StaffUser, StaffPass, StaffNickName, StaffDateCreated, StaffDep);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void StaffDEpMaxPlusOne()
+        {
+            clsStaff staff = new clsStaff();
+            String Error = "";
+            string StaffDep = "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa";
+            Error = staff.Valid(StaffUser, StaffPass, StaffNickName, StaffDateCreated, StaffDep);
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void StaffDepExtremeMax()
+        {
+            clsStaff staff = new clsStaff();
+            String Error = "";
+            string StaffDep = "";
+            //padright returns string of specified length e.g 500
+            //in which end of current string is padded with spaces
+            //or a specified character
+            StaffNickName = StaffNickName.PadRight(500, 'a');
+            Error = staff.Valid(StaffUser, StaffPass, StaffNickName, StaffDateCreated, StaffDep);
+            Assert.AreNotEqual(Error, "");
+        }
+
 
 
 

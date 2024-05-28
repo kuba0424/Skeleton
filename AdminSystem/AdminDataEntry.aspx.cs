@@ -39,6 +39,7 @@ public partial class _1_DataEntry : System.Web.UI.Page
         txtStaffNickName.Text = staffCollection.ThisStaff.StaffNickName.ToString();
         txtStaffDateCreated.Text = staffCollection.ThisStaff.StaffDateCreated.ToString();
         chkStaffIsAdmin.Checked = staffCollection.ThisStaff.StaffIsAdmin;
+        txtDepartment.Text = staffCollection.ThisStaff.StaffDep;
     }
 
    
@@ -57,10 +58,12 @@ public partial class _1_DataEntry : System.Web.UI.Page
         string StaffDateCreated = txtStaffDateCreated.Text;
         //capture is Admin checkbox
         string StaffIsAdmin = chkStaffIsAdmin.Text;
+        //capture department
+        string staffDepartment = txtDepartment.Text;
         //variable to store error msg
         string Error = "";
         //validate data
-        Error = staff.Valid(StaffUser, StaffPass, StaffNickName, StaffDateCreated);
+        Error = staff.Valid(StaffUser, StaffPass, StaffNickName, StaffDateCreated,staffDepartment);
         if (Error == "")
         {
             //capture staff id
@@ -71,6 +74,7 @@ public partial class _1_DataEntry : System.Web.UI.Page
             staff.StaffDateCreated = Convert.ToDateTime(StaffDateCreated);
             staff.StaffNickName = StaffNickName;
             staff.StaffIsAdmin = chkStaffIsAdmin.Checked;
+            staff.StaffDep = staffDepartment;
             //create new instance of staff collection
             clsStaffCollection StaffList = new clsStaffCollection();
             if (StaffId == -1)
@@ -121,8 +125,15 @@ public partial class _1_DataEntry : System.Web.UI.Page
             txtStaffNickName.Text = staff.StaffNickName;
             txtStaffDateCreated.Text = staff.StaffDateCreated.ToString();
             chkStaffIsAdmin.Checked = staff.StaffIsAdmin;
+            txtDepartment.Text = staff.StaffDep;
 
 
         }
+    }
+
+    protected void btnReturn_Click(object sender, EventArgs e)
+    {
+        //redirect to mainmenu
+        Response.Redirect("TeamMainMenu.aspx");
     }
 }
