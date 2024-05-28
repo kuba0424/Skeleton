@@ -37,7 +37,7 @@ public partial class _1_List : System.Web.UI.Page
         //set the name of the primary key
         lstStockList.DataValueField = "Id";
         //set the data field to display
-        lstStockList.DataTextField = "ItemId";
+        lstStockList.DataTextField = "itemDescription";
         //bind the data to the list
         lstStockList.DataBind();
     }
