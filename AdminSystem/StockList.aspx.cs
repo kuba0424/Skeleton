@@ -71,8 +71,25 @@ public partial class _1_List : System.Web.UI.Page
         }
     }
 
-    protected void lblError_Click(object sender, EventArgs e)
+    protected void lblError_Click(object sender, EventArgs e) //EDIT CLICK
     {
+        //ariablve to store the primary key value of the record to be edited
+        Int32 Id;
+        //if a rtecord has been selected from the list
+        if (lstStockList.SelectedIndex != -1)
+        {
+            //get the primary key value of the record to edit
+            Id = Convert.ToInt32(lstStockList.SelectedValue);
+            //store the data in the session object
+            Session["Id"] = Id;
+            //redirect to the edit page
+            Response.Redirect("StockDataEntry.aspx");
+        }
+        else
+        {
+            //if no record has been selected
+            lblError.Text = "Please select a record from the list to edit";
+        }
 
     }
 
