@@ -41,6 +41,7 @@ namespace Testing6
             TestItem.StaffNickName = "Jakub";
             TestItem.StaffDateCreated = DateTime.Now;
             TestItem.StaffIsAdmin = true;
+            TestItem.StaffDep = "Admin";
             //Add item to list
             TestList.Add(TestItem);
             //assign data to property
@@ -65,7 +66,9 @@ namespace Testing6
             TestStaff.StaffNickName = "Jakub";
             TestStaff.StaffDateCreated = DateTime.Now;
             TestStaff.StaffIsAdmin = true;
-            
+            TestStaff.StaffDep = "Admin";
+
+
             //assign data to property
             AllStaff.ThisStaff = TestStaff;
             //test to see that the two values are the same
@@ -89,6 +92,8 @@ namespace Testing6
             TestItem.StaffNickName = "Jakub";
             TestItem.StaffDateCreated = DateTime.Now;
             TestItem.StaffIsAdmin = true;
+            TestItem.StaffDep = "Admin";
+
             //Add item to list
             TestList.Add(TestItem);
             //assign data to property
@@ -113,6 +118,7 @@ namespace Testing6
             TestItem.StaffId = 4;
             TestItem.StaffNickName = "Oki";
             TestItem.StaffDateCreated = DateTime.Now;
+            TestItem.StaffDep = "Admin";
             //set this staff to the test data
             Staffcollection.ThisStaff = TestItem;
             //add the record
@@ -139,6 +145,7 @@ namespace Testing6
             TestItem.StaffNickName = "Ben";
             TestItem.StaffIsAdmin = false;
             TestItem.StaffDateCreated = DateTime.Now;
+            TestItem.StaffDep = "Admin";
             //set the thisstaff to the test data
             staffcollection.ThisStaff = TestItem;
             //add the record
@@ -151,6 +158,7 @@ namespace Testing6
             TestItem.StaffNickName = "Men";
             TestItem.StaffIsAdmin = true;
             TestItem.StaffDateCreated = DateTime.Now;
+            TestItem.StaffDep = "men";
             //sett the record based on new test data
             staffcollection.ThisStaff = TestItem;
             //update the record
@@ -177,6 +185,7 @@ namespace Testing6
             TestItem.StaffId = 26;
             TestItem.StaffNickName = "ToDElete";
             TestItem.StaffDateCreated = DateTime.Now;
+            TestItem.StaffDep = "Admin";
             //set this staff to the test data
             Staffcollection.ThisStaff = TestItem;
             //add the record
@@ -224,17 +233,17 @@ namespace Testing6
             clsStaffCollection FilteredStaff = new clsStaffCollection();
             Boolean OK = true;
             //apply a nickname that exists
-            FilteredStaff.ReportbyNickName("yyyyyyy");
+            FilteredStaff.ReportbyNickName("TestingNickName");
             //check that the correct number of records are found
             if(FilteredStaff.Count == 2)
             {
-                //check to see that the first record is 35
+                //check to see that the first record is 37
                 if (FilteredStaff.StaffList[0].StaffId != 37)
                 {
                     OK = false;
                 }
-                //check to see that the first record is 36
-                if (FilteredStaff.StaffList[0].StaffId != 38)
+                //check to see that the first record is 37
+                if (FilteredStaff.StaffList[1].StaffId != 38)
                 {
                     OK = false;
                 }

@@ -27,6 +27,9 @@ public partial class AdminLogin : System.Web.UI.Page
         Password = Convert.ToString(txtPassword.Text);
         //find the record
         Found = staffuser.FindUser(Username, Password);
+        //add session to capture username
+        Session["staffuser"] = staffuser;
+
         //if username and/or password is empty
         if (txtUsername.Text == "")
         {
@@ -47,5 +50,11 @@ public partial class AdminLogin : System.Web.UI.Page
             //record error
             lblError.Text = "Login details are incorrect. Please try again ";
         }
+    }
+
+    protected void btnCancel_Click(object sender, EventArgs e)
+    {
+        //redirect to main menu
+        Response.Redirect("TeamMainMenu.aspx");
     }
 }

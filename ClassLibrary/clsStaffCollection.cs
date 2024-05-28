@@ -68,6 +68,7 @@ namespace ClassLibrary
             DB.AddParameter("@DateCreated", mThisStaff.StaffDateCreated);
             DB.AddParameter("@isAdmin", mThisStaff.StaffIsAdmin);
             DB.AddParameter("@staffNickname", mThisStaff.StaffNickName);
+            DB.AddParameter("@staffDep", mThisStaff.StaffDep);
             //execute the query for returning primary ke value
             return DB.Execute("sproc_tblStaff_Insert");
 
