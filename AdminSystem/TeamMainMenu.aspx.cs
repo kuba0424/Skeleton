@@ -11,4 +11,10 @@ public partial class TeamMainMenu : System.Web.UI.Page
     {
 
     }
+
+    protected void btnAdminManage_Click(object sender, EventArgs e)
+    {
+        //redirect to the admin manage login page
+        Response.Redirect("AdminLogin.aspx");
+    }
 }
