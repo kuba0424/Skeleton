@@ -80,4 +80,31 @@ public partial class _1_List : System.Web.UI.Page
             lblError.Text = "Please select a record from the list to delete";
         }
     }
+
+    protected void lstOrderList_SelectedIndexChanged(object sender, EventArgs e)
+    {
+
+    }
+
+    protected void btnApply_Click(object sender, EventArgs e)
+    {
+        clsOrderCollection AnOrder = new clsOrderCollection();
+        AnOrder.ReportByCustomerAddress(txtFilter.Text);
+        lstOrderList.DataSource = AnOrder.OrderList;
+        lstOrderList.DataValueField = "OrderId";
+        lstOrderList.DataTextField = "CustomerAddress";
+        lstOrderList.DataBind();
+
+    }
+
+    protected void btnClear_Click(object sender, EventArgs e)
+    {
+        clsOrderCollection AnOrder = new clsOrderCollection();
+        AnOrder.ReportByCustomerAddress("");
+        txtFilter.Text = "";
+        lstOrderList.DataSource = AnOrder.OrderList;
+        lstOrderList.DataValueField = "OrderId";
+        lstOrderList.DataTextField = "CustomerAddress";
+        lstOrderList.DataBind();
+    }
 }
