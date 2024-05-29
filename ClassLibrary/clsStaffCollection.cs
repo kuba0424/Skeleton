@@ -68,7 +68,7 @@ namespace ClassLibrary
             DB.AddParameter("@DateCreated", mThisStaff.StaffDateCreated);
             DB.AddParameter("@isAdmin", mThisStaff.StaffIsAdmin);
             DB.AddParameter("@staffNickname", mThisStaff.StaffNickName);
-            DB.AddParameter("@staffDep", mThisStaff.StaffDep);
+            DB.AddParameter("@Department", mThisStaff.StaffDep);
             //execute the query for returning primary ke value
             return DB.Execute("sproc_tblStaff_Insert");
 
@@ -140,6 +140,7 @@ namespace ClassLibrary
             DB.AddParameter("DateCreated", mThisStaff.StaffDateCreated);
             DB.AddParameter("isAdmin", mThisStaff.StaffIsAdmin);
             DB.AddParameter("staffNickname", mThisStaff.StaffNickName);
+            DB.AddParameter("Department", mThisStaff.StaffDep);
             //execute stored procedure
             DB.Execute("sproc_tblStaff_Update");
 
