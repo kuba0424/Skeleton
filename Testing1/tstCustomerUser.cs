@@ -69,7 +69,7 @@ namespace Testing1
             Assert.AreEqual(AnUser.Department, TestData);
         }
         [TestMethod]
-        public void FindMethodOK()
+        public void FindUserMethodOK()
         {
             //create an instance of the class we want to create
             clsCustomerUser AnUser = new clsCustomerUser();
