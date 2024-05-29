@@ -134,7 +134,7 @@ namespace Testing1
             //invoke the method
             Found = AnCustomer.Find(Customer_Id);
             //check the customer id
-            if (AnCustomer.Customer_Id != 1)
+            if (AnCustomer.Customer_Id != 13)
             {
                 OK = false;
             }
@@ -685,7 +685,7 @@ namespace Testing1
             //create a Boolean variable to record if data is OK (assume it is)
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 Customer_Id = 1;
+            Int32 Customer_Id = 13;
             //invoke the method
             Found = AnCustomer.Find(Customer_Id);
             //check the username property
@@ -706,7 +706,7 @@ namespace Testing1
             //create a Boolean variable to record if data is OK (assume it is)
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 Customer_Id = 1;
+            Int32 Customer_Id = 13;
             //invoke the method
             Found = AnCustomer.Find(Customer_Id);
             //check the password property
@@ -727,11 +727,11 @@ namespace Testing1
             //create a Boolean variable to record if data is OK (assume it is)
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 Customer_Id = 1;
+            Int32 Customer_Id = 13;
             //invoke the method
             Found = AnCustomer.Find(Customer_Id);
             //check the town property
-            if (AnCustomer.Email != "DMU@gmail.com")
+            if (AnCustomer.Email != "dmu@gmail.com")
             {
                 OK = false;
             }
@@ -748,7 +748,7 @@ namespace Testing1
             //create a boolean variable to record if data is OK (assume it is)
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 Customer_Id = 1;
+            Int32 Customer_Id = 13;
             //invoke the method
             Found = AnCustomer.Find(Customer_Id);
             //check the post code property
@@ -769,11 +769,11 @@ namespace Testing1
             //create Boolean variable to record if the data is OK (assume it is)
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 Customer_Id = 1;
+            Int32 Customer_Id = 13;
             //invoke the method
             Found = AnCustomer.Find(Customer_Id);
             //check the date added property
-            if (AnCustomer.RegistrationDate != Convert.ToDateTime("18/10/2024"))
+            if (AnCustomer.RegistrationDate != Convert.ToDateTime("21/05/2024"))
             {
                 OK = false;
             }
@@ -790,7 +790,7 @@ namespace Testing1
             //create Boolean variable to record if the data is OK (assume it is)
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 Customer_Id = 1;
+            Int32 Customer_Id = 13;
             //invoke the method
             Found = AnCustomer.Find(Customer_Id);
             //check the active property
