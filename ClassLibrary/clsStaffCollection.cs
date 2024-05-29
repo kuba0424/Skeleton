@@ -114,7 +114,7 @@ namespace ClassLibrary
                 clsStaff staff = new clsStaff();
                 //read in the field from current record
                 staff.StaffId = Convert.ToInt32(DB.DataTable.Rows[Index]["StaffId"]);
-                staff.StaffUser = Convert.ToString(DB.DataTable.Rows[Index]["Username"]);                staff.StaffUser = Convert.ToString(DB.DataTable.Rows[Index]["Username"]);
+                staff.StaffUser = Convert.ToString(DB.DataTable.Rows[Index]["Username"]); 
                 staff.StaffPass = Convert.ToString(DB.DataTable.Rows[Index]["Password"]);
                 staff.StaffDateCreated = Convert.ToDateTime(DB.DataTable.Rows[Index]["DateCreated"]);
                 staff.StaffIsAdmin = Convert.ToBoolean(DB.DataTable.Rows[Index]["isAdmin?"]);
