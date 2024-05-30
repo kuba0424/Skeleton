@@ -28,9 +28,9 @@ namespace Testing1
             //create some test data to assign to the property
             Int32 TestData = 1;
             //assign the data to the property
-            AnUser.UserID = TestData;
+            AnUser.StaffId = TestData;
             //test to see that the two values are the same
-            Assert.AreEqual(AnUser.UserID, TestData);
+            Assert.AreEqual(AnUser.StaffId, TestData);
         }
         [TestMethod]
         public void UserNamePropertyOK()

@@ -19,7 +19,7 @@ namespace Testing4
 
         [TestMethod]
 
-        public void UserIDPropertyOK()
+        public void UserIdPropertyOK()
         {
             //create an instance of the class we want to create
             clsStockUser User = new clsStockUser();

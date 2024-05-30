@@ -12,7 +12,7 @@ namespace ClassLibrary
         private string mPassword;
         //private data member for the department property
         private string mDepartment;
-        public int UserID
+        public int StaffId
         {
             get
             {
