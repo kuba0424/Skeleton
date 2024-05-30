@@ -9,6 +9,7 @@ using ClassLibrary;
 
 public partial class _1_List : System.Web.UI.Page
 {
+
     protected void Page_Load(object sender, EventArgs e)
     {
         //if this the first time the page is displayed
@@ -64,12 +65,6 @@ public partial class _1_List : System.Web.UI.Page
             lblError.Text = "Please select a record from the list to edit";
         }
     }
-
-    protected void Button1_Click(object sender, EventArgs e)
-    {
-
-    }
-
     protected void btnDelete_Click(object sender, EventArgs e)
     {
         //varible to store the primary key value of the record to be delete

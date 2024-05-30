@@ -16,7 +16,7 @@ public partial class StockLogin : System.Web.UI.Page
     protected void btnLogin_Click(object sender, EventArgs e)
     {
         //create an instance of the stock user class
-        clsStockUser User = new clsStockUser();
+        clsCustomerUser User = new clsCustomerUser();
         //create the variables to store the username and password
         string Username = txtUsername.Text;
         string Password = txtPassword.Text;
@@ -44,7 +44,7 @@ public partial class StockLogin : System.Web.UI.Page
         else if (Found == true)
         {
             //redirect to the list page
-            Response.Redirect("StockList.aspx");
+            Response.Redirect("CustomerList.aspx");
         }
         else if (Found == false)
         {

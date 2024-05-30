@@ -217,17 +217,17 @@ namespace Testing1
             //varible to store the outcome
             Boolean OK = true;
             //apply a HomeAddress that doesnt exist
-            FilteredCustomers.ReportByHomeAddress("N/A");
+            FilteredCustomers.ReportByHomeAddress("2 leicester place");
             //check that the correct number of recordss are found 
-            if (FilteredCustomers.Count ==2)
+            if (FilteredCustomers.Count == 2)
             {
                 //check to see that the first record is 13
-                if (FilteredCustomers.CustomerList[0].Customer_Id != 13)
+                if (FilteredCustomers.CustomerList[0].Customer_Id != 11)
                 {
                     OK = false;
                 }
                 //check to see that the first record is 14
-                if (FilteredCustomers.CustomerList[0].Customer_Id != 14)
+                if (FilteredCustomers.CustomerList[1].Customer_Id != 19)
                 {
                     OK = false;
                 }
