@@ -35,11 +35,14 @@
             <asp:TextBox ID="txtRegistrationDate" runat="server" OnTextChanged="txtRegistration_TextChanged" style="z-index: 1; left: 126px; top: 225px; position: absolute"></asp:TextBox>
         </p>
         <asp:CheckBox ID="lblActive" runat="server" style="z-index: 1; left: 136px; top: 272px; position: absolute" Text="Active" />
-        <asp:Button ID="btnOK" runat="server" OnClick="btnOK_Click" style="z-index: 1; left: 108px; top: 344px; position: absolute" Text="OK" width="52px" />
+        <asp:Button ID="btnOK" runat="server" OnClick="btnOK_Click" style="z-index: 1; left: 108px; top: 344px; position: absolute; bottom: 51px;" Text="OK" width="52px" />
         <p>
             <asp:Label ID="lblError" runat="server" style="z-index: 1; left: 22px; top: 296px; position: absolute"></asp:Label>
         </p>
-        <asp:Button ID="btnCancel" runat="server" style="z-index: 1; left: 214px; top: 343px; position: absolute" Text="Cancel" width="52px" />
+        <asp:Button ID="btnCancel" runat="server" style="z-index: 1; left: 220px; top: 344px; position: absolute" Text="Cancel" width="52px" OnClick="btnCancel_Click" />
+        <asp:Button ID="bnMm" runat="server" OnClick="bnMm_Click" style="margin-left: 329px" Text="Return to Main Menu " />
+        <p>
+            &nbsp;</p>
         <p>
             &nbsp;</p>
         <p>
