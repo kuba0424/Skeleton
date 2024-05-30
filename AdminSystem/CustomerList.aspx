@@ -24,8 +24,11 @@
         <br />
         <asp:Button ID="btnApplyFilter" runat="server" OnClick="btnApplyFilter_Click" Text="Apply Filter" />
         <asp:Button ID="btnClearFilter" runat="server" OnClick="btnClearFilter_Click" Text="Clear Filter" />
+        <asp:Button ID="btnReturnMM" runat="server" Text="Return to Main Menu" OnClick="btnReturnMM_Click" />
         <p>
             <asp:Label ID="lblError" runat="server"></asp:Label>
+        </p>
+        <p>
         </p>
     </form>
 </body>

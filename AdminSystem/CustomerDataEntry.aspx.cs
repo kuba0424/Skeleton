@@ -164,4 +164,16 @@ public partial class _1_DataEntry : System.Web.UI.Page
 
         }
     }
+
+    protected void btnCancel_Click(object sender, EventArgs e)
+    {
+        //clear the page
+        Response.Redirect("CustomerDataEntry.aspx");
+    }
+
+    protected void bnMm_Click(object sender, EventArgs e)
+    {
+        //redirect back to the main menu
+        Response.Redirect("TeamMainMenu.aspx");
+    }
 }
