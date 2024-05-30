@@ -102,7 +102,7 @@ namespace Testing1
             //create a boolean variable to store the results of the validation
             Boolean Found = false;
             //create some test data to use with the method
-            Int32 Customer_Id = 1;
+            Int32 Customer_Id = 13;
             //invoke the method
             Found = AnCustomer.Find(Customer_Id);
             //test to see if the result is true
@@ -130,7 +130,7 @@ namespace Testing1
             //create a Boolean variable to record if the data is OK (assume it is)
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 Customer_Id = 1;
+            Int32 Customer_Id = 13;
             //invoke the method
             Found = AnCustomer.Find(Customer_Id);
             //check the customer id

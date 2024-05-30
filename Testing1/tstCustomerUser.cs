@@ -76,12 +76,34 @@ namespace Testing1
             //create a boolean varible to store the results of the validation
             Boolean Found = false;
             //create some test data to use with method
-            string UserName = "David";
-            string Password = "Password123";
+            string UserName = "Jeremy";
+            string Password = "Jeremy";
             //invoke the method 
             Found = AnUser.FindUser(UserName, Password);
             //test to see if result is true
             Assert.IsTrue(Found);
+        }
+        [TestMethod]
+        public void TestUserNamePWFound()
+        {
+            //create an instance of the class we want to create
+            clsCustomerUser AnUser = new clsCustomerUser();
+            //create a boolean varible to store the results of the validation
+            Boolean Found = false;
+            //create a boolean varible to record if the data is ok
+            Boolean OK = true;
+            //create some test data to use with method
+            string UserName = "Jeremy";
+            string Password = "Jeremy";
+            //invoke the method 
+            Found = AnUser.FindUser(UserName, Password);
+            //check the user id property
+            if (AnUser.UserName != UserName && AnUser.Password != Password)
+            {
+                OK = false;
+            }
+            //test to see that the result is correct
+            Assert.IsTrue(OK);
         }
     }
 }

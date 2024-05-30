@@ -7,62 +7,14 @@ namespace ClassLibrary
     {
         public clsCustomerCollection() 
         {
-            //varible for the index
-            Int32 Index = 0;
-            //varible to store the recrod count
-            Int32 RecordCount= 0;
             //object for the data connect
             clsDataConnection DB = new clsDataConnection();
             //execute the stored procedure
             DB.Execute("sproc_tblCustomers_SelectAll");
             //populate the array list with the data table
             PopulateArraay(DB);
-            //get the count of records
-            RecordCount = DB.Count;
-            //while there are records to process
-            while (Index < RecordCount)
-            {
-                //create a blank customer
-                clsCustomer AnCustomer = new clsCustomer();
-                //read in the fields for the current record
-                AnCustomer.Active = Convert.ToBoolean(DB.DataTable.Rows[Index]["Active"]);
-                AnCustomer.Customer_Id = Convert.ToInt32(DB.DataTable.Rows[Index]["Customer_Id"]);
-                AnCustomer.Username = Convert.ToString(DB.DataTable.Rows[Index]["Username"]);
-                AnCustomer.RegistrationDate = Convert.ToDateTime(DB.DataTable.Rows[Index]["RegistrationDate"]);
-                AnCustomer.Password = Convert.ToString(DB.DataTable.Rows[Index]["Password"]);
-                AnCustomer.Email = Convert.ToString(DB.DataTable.Rows[Index]["Email"]);
-                AnCustomer.HomeAddress = Convert.ToString(DB.DataTable.Rows[Index]["HomeAddress"]);
-                //add the record to the private data member
-                mCustomerList.Add(AnCustomer);
-                //point at the next record
-                Index++;
-            }
-
-            //create the items of test data
-            clsCustomer TestItem = new clsCustomer();
-            //set its properties
-            TestItem.Active = true;
-            TestItem.Customer_Id = 1;
-            TestItem.Username = "DMU";
-            TestItem.RegistrationDate = DateTime.Now;
-            TestItem.Password = "DDMMUU";
-            TestItem.Email = "dmu@gmail.com";
-            TestItem.HomeAddress = "18 leicester road";
-            //add the test item to the test list
-            mCustomerList.Add(TestItem);
-            //re initialise the object for some new data
-            TestItem = new clsCustomer();
-            //set its properties
-            TestItem.Active = true;
-            TestItem.Customer_Id = 3;
-            TestItem.Username = "BillyJean";
-            TestItem.RegistrationDate = DateTime.Now;
-            TestItem.Password = "MichealJ";
-            TestItem.Email = "MJ@gmail.com";
-            TestItem.HomeAddress = "12 grange lane";
-            //add the item to the test list
-            mCustomerList.Add(TestItem);
         }
+
         //private data member for the list
         List<clsCustomer> mCustomerList = new List<clsCustomer>();
         //private member data for thisCustomer

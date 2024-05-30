@@ -5,7 +5,7 @@ namespace ClassLibrary
     public class clsCustomerUser
     {
         //private data member for the user id property
-        private Int32 mUserID;
+        private Int32 mStaffId;
         //private data member for the username property
         private string mUserName;
         //private data member for the password property
@@ -17,12 +17,12 @@ namespace ClassLibrary
             get
             {
                 //return the private data
-                return mUserID;
+                return mStaffId;
             }
             set
             {
                 //set the private data
-                mUserID = value;
+                mStaffId = value;
             }
         }
         public string UserName
@@ -66,12 +66,12 @@ namespace ClassLibrary
             DB.AddParameter("@UserName", UserName);
             DB.AddParameter ("@Password", Passowrd);
             //execute the stored procedure
-            DB.Execute("sproc_tbl_staff_FindUserNamePWCustomer");
+            DB.Execute("sproc_tblStaff_FindUserNamePWCustomer");
             //if one record is found (there should be either one or none)
             if (DB.Count == 1)
             {
                 //copy the data from the database to the private data members
-                mUserID = Convert.ToInt32(DB.DataTable.Rows[0]["UserID"]);
+                mStaffId = Convert.ToInt32(DB.DataTable.Rows[0]["StaffId"]);
                 mUserName = Convert.ToString(DB.DataTable.Rows[0]["Username"]);
                 mPassword = Convert.ToString(DB.DataTable.Rows[0]["Password"]);
                 mDepartment = Convert.ToString(DB.DataTable.Rows[0]["Department"]);
