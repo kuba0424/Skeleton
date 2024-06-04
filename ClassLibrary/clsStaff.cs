@@ -163,49 +163,49 @@ namespace ClassLibrary
             //user validation
             if (staffUser.Length == 0)
             {
-                Error = Error + "The username may not be blank";
+                Error = Error + " " + " The username may not be blank ";
             }
             if (staffUser.Length > 50)
             {
-                Error = Error + "The username must be less than 50 characters";
+                Error = Error + " " + " The username must be less than 50 characters ";
             }
             //password validation
             if (staffPass.Length == 0)
             {
-                Error = Error + "The Password may not be blank";
+                Error = Error + " " + " The Password may not be blank ";
             }
             if (staffPass.Length > 50)
             {
-                Error = Error + "The password must be less than 50 characters";
+                Error = Error + " " + " The password must be less than 50 characters ";
             }
-            if (staffPass.Contains(@"^[a-zA-Z0-9*$"))
+           /* if (staffPass.Contains(@"^[a-zA-Z0-9*$"))
             {
-                Error = Error + "The password must contain a special character";
-            }
+                Error = Error + " " + " The password must contain a special character ";
+            }*/
 
             //dep validation
             if (staffDepartment.Length == 0)
             {
-                Error = Error + "The Department may not be blank";
+                Error = Error + " " + " The Department may not be blank ";
 
             }
             if (staffDepartment.Length > 50)
             {
-                Error = Error + "The username must be less than 50 characters";
+                Error = Error + " " + " The username must be less than 50 characters ";
             }
            
 
             //nickname validation
             //if staffnickname is blank
             if (staffNickName.Length == 0)
-            {
-                Error = Error + "The Nickname may not be blank : ";
+            { 
+                Error = Error + " " + " The Nickname may not be blank ";
             
             }
             //if staffnickname is greater than 50 chracters
             if (staffNickName.Length > 50)
             {
-                Error = Error + "The Nickname must be less than 50 characters";
+                Error = Error + " " + " The Nickname must be less than 50 characters ";
             }
             //date created validation
             DateTime DateComp = DateTime.Now.Date;
@@ -216,17 +216,17 @@ namespace ClassLibrary
                 //check if the date is less than today's date
                 if (DateTemp < DateComp)
                 {
-                    Error = Error + "The date cannot be in the past";
+                    Error = Error + " " + " The date cannot be in the past ";
                 }
                 if (DateTemp > DateComp)
                 {
-                    Error = Error + "The date cannot be in the future";
+                    Error = Error + " " + " The date cannot be in the future ";
                 }
             }
             catch
             {
                 //record the error
-                Error = Error + " The date was not a valid date";
+                Error = Error + " " + " The date was not a valid date ";
             }
             
             //return any error msgs

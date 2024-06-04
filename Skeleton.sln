@@ -26,17 +26,17 @@ Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "AdminSystem", "AdminSystem\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClassLibrary", "ClassLibrary\ClassLibrary.csproj", "{E32146CF-EC09-4709-9881-42ADF1B0735B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Admin", "Testing6\Admin.csproj", "{FDF1944D-85CF-4AAF-AB55-C62255437A06}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdminManage", "Testing6\AdminManage.csproj", "{FDF1944D-85CF-4AAF-AB55-C62255437A06}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Testing5", "Testing5\Testing5.csproj", "{6B836712-3706-49E8-A57E-ADD4149D788B}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Testing4", "Testing4\Testing4.csproj", "{D7E86DE2-138C-4B6B-A195-C247244515E9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "orderprocess", "Testing3\orderprocess.csproj", "{7032FF54-9316-4FFF-9612-EBA55F9781BA}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OrderProcess", "Testing3\OrderProcess.csproj", "{7032FF54-9316-4FFF-9612-EBA55F9781BA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Stockmanag", "Testing2\Stockmanag.csproj", "{53F17854-E215-4FE3-9860-C1E18BF9C6C7}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Stockmanage", "Testing2\Stockmanage.csproj", "{53F17854-E215-4FE3-9860-C1E18BF9C6C7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "customers", "Testing1\customers.csproj", "{4186B3B3-EBEA-434E-844F-F79D774C252B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Customers", "Testing1\Customers.csproj", "{4186B3B3-EBEA-434E-844F-F79D774C252B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

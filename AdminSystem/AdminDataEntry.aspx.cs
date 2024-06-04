@@ -136,4 +136,10 @@ public partial class _1_DataEntry : System.Web.UI.Page
         //redirect to mainmenu
         Response.Redirect("TeamMainMenu.aspx");
     }
+
+    protected void btnStaffCancel_Click(object sender, EventArgs e)
+    {
+        //redirect to list
+        Response.Redirect("AdminList.aspx");
+    }
 }
