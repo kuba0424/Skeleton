@@ -15,6 +15,7 @@ public partial class StockLogin : System.Web.UI.Page
 
     protected void btnLogin_Click(object sender, EventArgs e)
     {
+
         //create an instance of the stock user class
         clsCustomerUser User = new clsCustomerUser();
         //create the variables to store the username and password
@@ -39,7 +40,8 @@ public partial class StockLogin : System.Web.UI.Page
         else if (txtPassword.Text == "")
         {
             lblError.Text = "Enter a password ";
-;       }
+            ;
+        }
         //if found
         else if (Found == true)
         {
