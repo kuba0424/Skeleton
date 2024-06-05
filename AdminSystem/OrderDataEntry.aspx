@@ -17,7 +17,7 @@
         <asp:Button ID="btnOK" runat="server" OnClick="btnOK_Click" style="z-index: 1; left: 230px; top: 287px; position: absolute; width: 65px" Text="OK" />
         </p>
         <p>
-            <asp:Button ID="btnCancel" runat="server" style="z-index: 1; left: 408px; top: 287px; position: absolute; width: 65px" Text="Cancel" />
+            <asp:Button ID="btnCancel" runat="server" style="z-index: 1; left: 408px; top: 287px; position: absolute; width: 65px" Text="Cancel" OnClick="btnCancel_Click" />
             <asp:Button ID="btnFind" runat="server" OnClick="Button1_Click" style="z-index: 1; left: 532px; top: 31px; position: absolute" Text="Find" />
         </p>
         <div>
@@ -34,6 +34,7 @@
         <asp:Label ID="lblError" runat="server" style="z-index: 1; left: 205px; top: 255px; position: absolute; width: 634px;"></asp:Label>
         <asp:Label ID="lblTotalPrice" runat="server" style="z-index: 1; left: 10px; top: 108px; position: absolute; right: 503px" Text="Total Price" width="150px"></asp:Label>
         <asp:TextBox ID="txtTotalPrice" runat="server" style="z-index: 1; left: 219px; top: 106px; position: absolute" width="257px"></asp:TextBox>
+        <asp:Button ID="btnMainMenu" runat="server" style="z-index: 1; left: 262px; top: 351px; position: absolute; height: 24px;" Text="Return to Main Menu" OnClick="btnMainMenu_Click" />
     </form>
 </body>
 </html>
