@@ -21,7 +21,7 @@ public partial class OrderProcessingLogin : System.Web.UI.Page
     protected void btnLogin_Click(object sender, EventArgs e)
     {
         //create an instance of the stock user class
-        clsCustomerUser User = new clsCustomerUser();
+        clsOrderUser AnUser = new clsOrderUser();
         //create the variables to store the username and password
         string Username = txtUsername.Text;
         string Password = txtPassword.Text;
@@ -32,9 +32,9 @@ public partial class OrderProcessingLogin : System.Web.UI.Page
         //get the password entered by the user
         Password = Convert.ToString(txtPassword.Text);
         //find the record
-        Found = User.FindUser(Username, Password);
+        Found = AnUser.FindUser(Username, Password);
         //add a session to capture the user name
-        Session["User"] = User;
+        Session["AnUser"]=AnUser;
         //if username and or password empty
         if (txtUsername.Text == "")
         {
@@ -57,5 +57,10 @@ public partial class OrderProcessingLogin : System.Web.UI.Page
             //record the error
             lblError.Text = "Login details are incorrect. Please try again ";
         }
+    }
+
+    protected void BtnCancel_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("TeamMainMenu.aspx");
     }
 }

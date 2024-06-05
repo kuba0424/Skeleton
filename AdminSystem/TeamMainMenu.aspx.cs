@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using ClassLibrary;
 
 public partial class TeamMainMenu : System.Web.UI.Page
 {
@@ -28,5 +29,10 @@ public partial class TeamMainMenu : System.Web.UI.Page
     {
         //redirect to the Customer management login page
         Response.Redirect("CustomerLogin.aspx");
+    }
+
+    protected void btnOrderProcessing_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("OrderProcessingLogin.aspx");
     }
 }

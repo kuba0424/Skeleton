@@ -24,6 +24,7 @@
         <asp:TextBox ID="txtFilter" runat="server"  style="z-index: 1; top:404px; position:absolute; left: 178px; width: 191px;" ></asp:TextBox>
         <asp:Button ID="btnApply" runat="server"  style="z-index: 1; top:435px; position:absolute; left: 72px;" Text="Apply Filter" OnClick="btnApply_Click" />
         <asp:Button ID="btnClear" runat="server"  style="z-index: 1; top:435px; position:absolute; left: 225px;" Text="Clear Filter" OnClick="btnClear_Click" />
+        <asp:Button ID="btnMainMenu" runat="server" style="z-index: 1; top:529px; position:absolute; left: 104px;" Text="Return to Main Menu" OnClick="btnMainMenu_Click" />
     </form>
 </body>
 </html>

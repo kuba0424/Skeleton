@@ -27,7 +27,7 @@
         </p>
         <p>
         <asp:Button ID="btnCustomerM" runat="server" style="z-index: 1; left: 556px; top: 293px; position: absolute;" Text="Customer Management" OnClick="btnCustomerM_Click" />
-        <asp:Button ID="Button1" runat="server" style="z-index: 1; left: 809px; top: 293px; position: absolute;" Text="Button" />
+        <asp:Button ID="btnOrderProcessing" runat="server" style="z-index: 1; left: 790px; top: 293px; position: absolute;" Text="Order Processing" OnClick="btnOrderProcessing_Click" />
         </p>
     </form>
 </body>

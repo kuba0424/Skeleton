@@ -155,7 +155,7 @@
         <asp:TextBox ID="txtItemDate" runat="server" CssClass="auto-style13" height="22px" width="128px"></asp:TextBox>
         <asp:CheckBox ID="chkActive" runat="server" CssClass="auto-style14" Text="Active" />
         <asp:Label ID="lblError" runat="server" CssClass="auto-style15" Text="Label"></asp:Label>
-        <asp:Button ID="btnCancel" runat="server" CssClass="auto-style17" Text="Cancel" />
+        <asp:Button ID="btnCancel" runat="server" CssClass="auto-style17" Text="Cancel" OnClick="btnCancel_Click" />
         <p>
             <asp:Button ID="btnOK" runat="server" CssClass="auto-style16" OnClick="btnOK_Click" Text="OK" />
         </p>
