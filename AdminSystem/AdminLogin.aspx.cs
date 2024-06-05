@@ -33,11 +33,13 @@ public partial class AdminLogin : System.Web.UI.Page
         //if username and/or password is empty
         if (txtUsername.Text == "")
         {
-            //record error
+            //record error and make it visible
+            lblError.Visible = true;
             lblError.Text = "Enter a Username";
         }
         else if (txtPassword.Text == "")
         {
+            lblError.Visible = true;
             lblError.Text = "Enter a Password";
         }
         //if found
@@ -48,6 +50,7 @@ public partial class AdminLogin : System.Web.UI.Page
         else if (Found == false)
         {
             //record error
+            lblError.Visible = true;
             lblError.Text = "Login details are incorrect. Please try again ";
         }
     }

@@ -23,7 +23,7 @@
         <asp:CheckBox ID="chkStaffIsAdmin" runat="server" style="z-index: 1; left: 144px; top: 387px; position: absolute" Text="Is Admin?" />
         <asp:Label ID="lblDepartment" runat="server" style="z-index: 1; left: 27px; top: 345px; position: absolute; width: 93px;" Text="Department:"></asp:Label>
         <asp:TextBox ID="txtDepartment" runat="server" style="z-index: 1; left: 123px; top: 347px; position: absolute; width: 128px;" height="22px"></asp:TextBox>
-        <asp:Label ID="lblStaffError" runat="server" style="z-index: 1; left: 22px; top: 419px; position: absolute; width: 750px;"></asp:Label>
+        <asp:Label ID="lblStaffError" runat="server" style="z-index: 1; left: 22px; top: 419px; position: absolute; width: 750px; " Visible="False"></asp:Label>
         <asp:Button ID="btnStaffOk" runat="server" style="z-index: 1; left: 31px; top: 478px; position: absolute" Text="Ok" OnClick="btnStaffOk_Click" height="26px" width="60px" />
         <asp:Button ID="btnStaffCancel" runat="server" Style="z-index: 1; left: 135px; top: 478px; position: absolute" Text="Cancel" Height="26px" Width="60px" OnClick="btnStaffCancel_Click" />
         <asp:TextBox ID="txtStaffUser" runat="server" style="z-index: 1; left: 123px; top: 167px; position: absolute"></asp:TextBox>

@@ -100,6 +100,7 @@ public partial class _1_DataEntry : System.Web.UI.Page
         else
         {
             //display error msg
+            lblStaffError.Visible = true;
             lblStaffError.Text = Error;
         }
     }
