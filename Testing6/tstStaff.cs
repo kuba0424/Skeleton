@@ -262,7 +262,7 @@ namespace Testing6
             //invoke the method
             Found = staff.Find(StaffId);
             //Check the address Id
-            if (staff.StaffIsAdmin = true)
+            if (staff.StaffIsAdmin == true)
             {
                 OK = false;
             }

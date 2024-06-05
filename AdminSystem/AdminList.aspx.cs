@@ -65,7 +65,8 @@ public partial class _1_List : System.Web.UI.Page
         }
         else
         {
-            //if no record selected
+            //if no record selected, make error visible
+            lblError.Visible = true;
             lblError.Text = "please select a record from list to edit";
         }
     }
@@ -88,6 +89,7 @@ public partial class _1_List : System.Web.UI.Page
         else
         {
             //if no record selected
+            lblError.Visible = true;
             lblError.Text = "Please select a record from list to delete";
         }
         
