@@ -21,11 +21,11 @@ public partial class _1_List : System.Web.UI.Page
         }
 
         //create a new instance of the clsStockUser
-        clsStockUser User = new clsStockUser();
+    //    clsStockUser User = new clsStockUser();
         //get data from the session object
-        User = (clsStockUser)Session["User"];
+    //    User = (clsStockUser)Session["User"];
         //display the username
-        Response.Write("Logged in as: " + User.Username);
+    //    Response.Write("Logged in as: " + User.Username);
     }
 
     public void DisplayStock()
