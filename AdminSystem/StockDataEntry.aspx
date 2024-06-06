@@ -8,21 +8,21 @@
     <style type="text/css">
         .auto-style1 {
             z-index: 1;
-            left: 7px;
+            left: 8px;
             top: 154px;
             position: absolute;
             height: 18px;
         }
         .auto-style2 {
             z-index: 1;
-            left: 6px;
+            left: 8px;
             top: 211px;
             position: absolute;
             right: 1368px;
         }
         .auto-style3 {
             z-index: 1;
-            left: 6px;
+            left: 8px;
             top: 274px;
             position: absolute;
         }
@@ -36,43 +36,43 @@
         }
         .auto-style5 {
             z-index: 1;
-            left: 10px;
+            left: 8px;
             top: 410px;
             position: absolute;
         }
         .auto-style7 {
             z-index: 1;
-            left: 16px;
+            left: 8px;
             top: 472px;
             position: absolute;
         }
         .auto-style8 {
             z-index: 1;
-            left: 157px;
+            left: 166px;
             top: 150px;
             position: absolute;
         }
         .auto-style9 {
             z-index: 1;
-            left: 157px;
+            left: 166px;
             top: 204px;
             position: absolute;
         }
         .auto-style10 {
             z-index: 1;
-            left: 157px;
+            left: 166px;
             top: 269px;
             position: absolute;
         }
         .auto-style11 {
             z-index: 1;
-            left: 157px;
+            left: 166px;
             top: 344px;
             position: absolute;
         }
         .auto-style12 {
             z-index: 1;
-            left: 162px;
+            left: 166px;
             top: 402px;
             position: absolute;
         }
@@ -109,20 +109,20 @@
         }
         .auto-style18 {
             z-index: 1;
-            left: 379px;
-            top: 46px;
+            left: 374px;
+            top: 29px;
             position: absolute;
             height: 26px;
         }
         .auto-style19 {
             z-index: 1;
-            left: 10px;
+            left: 8px;
             top: 34px;
             position: absolute;
         }
         .auto-style20 {
             z-index: 1;
-            left: 163px;
+            left: 166px;
             top: 32px;
             position: absolute;
         }
@@ -132,22 +132,22 @@
     <form id="form1" runat="server">
         <div>
         </div>
-        <asp:Label ID="lblStockId" runat="server" style="z-index: 1; left: 9px; top: 95px; position: absolute" Text="Stock ID" width="111px"></asp:Label>
-        <asp:Label ID="lblId" runat="server" CssClass="auto-style19" Text="Id"></asp:Label>
+        <asp:Label ID="lblStockId" runat="server" style="z-index: 1; left: 8px; top: 95px; position: absolute" Text="Stock ID" width="111px"></asp:Label>
+        <asp:Label ID="lblId" runat="server" CssClass="auto-style19" Text="Id" height="19px" width="111px"></asp:Label>
         <p>
             <asp:Button ID="btnFind" runat="server" CssClass="auto-style18" OnClick="btnFind_Click" Text="Find" />
         </p>
         <p>
-            <asp:TextBox ID="txtId" runat="server" CssClass="auto-style20"></asp:TextBox>
+            <asp:TextBox ID="txtId" runat="server" CssClass="auto-style20" height="22px" width="128px"></asp:TextBox>
         </p>
         <p>
-            <asp:TextBox ID="txtStockId" runat="server" OnTextChanged="txtStockId_TextChanged" style="z-index: 1; top: 91px; position: absolute; left: 165px"></asp:TextBox>
+            <asp:TextBox ID="txtStockId" runat="server" OnTextChanged="txtStockId_TextChanged" style="z-index: 1; top: 91px; position: absolute; left: 166px" height="22px" width="128px"></asp:TextBox>
         </p>
-        <asp:Label ID="lblItemStock" runat="server" CssClass="auto-style1" Text="Item Stock" width="111px"></asp:Label>
-        <asp:Label ID="lblItemSize" runat="server" CssClass="auto-style2" Text="Item Size" width="111px"></asp:Label>
-        <asp:Label ID="lblItemPrice" runat="server" CssClass="auto-style3" Text="Item Price" width="111px"></asp:Label>
-        <asp:Label ID="lblItemAvailable" runat="server" CssClass="auto-style5" Text="Item Availability" width="111px"></asp:Label>
-        <asp:Label ID="lblItemDate" runat="server" CssClass="auto-style7" Text="Item Date" width="111px"></asp:Label>
+        <asp:Label ID="lblItemStock" runat="server" CssClass="auto-style1" Text="Item Stock" width="111px" height="19px"></asp:Label>
+        <asp:Label ID="lblItemSize" runat="server" CssClass="auto-style2" Text="Item Size" width="111px" height="19px"></asp:Label>
+        <asp:Label ID="lblItemPrice" runat="server" CssClass="auto-style3" Text="Item Price" width="111px" height="19px"></asp:Label>
+        <asp:Label ID="lblItemAvailable" runat="server" CssClass="auto-style5" Text="Item Availability" width="111px" height="19px"></asp:Label>
+        <asp:Label ID="lblItemDate" runat="server" CssClass="auto-style7" Text="Item Date" width="111px" height="19px"></asp:Label>
         <asp:TextBox ID="txtItemStock" runat="server" CssClass="auto-style8" height="22px" width="128px"></asp:TextBox>
         <asp:TextBox ID="txtItemSize" runat="server" CssClass="auto-style9" height="22px" width="128px"></asp:TextBox>
         <asp:TextBox ID="txtItemDesc" runat="server" CssClass="auto-style11" height="22px" width="128px"></asp:TextBox>
@@ -159,7 +159,7 @@
         <p>
             <asp:Button ID="btnOK" runat="server" CssClass="auto-style16" OnClick="btnOK_Click" Text="OK" />
         </p>
-        <asp:Label ID="lblItemDesc" runat="server" CssClass="auto-style4" Text="Item Description"></asp:Label>
+        <asp:Label ID="lblItemDesc" runat="server" CssClass="auto-style4" Text="Item Description" height="19px" width="111px"></asp:Label>
         <p>
             &nbsp;</p>
         <asp:TextBox ID="txtItemPrice" runat="server" CssClass="auto-style10" height="22px" width="128px"></asp:TextBox>

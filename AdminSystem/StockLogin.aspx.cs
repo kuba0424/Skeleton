@@ -46,7 +46,7 @@ public partial class StockLogin : System.Web.UI.Page
         else if (Found == true)
         {
             //redirect to the list page
-            Response.Redirect("CustomerList.aspx");
+            Response.Redirect("StockList.aspx");
         }
         else if (Found == false)
         {
