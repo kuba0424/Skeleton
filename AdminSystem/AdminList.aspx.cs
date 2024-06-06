@@ -98,16 +98,25 @@ public partial class _1_List : System.Web.UI.Page
     protected void btnApplyFilter_Click(object sender, EventArgs e)
     {
         clsStaffCollection staffcollection = new clsStaffCollection();
-        //retrieve value of nickname from presentation layer
-        staffcollection.ReportbyNickName(txtFilterNickname.Text);
-        //set the data source to the list of staff in the collection
-        lstStaffList.DataSource = staffcollection.StaffList;
-        //set the name of the primary key
-        lstStaffList.DataValueField = "StaffId";
-        //set the name of the field to display
-        lstStaffList.DataTextField = "staffNickName";
-        ///bind data to list
-        lstStaffList.DataBind();
+
+        if (txtFilterNickname.Text == "")
+        {
+            lblError.Visible = true;
+            lblError.Text = "Filter cannot be empty";
+        }
+        else
+        {
+            //retrieve value of nickname from presentation layer
+            staffcollection.ReportbyNickName(txtFilterNickname.Text);
+            //set the data source to the list of staff in the collection
+            lstStaffList.DataSource = staffcollection.StaffList;
+            //set the name of the primary key
+            lstStaffList.DataValueField = "StaffId";
+            //set the name of the field to display
+            lstStaffList.DataTextField = "staffNickName";
+            ///bind data to list
+            lstStaffList.DataBind();
+        }
     }
 
     protected void btnClearFilter_Click(object sender, EventArgs e)
